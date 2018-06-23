@@ -15,7 +15,7 @@ author:
   name:           'Amar Lakshya'
   url:            https://github.com/amar-laksh
 
-paginate:         2
+paginate:         3
 # paginate_path:    '/page:num'
                     # Or '/blog/page:num' if you want to move your index pages
 

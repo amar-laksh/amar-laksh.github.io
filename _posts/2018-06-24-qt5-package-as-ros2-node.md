@@ -155,3 +155,31 @@ ament_package()
 {% endhighlight %}
 
 ### Step - 4: Let's restructure the directory to clean everything.
+
+- First, create an `src` directory and move everything in it as a ROS2 package ( let's say `demo`) . Now, create an `src` directory and move all the `qml`, `cpp`, `qml.qrc` files in that directory. Now your project folder should look something like this:
+{% highlight bash %}
+.
+└── src
+    └── demo
+        ├── CMakeLists.txt
+        ├── demo.pro
+        ├── demo.pro.user
+        ├── package.xml
+        ├── qtquickcontrols2.conf
+        └── src
+            ├── main.cpp
+            ├── main.qml
+            ├── Page1Form.ui.qml
+            ├── Page2Form.ui.qml
+            └── qml.qrc
+
+3 directories, 10 files
+{% endhighlight %}
+
+### Step - 5: All set, time to build the package!
+
+- Now, source your ROS2 workspace and run: `ament build`.
+
+Doing these steps, you should get a ROS2 Qt5 app package called `demo`.
+
+**TIP**: Here is the git-hosted [sample project](https://github.com/amar-laksh/ros2soc).
