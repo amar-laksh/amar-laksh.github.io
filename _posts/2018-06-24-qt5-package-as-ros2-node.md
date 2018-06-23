@@ -127,8 +127,6 @@ ament_package()
 {% highlight xml %}
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
-<?xml version="1.0"?>
-<?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="2">
 	<name>demo</name>
 	<version>0.0.1</version>
@@ -156,7 +154,7 @@ ament_package()
 
 ### Step - 4: Let's restructure the directory to clean everything.
 
-- First, create an `src` directory and move everything in it as a ROS2 package ( let's say `demo`) . Now, create an `src` directory and move all the `qml`, `cpp`, `qml.qrc` files in that directory. Now your project folder should look something like this:
+- First, create an `src` directory and move everything in it as a ROS2 package ( let's say `demo`) . Now, create an `src` directory and move all the `qml`, `cpp`, `qml.qrc` and `conf` files in that directory. Now your project folder should look something like this:
 {% highlight bash %}
 .
 └── src
@@ -165,15 +163,16 @@ ament_package()
         ├── demo.pro
         ├── demo.pro.user
         ├── package.xml
-        ├── qtquickcontrols2.conf
         └── src
             ├── main.cpp
             ├── main.qml
             ├── Page1Form.ui.qml
             ├── Page2Form.ui.qml
-            └── qml.qrc
+            ├── qml.qrc
+            └── qtquickcontrols2.conf
 
 3 directories, 10 files
+
 {% endhighlight %}
 
 ### Step - 5: All set, time to build the package!
@@ -182,4 +181,4 @@ ament_package()
 
 Doing these steps, you should get a ROS2 Qt5 app package called `demo`.
 
-**TIP**: Here is the git-hosted [sample project](https://github.com/amar-laksh/ros2soc).
+**TIP**: Here is the git-hosted [sample project](https://github.com/amar-laksh/ros2qt_demo).
