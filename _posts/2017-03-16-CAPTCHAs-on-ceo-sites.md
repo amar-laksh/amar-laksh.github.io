@@ -1,11 +1,15 @@
 ---
-layout: post
 title: How CAPTCHA is not important? but finding everyone is!
-date: 2017-03-16
+layout: post
+date: '2017-03-16'
 description: The Election commission thought CAPTCHA should be plain numbers
-tags: [vulnerabilty analysis, Election, India, CAPTCHA]
-fullview: false
+tags:
+- vulnerability analysis
+- Election
+- India
+- CAPTCHA
 ---
+
 [The Election Commission Of India](/images/eci.png)
 
 >The Elections in India are conducted by this gigantic body of personnels and machines co-ordinating together to form the Election Commission.
@@ -136,4 +140,3 @@ An example of how bad things are for the Commission is the following at the time
 
 **The Entire Captcha is text itself**
 1. Punjab (Way to go Punjab)
-

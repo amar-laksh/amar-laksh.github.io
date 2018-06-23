@@ -1,10 +1,12 @@
 ---
-layout: post
 title: Updating CAPTCHA for CAPCTHA's sake? OR How you get to automate the PNR website.
-date: 2017-06-17
-description: The Railways lately decided to update their website but did they?
-tags: [CAPTCHA, vulnerability analysis, IRCTC, PNR]
-fullview: false
+layout: post
+date: '2017-06-17'
+tags:
+- CAPTCHA
+- vulnerability analysis
+- India
+- PNR
 ---
 
 ![Old website](/images/old-pnr-status.png)
@@ -83,5 +85,3 @@ and voila we have the right answer to the captcha question!
 However, sadly as these weak captchas are on the rise I have decided to put up my code on [github](https://github.com/amar-laksh/capturerer) for others to add to the database.
 
 Happy hacking!
-
-
