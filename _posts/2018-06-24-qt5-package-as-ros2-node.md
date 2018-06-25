@@ -181,4 +181,16 @@ ament_package()
 
 Doing these steps, you should get a ROS2 Qt5 app package called `demo`.
 
+### Step -6: running the package in qtcreator!
+
+- Note that you will be easily able to run the package using ros2 commandline options, however, It would make our lives
+   incredibly easy to run and build our Qt5 app in the Qt Creator.
+	 
+	 For that, first install the RTPS middleware system-wide by following directions on their project page: 
+	 [RTPS Build instructions](https://github.com/eProsima/Fast-RTPS#installation-from-source)
+	 
+	 and that's it! Now source your ROS2 workspace and go to your Qt5 app folder and just run `qtcreator`!
+	 
+	 You will now be able to develop Qt5 apps with ROS2 in the Qt Creator
+
 **TIP**: Here is the git-hosted [sample project](https://github.com/amar-laksh/ros2qt_demo).
