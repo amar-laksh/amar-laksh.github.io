@@ -1,5 +1,6 @@
 ---
-title: The DS Papers(1) - How Special Relativity and Distributed Systems together, probably taught your messenger to manage your chats.
+title: The DS Papers(1) - How Special Relativity and Distributed Systems together,
+  probably taught your messenger to manage your chats.
 layout: post
 sidebar_link: true
 tags:
@@ -39,7 +40,7 @@ Let's try to find out the basic concept behind all the new, fancy implementation
 The real motive of the paper was twofold:
 
 * Firstly, what is meant by ordering of events in a system where you cannot depend on physically defined concepts of time, Let's take the millennial example:
-	* Lets say Goo and Tar have the newest, coolest P2P Messenger called lire. Now Let's say 	Goo wants to chat with Tar. and here is, a proof of your privilege, a screenshot of their chat:
+	* Lets say Goo and Tar have the newest, coolest P2P Messenger called lire. Now Let's say 	Goo wants to chat with Tar. and here is, a proof of your privilege, a screenshot of their chat:![Chat that you can't see](/images/screenshot_chat.png  "Average chat")
 	
 		Now let's say that we know that Goo and Tar are both in different cities and in-fact in different continents, so how does this messenger knows how to order these differently timed events without the aid of a central server to connect the two?
 	
@@ -54,8 +55,3 @@ Here, Leslie's basic axiom consists of deriving a standard notation of the "happ
 
 The first challenge that comes in defining such a relation is just simply saying:
 > *a* happens after *b* simply means that *a* happened at an earlier time than *b*
-
-
-
-
-
