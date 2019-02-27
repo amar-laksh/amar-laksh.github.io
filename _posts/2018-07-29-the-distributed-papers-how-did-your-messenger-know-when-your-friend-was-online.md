@@ -42,24 +42,24 @@ The real motive of the paper was twofold:
 * Firstly, what is meant by ordering of events in a system where you cannot depend on physically defined concepts of time, Let's take the millennial example:
 	* Lets say Goo and Tar have the newest, coolest P2P Messenger called lire. Now Let's say 	Goo wants to chat with Tar. and here is, a proof of your privilege, a screenshot of their chat:![Chat that you can't see](/images/screenshot_chat.png  "Average chat")
 	
-		Now let's say that we know that Goo and Tar are both in different cities and in-fact in different continents, what does the concept of time mean through which the messages(events) on their smartphones can be ordered correctly in the chats(systems)?
+		Now let's say that we know that Goo and Tar are both in different cities or in different continents. Now, what does the concept of time mean in this scenario, through which the messages(events) on their smartphones can be ordered correctly in the chats(systems)?
 	
 
 * Secondly, and perhaps most importantly, how do you design such a system where you can totally establish the order of the events occurring in its different parts without any means of a single source of absolute time.
 
 
-To be put in terms of set theory:
+To put in terms of set theory:
 
 >This papers discusses the **partial ordering defined** by the "happened before" relation, and gives a **distributed algorithm** for extending it to a **consistent total ordering** of all the events.
 
 ## The real axioms
 
-The first task in solving any problem logically involves picking up some axioms to recognize our options and approach.
+The first task in solving any problem logically involves picking up some axioms to recognize our options.
 
-Here, Leslie's basic axiom consists of deriving a standard notation for the "happens before" relation between the events, *a* and *b*.
+Here, Leslie's basic axiom consists of deriving a standard notation for the "happened before" relation between the events, *a* and *b*.
 
 The first challenge that comes in defining such a relation is just simply saying:
-> *a* happens **before** *b* simply means that *a* happened at an **earlier time** than *b*
+> *a* happened **before** *b* simply means that *a* happened at an **earlier time** than *b*
 
 which signals that for the above statement to hold any substance, we need to be able to strictly define the term *time*.
 
@@ -71,11 +71,11 @@ Therefore, if the specification of the system is in terms of physical time, we n
 
 * And if we use real physical clocks then it is clearly known that clocks do not keep accurate time, relatively speaking. 
  
-Therefore, a better solution would be to include a system where there is no dependency on any notion of physical time.
+Hence, a better solution would be to include a system where there is no dependency on any notion of physical time.
 
 To create such a solution, Leslie came up with a simple relation called the "happened before" relation, denoted by "⟶".
 
-The "happened before" relation is defined on the set of events of a system satisfying the folowing three conditions:
+The "happened before" relation is defined on the set of events of a system satisfying the folowing three conditions (The first two of which together,  is termed the **Clock Condition**):
 
 **C1.** If *a* and *b*  are events in the same process, and *a* comes before *b*, then *a* ⟶ *b*.
 
@@ -94,7 +94,7 @@ Let's give some millennial examples for each of the conditions and let's assume 
 Now that the conditions guiding the relation are clear, let's have a look at this interesting sentence in the paper:
 > The " ⟶" relation implies an irreflexive, partial ordering on the set of all events in the system.
 
-By the above sentence, Leslie meant that, the " ⟶" relation is a special type of partial ordering on the set where the property of reflexivity in not preserved but all other properties of a partially ordered set or *poset* are preserved.
+By the above sentence, Leslie meant that, the " ⟶" relation is a special type of partial ordering on the set where the property of reflexivity is not preserved but all other properties of a partially ordered set or *poset* are preserved.
 
 The other two properties of a *poset* are:
 1. Transitivity, which is preserved through **C3**.
@@ -105,6 +105,4 @@ So, by defining such a relation we have completed the first part of our problem.
 
 
 **SIDE NOTE**: 
-A common total order you're probably most familiar with is 'less than' on the natural numbers: 
-* 1 is less than 2, which is less than 3, and so on. If we draw a total order, it looks just like a long line of objects (again, in the finite case at least).
-So the 'Less than' relation is total ordering. and 'Happend Before' needs to be turned into the 'Less than' somehow.
+* A common total order you're probably most familiar with is the 'less than' on the natural numbers: 1 is less than 2, which is less than 3, and so on. If we draw a total order, it looks just like a long line of objects (again, in the finite case at least). So the 'Less than' relation is total ordering. and 'Happend Before' needs to be turned into the 'Less than' somehow.
