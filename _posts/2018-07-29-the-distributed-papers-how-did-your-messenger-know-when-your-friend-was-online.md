@@ -39,7 +39,7 @@ Let's try to find out the basic concept behind all the new, fancy implementation
 
 The real motive of the paper was twofold:
 
-* Firstly, what is meant by ordering of events in a system where you cannot depend on physically defined concepts of time, Let's take the millennial example:
+* Firstly, Let's clear what is meant by ordering of events in a system where you cannot depend on physically defined concepts of time, Let's take the millennial example:
 	* Lets say Goo and Tar have the newest, coolest P2P Messenger called lire. Now Let's say 	Goo wants to chat with Tar. and here is, a proof of your privilege, a screenshot of their chat:![Chat that you can't see](/images/screenshot_chat.png  "Average chat")
 	
 		Now let's say that we know that Goo and Tar are both in different cities or in different continents. Now, what does the concept of time mean in this scenario, through which the messages(events) on their smartphones can be ordered correctly in the chats(systems)?
