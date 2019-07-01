@@ -75,9 +75,7 @@ Well,  `log.txt` doesn't seem very helpful.
 
 Now what? we can totally open up `radare2` or any other cool tool but let's stick to the basics, it's an ELF and contains the flag somewhere inside it.
 
-> Tip: always use the [strings]https://linux.die.net/man/1/strings) command on an ELF to get the list of all embedded strings in the executable.
-
-So we run `strings` on our executable:
+So we run [strings](https://linux.die.net/man/1/strings)  on our executable:
 ```
 $strings ./rand2 
 /lib64/ld-linux-x86-64.so.2
