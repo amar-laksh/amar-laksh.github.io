@@ -73,3 +73,19 @@ lrwxrwxrwx    1 65534    65534           12 May  9 20:49 adduser -> /bin/busybox
 ..............
 > 
 ```
+
+Looking through the list I happen to come across two commands I have not seen or noticed before! The commands are: [shuf](https://linux.die.net/man/1/shuf) and [iconv](https://linux.die.net/man/1/iconv). We look up the man pages for them and find that both of them write file contents to stdout! Exactly what we want to do:
+```
+> shuf README.flag
+CTF{4ll_D474_5h4ll_B3_Fr33}
+
+> iconv /challenge/README.flag
+CTF{4ll_D474_5h4ll_B3_Fr33}
+```
+
+Here's our flag!
+
+
+## FriendSpaceBookPlusAllAccessRedPremium.com  - Reversing
+
+![friends.png](/images/ctf_images/google_2019/friends.png)
