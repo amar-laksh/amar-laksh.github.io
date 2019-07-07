@@ -16,7 +16,7 @@ Here's a list of writeups on the Beginners quest section of the Google CTF 2019.
 
 
 
-## **Enter Spacetime Coordinates  - Misc** 
+## **Enter Spacetime Coordinates  - Misc**
 ![Satellite](/images/ctf_images/google_2019/spacetime.png)
 
 You look at the challenge, download the attached document, unzip the downloaded file and find this:
@@ -103,7 +103,7 @@ And there we go folks, found our first flag!
 
 **Lesson learned:** [Keep it simple, stupid](https://en.wikipedia.org/wiki/KISS_principle)
 
-## **Satellite - networking**
+## <a name="satellite"> **Satellite - networking** </a>
 ![Satellite](/images/ctf_images/google_2019/satellite.png)
 
 Let's take a cue from our previous challenge and download, unzip and inspect the files in the attachment:
@@ -188,7 +188,7 @@ Submitting the second flag, we come to the first choice between two routes in th
 
 Let's take the `Home` route first!
 
-## Home Computer - Forensics
+##  <a name="homecomputer"> Home Computer - Forensics </a>
 ![home_computer.png](/images/ctf_images/google_2019/home_computer.png)
 
 Again downloading and unzipping the attachments we some files:
@@ -279,7 +279,7 @@ And there we go, got our Flag!
 
 **Lesson Learned:**  always remember to extract file signature when dealing with unknown files formats ([Here's a search tool](http://file-extension.net/seeker/))
 
-## Government Agricultural Network - Web
+## <a name="government"> Government Agricultural Network - Web </a>
 ![government.png](/images/ctf_images/google_2019/government.png)
 
 Alright we go to the given url to find a textbox with which we can apparently create a new post:
@@ -314,7 +314,7 @@ Well, looks like we got our Flag in some tasty cookies!
 
 **Lesson Learned:** Always consult [OWASP](https://www.owasp.org/).
 
-## Stop GAN - Pwn
+## <a name="stopgan"> Stop GAN - Pwn </a>
 ![stop_gan.png](/images/ctf_images/google_2019/stop_gan.png)
 
 Again downloading and unzipping we have:
