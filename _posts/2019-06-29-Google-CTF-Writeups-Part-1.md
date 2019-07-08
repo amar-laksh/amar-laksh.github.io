@@ -16,7 +16,7 @@ Here's a list of writeups on the Beginners quest section of the Google CTF 2019.
 
 
 
-## <a name="satellite"> **Enter Spacetime Coordinates  - Misc** </a>
+## <a name="spacetime"> **Enter Spacetime Coordinates  - Misc** </a>
 ![Satellite](/images/ctf_images/google_2019/spacetime.png)
 
 You look at the challenge, download the attached document, unzip the downloaded file and find this:
