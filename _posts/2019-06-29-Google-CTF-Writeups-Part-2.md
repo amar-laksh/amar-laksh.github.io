@@ -9,7 +9,7 @@ tags:
 - Security Challenges
 ---
 
-## <a name="satellite"> Work Computer - Sandbox </a>
+## <a name="workcomputer"> Work Computer - Sandbox </a>
 
 ![work_computer.png](/images/ctf_images/google_2019/work_computer.png)
 
@@ -86,6 +86,6 @@ CTF{4ll_D474_5h4ll_B3_Fr33}
 Here's our flag!
 
 
-## <a name="satellite"> FriendSpaceBookPlusAllAccessRedPremium.com  - Reversing </a>
+## <a name="friendspacebook"> FriendSpaceBookPlusAllAccessRedPremium.com  - Reversing </a>
 
 ![friends.png](/images/ctf_images/google_2019/friends.png)
