@@ -47,15 +47,15 @@ function for our menial job. This means that we can store all the possible value
 For Example, the CAPTCHA might be: 1 4 4 6 2
 
 Now you'd surely find 1,4,6 and 2 but what about the order and accounting for repeating digits? Answer? Just looking at the function we are using more closely!
-
-locateOnScreen(image, grayscale=False) returns the coordinates of the image found!
-
+```python
+locateOnScreen(image, grayscale=False) #returns the coordinates of the image found!
+```
 
 Taking those coordinates and simply by arranging them left-to-right we get all the CAPTCHA sequences in order.
 
 Here's the script:
 
-{% highlight python %}
+```python
 import pyautogui as do
 def getLeftValue(image):
 try:
@@ -79,7 +79,7 @@ return ''.join(map(str,[captcha[key] for key in sorted(captcha)]))
 
 captcha = getCaptcha()
 print "The CAPTCHA IS: ", captcha
-{% endhighlight %}
+```
 
 And voila!
 
@@ -140,3 +140,6 @@ An example of how bad things are for the Commission is the following at the time
 
 **The Entire Captcha is text itself**
 1. Punjab (Way to go Punjab)
+
+
+

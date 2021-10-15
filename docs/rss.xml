@@ -7,65 +7,7 @@
         <generator>Zola</generator>
         <language>en</language>
         <atom:link href="https://amar-laksh.github.io/rss.xml" rel="self" type="application/rss+xml"/>
-        <lastBuildDate>Tue, 17 Aug 2021 00:00:00 +0000</lastBuildDate>
-        <item>
-            <title>wiki map it!</title>
-            <pubDate>Tue, 17 Aug 2021 00:00:00 +0000</pubDate>
-            <link>https://amar-laksh.github.io/posts/wiki-map-it/</link>
-            <guid>https://amar-laksh.github.io/posts/wiki-map-it/</guid>
-            <description></description>
-        </item>
-        <item>
-            <title>Your friendly neighbourhood util: factor</title>
-            <pubDate>Sat, 19 Dec 2020 00:00:00 +0000</pubDate>
-            <link>https://amar-laksh.github.io/posts/your-friendly-neighbourhood-tools-factor/</link>
-            <guid>https://amar-laksh.github.io/posts/your-friendly-neighbourhood-tools-factor/</guid>
-            <description>&lt;p&gt;Welcome to a series where we learn about extremely useful and incredibly designed core utilities that exist on all Linux systems. (and some mac ones too!)&lt;&#x2F;p&gt;
-&lt;p&gt;Our first stop is a small but impressive command line tool called factor. &lt;&#x2F;p&gt;
-&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;&#x2F;h2&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;factor [number to be factored]
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$time factor 1232342819441289473259823473498421353435834573295241234325
-&lt;&#x2F;span&gt;&lt;span&gt;1232342819441289473259823473498421353435834573295241234325: 3 3 5 5 179 191 79999 1283382111247 1307652744733469 1193245082041178989
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;real    0m7.161s
-&lt;&#x2F;span&gt;&lt;span&gt;user    0m7.142s
-&lt;&#x2F;span&gt;&lt;span&gt;sys     0m0.000s
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;So  how does it factor the number &lt;em&gt;1232342819441289473259823473498421353435834573295241234325&lt;&#x2F;em&gt;  and how does this happen so fast?&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;algorithm&quot;&gt;Algorithm&lt;&#x2F;h2&gt;
-&lt;p&gt;If you look at the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.gnu.org&#x2F;software&#x2F;coreutils&#x2F;manual&#x2F;html_node&#x2F;factor-invocation.html#factor-invocation&quot;&gt;Official Documentation&lt;&#x2F;a&gt; it tells you that  &lt;strong&gt;factor&lt;&#x2F;strong&gt; uses the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Pollard%27s_rho_algorithm&quot;&gt;Pollard&#x27;s rho algorithm&lt;&#x2F;a&gt; to factor the numbers quickly. However, if you look into the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;coreutils&#x2F;coreutils&#x2F;blob&#x2F;master&#x2F;src&#x2F;factor.c&quot;&gt;sourcecode&lt;&#x2F;a&gt; of &lt;em&gt;factor&lt;&#x2F;em&gt;, you will find a complex file that employes a variety of tricks to make the program as fast as it is now.&lt;&#x2F;p&gt;
-&lt;p&gt;So let&#x27;s go back to simpler times and look at the first time, the &lt;em&gt;Pollard-rho algorithm&lt;&#x2F;em&gt; was added to the code:&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;commit 00c6aacf318a6ef0db4895b08d572d924eab90d0
-&lt;&#x2F;span&gt;&lt;span&gt;Author: James Youngman &amp;lt;jay@gnu.org&amp;gt;
-&lt;&#x2F;span&gt;&lt;span&gt;Date:   Thu Jul 31 09:58:10 2008 +0200
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;    factor arbitrarily large numbers
-&lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;    * m4&#x2F;gmp.m4: New file; adds cu_GMP, which detects GNU MP.
-&lt;&#x2F;span&gt;&lt;span&gt;    * configure.ac: Use cu_GMP.
-&lt;&#x2F;span&gt;&lt;span&gt;    * src&#x2F;Makefile.am: Link factor against libgmp if available.
-&lt;&#x2F;span&gt;&lt;span&gt;    * src&#x2F;factor.c: Use GNU MP if it is available.
-&lt;&#x2F;span&gt;&lt;span&gt;    (emit_factor, emit_ul_factor, factor_using_division,
-&lt;&#x2F;span&gt;&lt;span&gt;    factor_using_pollard_rho, extract_factors_multi,
-&lt;&#x2F;span&gt;&lt;span&gt;    sort_and_print_factors, free_factors): new functions
-&lt;&#x2F;span&gt;&lt;span&gt;    for the arbitrary-precision implementation, taken from an example
-&lt;&#x2F;span&gt;&lt;span&gt;    in GNU MP.
-&lt;&#x2F;span&gt;&lt;span&gt;    (factor_wheel): Renamed; was called factor.
-&lt;&#x2F;span&gt;&lt;span&gt;    (print_factors_single): Renamed; was called print_factors.
-&lt;&#x2F;span&gt;&lt;span&gt;    (print_factors): New function, chooses between the single- and
-&lt;&#x2F;span&gt;&lt;span&gt;    arbitrary-precision algorithms according to availability of GNU MP
-&lt;&#x2F;span&gt;&lt;span&gt;    and the length of the number to be factored.
-&lt;&#x2F;span&gt;&lt;span&gt;    (usage, main): New options --bignum and --no-bignum.
-&lt;&#x2F;span&gt;&lt;span&gt;    * coreutils.texi (factor invocation): Document new command-line
-&lt;&#x2F;span&gt;&lt;span&gt;    options for the MP implementation and update the performance
-&lt;&#x2F;span&gt;&lt;span&gt;    numbers to take into account the asymptotically faster algorithm.
-&lt;&#x2F;span&gt;&lt;span&gt;    * TODO: Remove item about factoring large primes (it&amp;#39;s done).
-&lt;&#x2F;span&gt;&lt;span&gt;    * m4&#x2F;gmp.m4: Add support for --without-gmp.
-&lt;&#x2F;span&gt;&lt;span&gt;    * NEWS: Mention the new feature.
-&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-</description>
-        </item>
+        <lastBuildDate>Sat, 24 Aug 2019 00:00:00 +0000</lastBuildDate>
         <item>
             <title>Setting up a Kali docker container for HackTheBox and other stuff.</title>
             <pubDate>Sat, 24 Aug 2019 00:00:00 +0000</pubDate>
@@ -75,31 +17,32 @@
 &lt;p&gt;Well, what about a Kali Linux docker container that you can use all your tools from and also run GUI apps if you&#x27;re so inclined?!&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;step-1-download-run-the-kali-linux-docker-image&quot;&gt;Step - 1: Download &amp;amp; Run the Kali Linux Docker image&lt;&#x2F;h2&gt;
 &lt;p&gt;Here&#x27;s the official link and honestly it covers almost everything: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.kali.org&#x2F;news&#x2F;official-kali-linux-docker-images&#x2F;&quot;&gt;Kali Linux Docker&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;step-2-setup-your-kali-with-meta-packages&quot;&gt;Step -2: Setup your Kali with meta-packages&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;step-2-setup-your-kali-with-meta-packages&quot;&gt;Step - 2: Setup your Kali with meta-packages&lt;&#x2F;h2&gt;
 &lt;p&gt;Another great official link: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.kali.org&#x2F;news&#x2F;kali-linux-metapackages&#x2F;&quot;&gt;Kali meta-packages&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;step-3-allow-vpn-connections&quot;&gt;Step -3: Allow VPN connections!&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;step-3-allow-vpn-connections&quot;&gt;Step - 3: Allow VPN connections!&lt;&#x2F;h2&gt;
 &lt;p&gt;We all know how handy and important VPNs are.
 So adding the following command when running your docker container allows connections to pass through(also allowing ipv6):&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;--cap-add=NET_ADMIN --device &#x2F;dev&#x2F;net&#x2F;tun  --sysctl net.ipv6.conf.all.disable_ipv6=0
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;--cap-add&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;NET_ADMIN &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;--device&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;dev&#x2F;net&#x2F;tun&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --sysctl&lt;&#x2F;span&gt;&lt;span&gt; net.ipv6.conf.all.disable_ipv6=0
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;h2 id=&quot;step-4-allow-gui-apps-to-access-x-server&quot;&gt;Step -4: Allow GUI apps to access X server!&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;step-4-allow-gui-apps-to-access-x-server&quot;&gt;Step - 4: Allow GUI apps to access X server!&lt;&#x2F;h2&gt;
 &lt;p&gt;Install &lt;code&gt;xhost&lt;&#x2F;code&gt; package from your distribution package manager (mostly it&#x27;s just named &lt;code&gt;xorg-xhost&lt;&#x2F;code&gt;)
 and run the following command to allow remote hosts to connect to the X server before starting your docker container with:&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;xhost+
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xhost+
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;for the docker GUI X clients we need to add the following arguments to setup the X connection properly:&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;-e DISPLAY=:0 -v &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-e&lt;&#x2F;span&gt;&lt;span&gt; DISPLAY=:0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -v&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Tip: Remember to deny remote hosts after closing your docker container! ( just run &lt;code&gt;xhost -&lt;&#x2F;code&gt; for it)&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;step-5-profit&quot;&gt;Step -5: Profit!&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;step-5-profit&quot;&gt;Step - 5: Profit!&lt;&#x2F;h2&gt;
 &lt;p&gt;Here&#x27;s the complete command:&lt;&#x2F;p&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;xhost + &amp;amp;&amp;amp;\ 
-&lt;&#x2F;span&gt;&lt;span&gt;docker run -ti --cap-add=NET_ADMIN --device &#x2F;dev&#x2F;net&#x2F;tun \
-&lt;&#x2F;span&gt;&lt;span&gt;--sysctl net.ipv6.conf.all.disable_ipv6=0 \
-&lt;&#x2F;span&gt;&lt;span&gt;-e DISPLAY=:0 -v &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix \
-&lt;&#x2F;span&gt;&lt;span&gt;YOUR_DOCKER_IMAGE_NAME &#x2F;bin&#x2F;bash &amp;amp;&amp;amp; xhost -
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xhost&lt;&#x2F;span&gt;&lt;span&gt; + &amp;amp;&amp;amp;\
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;docker&lt;&#x2F;span&gt;&lt;span&gt; run&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -ti --cap-add&lt;&#x2F;span&gt;&lt;span&gt;=NET_ADMIN&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --device&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;dev&#x2F;net&#x2F;tun \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;--sysctl&lt;&#x2F;span&gt;&lt;span&gt; net.ipv6.conf.all.disable_ipv6=0 \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-e&lt;&#x2F;span&gt;&lt;span&gt; DISPLAY=:0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -v&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix \
+&lt;&#x2F;span&gt;&lt;span&gt;YOUR_DOCKER_IMAGE_NAME &#x2F;bin&#x2F;bash &amp;amp;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xhost&lt;&#x2F;span&gt;&lt;span&gt; -
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;Here&#x27;s a link for a nifty little script that packages everything (My docker image is named &lt;code&gt;kali_pt&lt;&#x2F;code&gt;): &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;amar-laksh&#x2F;kali_pt&#x2F;blob&#x2F;master&#x2F;kali.sh&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;amar-laksh&#x2F;kali_pt&#x2F;blob&#x2F;master&#x2F;kali.sh&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s a link for a nifty little script that packages everything (My docker image is named &lt;code&gt;kali_pt&lt;&#x2F;code&gt;): &lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;amar-laksh&#x2F;kali_pt&#x2F;blob&#x2F;master&#x2F;kali.sh&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;amar-laksh&#x2F;kali_pt&#x2F;blob&#x2F;master&#x2F;kali.sh&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 </description>
         </item>
         <item>
@@ -109,7 +52,7 @@ and run the following command to allow remote hosts to connect to the X server b
             <guid>https://amar-laksh.github.io/posts/google-ctf-writeups-part-1/</guid>
             <description>&lt;p&gt;Here&#x27;s a list of writeups on the Beginners quest section of the Google CTF 2019. (Why just the quest section? because first CTF requires appropriate expectations of successs):&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;beginners_quest.png&quot; alt=&quot;Beginners Quest Map&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;enter-spacetime-coordinates-misc&quot;&gt;&lt;a name=&quot;spacetime&quot;&gt; &lt;strong&gt;Enter Spacetime Coordinates  - Misc&lt;&#x2F;strong&gt; &lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;enter-spacetime-coordinates-misc&quot;&gt;Enter Spacetime Coordinates  - Misc&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;spacetime.png&quot; alt=&quot;Satellite&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;You look at the challenge, download the attached document, unzip the downloaded file and find this:&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;.
@@ -176,7 +119,7 @@ and run the following command to allow remote hosts to connect to the X server b
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;And there we go folks, found our first flag!&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;strong&gt;Lesson learned:&lt;&#x2F;strong&gt; &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;KISS_principle&quot;&gt;Keep it simple, stupid&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;satellite-networking&quot;&gt;&lt;a name=&quot;satellite&quot;&gt; &lt;strong&gt;Satellite - networking&lt;&#x2F;strong&gt; &lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;satellite-networking&quot;&gt;Satellite - networking&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;satellite.png&quot; alt=&quot;Satellite&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Let&#x27;s take a cue from our previous challenge and download, unzip and inspect the files in the attachment:&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;.
@@ -239,7 +182,7 @@ $strings .&#x2F;init_sat  | grep  &quot;satellite.ctfcompetition.com&quot;
 &lt;p&gt;Submitting the second flag, we come to the first choice between two routes in the quest:
 &lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;1st_choice.png&quot; alt=&quot;1st_choice&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Let&#x27;s take the &lt;code&gt;Home&lt;&#x2F;code&gt; route first!&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;home-computer-forensics&quot;&gt;&lt;a name=&quot;homecomputer&quot;&gt; Home Computer - Forensics &lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;home-computer-forensics&quot;&gt;Home Computer - Forensics&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;home_computer.png&quot; alt=&quot;home_computer.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Again downloading and unzipping the attachments we some files:&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;.
@@ -310,7 +253,7 @@ $strings .&#x2F;init_sat  | grep  &quot;satellite.ctfcompetition.com&quot;
 &lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;home_cred.png&quot; alt=&quot;Home_cred.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;And there we go, got our Flag!&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;strong&gt;Lesson Learned:&lt;&#x2F;strong&gt;  always remember to extract file signature when dealing with unknown files formats (&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;file-extension.net&#x2F;seeker&#x2F;&quot;&gt;Here&#x27;s a search tool&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;government-agricultural-network-web&quot;&gt;&lt;a name=&quot;government&quot;&gt; Government Agricultural Network - Web &lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;government-agricultural-network-web&quot;&gt;Government Agricultural Network - Web&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;government.png&quot; alt=&quot;government.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Alright we go to the given url to find a textbox with which we can apparently create a new post:
 &lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;government_site.png&quot; alt=&quot;government_site.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
@@ -334,7 +277,7 @@ $strings .&#x2F;init_sat  | grep  &quot;satellite.ctfcompetition.com&quot;
 &lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;government_flag.png&quot; alt=&quot;government_flag.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Well, looks like we got our Flag in some tasty cookies!&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;strong&gt;Lesson Learned:&lt;&#x2F;strong&gt; Always consult &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.owasp.org&#x2F;&quot;&gt;OWASP&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;stop-gan-pwn&quot;&gt;&lt;a name=&quot;stopgan&quot;&gt; Stop GAN - Pwn &lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;stop-gan-pwn&quot;&gt;Stop GAN - Pwn&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;stop_gan.png&quot; alt=&quot;stop_gan.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;Again downloading and unzipping we have:&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;.
@@ -443,7 +386,7 @@ $strings .&#x2F;init_sat  | grep  &quot;satellite.ctfcompetition.com&quot;
 &lt;&#x2F;span&gt;&lt;span&gt;quit
 &lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;Here we got the next flag! So doing this we finally come to the end of this route that we had taken. Let&#x27;s go back to the other route now in the &lt;a href=&quot;&#x2F;2019&#x2F;06&#x2F;29&#x2F;Google-CTF-Writeups-Part-2.html&quot;&gt;next part&lt;&#x2F;a&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;Here we got the next flag! So doing this we finally come to the end of this route that we had taken. Let&#x27;s go back to the other route now in the &lt;a href=&quot;&#x2F;posts&#x2F;google-ctf-writeups-part-2&#x2F;&quot;&gt;next part&lt;&#x2F;a&gt;!&lt;&#x2F;p&gt;
 </description>
         </item>
         <item>
@@ -451,7 +394,7 @@ $strings .&#x2F;init_sat  | grep  &quot;satellite.ctfcompetition.com&quot;
             <pubDate>Sat, 29 Jun 2019 00:00:00 +0000</pubDate>
             <link>https://amar-laksh.github.io/posts/google-ctf-writeups-part-2/</link>
             <guid>https://amar-laksh.github.io/posts/google-ctf-writeups-part-2/</guid>
-            <description>&lt;h2 id=&quot;work-computer-sandbox&quot;&gt;&lt;a name=&quot;workcomputer&quot;&gt; Work Computer - Sandbox &lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+            <description>&lt;h2 id=&quot;work-computer-sandbox&quot;&gt;Work Computer - Sandbox&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;work_computer.png&quot; alt=&quot;work_computer.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;We connect to the given server on the given port and see what we are up against by using netcat (&lt;code&gt;nc readme.ctfcompetition.com 1337&lt;&#x2F;code&gt;):&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;gt; help
@@ -514,7 +457,7 @@ $strings .&#x2F;init_sat  | grep  &quot;satellite.ctfcompetition.com&quot;
 &lt;&#x2F;span&gt;&lt;span&gt;CTF{4ll_D474_5h4ll_B3_Fr33}
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;Here&#x27;s our flag!&lt;&#x2F;p&gt;
-&lt;h2 id=&quot;friendspacebookplusallaccessredpremium-com-reversing&quot;&gt;&lt;a name=&quot;friendspacebook&quot;&gt; FriendSpaceBookPlusAllAccessRedPremium.com  - Reversing &lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;h2 id=&quot;friendspacebookplusallaccessredpremium-com-reversing&quot;&gt;FriendSpaceBookPlusAllAccessRedPremium.com  - Reversing&lt;&#x2F;h2&gt;
 &lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;friends.png&quot; alt=&quot;friends.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 </description>
         </item>
@@ -544,148 +487,153 @@ $strings .&#x2F;init_sat  | grep  &quot;satellite.ctfcompetition.com&quot;
 &lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h3 id=&quot;step-2-depending-on-the-build-format-create-extend-cmakelists-txt&quot;&gt;Step - 2: Depending on the build format, create&#x2F;extend CMakeLists.txt&lt;&#x2F;h3&gt;
-&lt;p&gt;Here we have two different steps for the Qt5 app depending on the build system you chose, you&#x27;ll get these directory structures:&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;CMake:
-{% highlight bash %}
-.
-├── CMakeLists.txt
-├── CMakeLists.txt.user
-├── main.cpp
-├── main.qml
-├── Page1Form.ui.qml
-├── Page2Form.ui.qml
-├── qml.qrc
-└── qtquickcontrols2.conf
-0 directories, 8 files
-{% endhighlight%}&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;qmake
-{% highlight bash %}
-.
-├── demo.pro
-├── demo.pro.user
-├── main.cpp
-├── main.qml
-├── Page1Form.ui.qml
-├── Page2Form.ui.qml
-├── qml.qrc
-└── qtquickcontrols2.conf
-0 directories, 8 files
-{% endhighlight%}&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
-&lt;li&gt;
-&lt;p&gt;Smply open the CMakeLists.txt to edit and in the case of a qmake build create &lt;code&gt;CMakeLists.txt&lt;&#x2F;code&gt;, make it look like this:
-{% highlight cmake %}
-cmake_minimum_required(VERSION 3.5)
-project(demo)&lt;&#x2F;p&gt;
-&lt;&#x2F;li&gt;
+&lt;li&gt;Here we have two different steps for the Qt5 app depending on the build system you chose, you&#x27;ll get these directory structures:&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;p&gt;set (CMAKE_CXX_STANDARD 14)
-if(NOT WIN32)
-set(CMAKE_CXX_FLAGS &amp;quot;${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -fPIC&amp;quot;)
-endif()&lt;&#x2F;p&gt;
-&lt;p&gt;IF (NOT DEFINED BUILD_VERSION)
-SET(BUILD_VERSION &amp;quot;not set&amp;quot;)
-ENDIF()
-ADD_DEFINITIONS(-DBUILD_VERSION=&amp;quot;${BUILD_VERSION}&amp;quot;)&lt;&#x2F;p&gt;
-&lt;p&gt;find_package(ament_cmake REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(rmw_implementation REQUIRED)
-find_package(std_msgs REQUIRED)
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Quick REQUIRED)&lt;&#x2F;p&gt;
-&lt;p&gt;set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTORCC ON)
-set(CMAKE_INCLUDE_CURRENT_DIR ON)&lt;&#x2F;p&gt;
-&lt;p&gt;include_directories(
-${rclcpp_INCLUDE_DIRS}
-${std_msgs_INCLUDE_DIRS}
-${Qt5Core_INCLUDE_DIRS}
-${Qt5Quick_INCLUDE_DIRS}
-)&lt;&#x2F;p&gt;
-&lt;p&gt;file(GLOB SOURCE_FILES
-&amp;quot;src&#x2F;*.cpp&amp;quot;
-)&lt;&#x2F;p&gt;
-&lt;p&gt;add_executable(${PROJECT_NAME} ${SOURCE_FILES} &amp;quot;src&#x2F;qml.qrc&amp;quot;)&lt;&#x2F;p&gt;
-&lt;p&gt;ament_target_dependencies(${PROJECT_NAME}
-rclcpp
-std_msgs
-rmw_implementation
-)
-target_link_libraries(${PROJECT_NAME}
-Qt5::Core
-Qt5::Quick
-)&lt;&#x2F;p&gt;
-&lt;p&gt;install(TARGETS ${PROJECT_NAME} DESTINATION bin)&lt;&#x2F;p&gt;
-&lt;p&gt;ament_package()&lt;&#x2F;p&gt;
-&lt;p&gt;{% endhighlight %}&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; CMake:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; CMakeLists.txt
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; CMakeLists.txt.user
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.cpp
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page1Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page2Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; qml.qrc
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; qtquickcontrols2.conf
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt; directories, 8 files
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span&gt;% endhighlight%}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; qmake
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span&gt;% highlight bash %}
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; demo.pro
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; demo.pro.user
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.cpp
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page1Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page2Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; qml.qrc
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; qtquickcontrols2.conf
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt; directories, 8 files
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Smply open the CMakeLists.txt to edit and in the case of a qmake build create &lt;code&gt;CMakeLists.txt&lt;&#x2F;code&gt;, make it look like this:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;cmake&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cmake &quot;&gt;&lt;code class=&quot;language-cmake&quot; data-lang=&quot;cmake&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;cmake_minimum_required&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;VERSION &lt;&#x2F;span&gt;&lt;span&gt;3.5)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;project&lt;&#x2F;span&gt;&lt;span&gt;(demo)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_CXX_STANDARD &lt;&#x2F;span&gt;&lt;span&gt;14)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt;(NOT WIN32)
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_CXX_FLAGS &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_CXX_FLAGS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;} -std=c++14 -Wall -Wextra -fPIC&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;endif&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;IF &lt;&#x2F;span&gt;&lt;span&gt;(NOT &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;DEFINED &lt;&#x2F;span&gt;&lt;span&gt;BUILD_VERSION)
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;SET&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;BUILD_VERSION &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;not set&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;ENDIF&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ADD_DEFINITIONS&lt;&#x2F;span&gt;&lt;span&gt;(-DBUILD_VERSION=&amp;quot;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;BUILD_VERSION&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(ament_cmake &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(rclcpp &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(rmw_implementation &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(std_msgs &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(Qt5Core &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(Qt5Quick &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_AUTOMOC &lt;&#x2F;span&gt;&lt;span&gt;ON)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_AUTOUIC &lt;&#x2F;span&gt;&lt;span&gt;ON)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_AUTORCC &lt;&#x2F;span&gt;&lt;span&gt;ON)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_INCLUDE_CURRENT_DIR &lt;&#x2F;span&gt;&lt;span&gt;ON)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;include_directories&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;	${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rclcpp_INCLUDE_DIRS&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;std_msgs_INCLUDE_DIRS&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Qt5Core_INCLUDE_DIRS&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Qt5Quick_INCLUDE_DIRS&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;file&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;GLOB &lt;&#x2F;span&gt;&lt;span&gt;SOURCE_FILES
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;src&#x2F;*.cpp&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;	)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;add_executable&lt;&#x2F;span&gt;&lt;span&gt;(${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROJECT_NAME&lt;&#x2F;span&gt;&lt;span&gt;} ${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SOURCE_FILES&lt;&#x2F;span&gt;&lt;span&gt;} &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;src&#x2F;qml.qrc&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ament_target_dependencies&lt;&#x2F;span&gt;&lt;span&gt;(${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROJECT_NAME&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	rclcpp
+&lt;&#x2F;span&gt;&lt;span&gt;	std_msgs
+&lt;&#x2F;span&gt;&lt;span&gt;	rmw_implementation
+&lt;&#x2F;span&gt;&lt;span&gt;	)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;target_link_libraries&lt;&#x2F;span&gt;&lt;span&gt;(${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROJECT_NAME&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	Qt5::Core
+&lt;&#x2F;span&gt;&lt;span&gt;	Qt5::Quick
+&lt;&#x2F;span&gt;&lt;span&gt;	)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;install&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;TARGETS &lt;&#x2F;span&gt;&lt;span&gt;${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROJECT_NAME&lt;&#x2F;span&gt;&lt;span&gt;} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;DESTINATION &lt;&#x2F;span&gt;&lt;span&gt;bin)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ament_package&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h3 id=&quot;step-3-create-a-package-xml-and-add-it-to-project&quot;&gt;Step - 3: Create a &lt;code&gt;package.xml&lt;&#x2F;code&gt; and add it to project&lt;&#x2F;h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;ROS2 needs a package.xml to find build and execution dependencies and to state metadata.&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;li&gt;
-&lt;p&gt;A simple package.xml looks like this:
-{% highlight xml %}&lt;&#x2F;p&gt;
+&lt;p&gt;A simple package.xml looks like this:&lt;&#x2F;p&gt;
 &lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;?xml version=&quot;1.0&quot;?&gt;
-&lt;?xml-model href=&quot;http:&#x2F;&#x2F;download.ros.org&#x2F;schema&#x2F;package_format2.xsd&quot; schematypens=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema&quot;?&gt;
-&lt;package format=&quot;2&quot;&gt;
-	&lt;name&gt;demo&lt;&#x2F;name&gt;
-	&lt;version&gt;0.0.1&lt;&#x2F;version&gt;
-	&lt;description&gt;A demo app for the blog&lt;&#x2F;description&gt;
-	&lt;maintainer email=&quot;nope@notgoogle.com&quot;&gt;Amar Lakshya&lt;&#x2F;maintainer&gt;
-	&lt;license&gt;Apache License 2.0&lt;&#x2F;license&gt;
-&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;lt;buildtool_depend&amp;gt;ament_cmake&amp;lt;&#x2F;buildtool_depend&amp;gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;?&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xml &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1.0&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;?&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;?&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xml-model &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;href&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;download.ros.org&#x2F;schema&#x2F;package_format2.xsd&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;schematypens&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;?&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;package &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;format&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;demo&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;0.0.1&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;description&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;A demo app for the blog&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;description&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;maintainer &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;email&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;nope@notgoogle.com&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;Amar Lakshya&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;maintainer&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;license&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;Apache License 2.0&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;license&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
 &lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;build_depend&amp;gt;rclcpp&amp;lt;&#x2F;build_depend&amp;gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;build_depend&amp;gt;std_msgs&amp;lt;&#x2F;build_depend&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;buildtool_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;ament_cmake&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;buildtool_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
 &lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;build_depend&amp;gt;qtbase5-dev&amp;lt;&#x2F;build_depend&amp;gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;build_depend&amp;gt;qt5-qmake&amp;lt;&#x2F;build_depend&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;rclcpp&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;std_msgs&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
 &lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;exec_depend&amp;gt;libqt5-core&amp;lt;&#x2F;exec_depend&amp;gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;exec_depend&amp;gt;rclcpp&amp;lt;&#x2F;exec_depend&amp;gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;exec_depend&amp;gt;std_msgs&amp;lt;&#x2F;exec_depend&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;qtbase5-dev&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;qt5-qmake&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
 &lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;export&amp;gt;
-&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;build_type&amp;gt;ament_cmake&amp;lt;&#x2F;build_type&amp;gt;
-&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;export&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;libqt5-core&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;rclcpp&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;std_msgs&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;		&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_type&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;ament_cmake&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_type&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;package&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;&#x2F;package&gt;
-{% endhighlight %}
 &lt;h3 id=&quot;step-4-let-s-restructure-the-directory-to-clean-everything&quot;&gt;Step - 4: Let&#x27;s restructure the directory to clean everything.&lt;&#x2F;h3&gt;
 &lt;ul&gt;
-&lt;li&gt;First, create an &lt;code&gt;src&lt;&#x2F;code&gt; directory and move everything in it as a ROS2 package ( let&#x27;s say &lt;code&gt;demo&lt;&#x2F;code&gt;) . Now, create an &lt;code&gt;src&lt;&#x2F;code&gt; directory and move all the &lt;code&gt;qml&lt;&#x2F;code&gt;, &lt;code&gt;cpp&lt;&#x2F;code&gt;, &lt;code&gt;qml.qrc&lt;&#x2F;code&gt; and &lt;code&gt;conf&lt;&#x2F;code&gt; files in that directory. Now your project folder should look something like this:
-{% highlight bash %}
-.
-└── src
-└── demo
-├── CMakeLists.txt
-├── demo.pro
-├── demo.pro.user
-├── package.xml
-└── src
-├── main.cpp
-├── main.qml
-├── Page1Form.ui.qml
-├── Page2Form.ui.qml
-├── qml.qrc
-└── qtquickcontrols2.conf&lt;&#x2F;li&gt;
+&lt;li&gt;First, create an &lt;code&gt;src&lt;&#x2F;code&gt; directory and move everything in it as a ROS2 package ( let&#x27;s say &lt;code&gt;demo&lt;&#x2F;code&gt;) . Now, create an &lt;code&gt;src&lt;&#x2F;code&gt; directory and move all the &lt;code&gt;qml&lt;&#x2F;code&gt;, &lt;code&gt;cpp&lt;&#x2F;code&gt;, &lt;code&gt;qml.qrc&lt;&#x2F;code&gt; and &lt;code&gt;conf&lt;&#x2F;code&gt; files in that directory. Now your project folder should look something like this:&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;p&gt;3 directories, 10 files&lt;&#x2F;p&gt;
-&lt;p&gt;{% endhighlight %}&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; src
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; demo
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; CMakeLists.txt
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; demo.pro
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; demo.pro.user
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; package.xml
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; src
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.cpp
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.qml
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page1Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page2Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; qml.qrc
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; qtquickcontrols2.conf
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt; directories, 10 files
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h3 id=&quot;step-5-all-set-time-to-build-the-package&quot;&gt;Step - 5: All set, time to build the package!&lt;&#x2F;h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Now, source your ROS2 workspace and run: &lt;code&gt;ament build&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;p&gt;Doing these steps, you should get a ROS2 Qt5 app package called &lt;code&gt;demo&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;step-6-running-the-package-in-qtcreator&quot;&gt;Step -6: running the package in qtcreator!&lt;&#x2F;h3&gt;
+&lt;h3 id=&quot;step-6-running-the-package-in-qtcreator&quot;&gt;Step - 6: running the package in qtcreator!&lt;&#x2F;h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Note that you will be easily able to run the package using ros2 commandline options, however, It would make our lives
@@ -717,8 +665,64 @@ The whole concept of Good and Evil is defined and argued on the basis of two def
             <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
             <link>https://amar-laksh.github.io/posts/irctcs-new-defense/</link>
             <guid>https://amar-laksh.github.io/posts/irctcs-new-defense/</guid>
-            <description>&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;old-pnr-status.png&quot; alt=&quot;Old website&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+            <description>&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;old-pnr-status.png&quot; alt=&quot;Old website&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;p&gt;This was the good old Indian Railways website to track information about a railway ticket by using the &lt;em&gt;PNR number&lt;&#x2F;em&gt;. As we will see this was not the best website design so the staff decided to update the U.I. and more importantly the CAPTCHA method used on the webpage.&lt;&#x2F;p&gt;
+&lt;p&gt;The update resulted in this:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;new-pnr-status.png&quot; alt=&quot;New website&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Now you may ask what&#x27;s the catch here?&lt;&#x2F;p&gt;
+&lt;p&gt;Well let&#x27;s see what happens when we enter a PNR in the textfield.&lt;&#x2F;p&gt;
+&lt;p&gt;This happens:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;new-pnr-captcha.png&quot; alt=&quot;New captcha&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The new CAPTCHA system might seem a bit more sophistcated than the simple one used earlier. It is. But...&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Simplicity is the ultimate sophistication.&lt;&#x2F;em&gt;
+-Leonardo Da Vinci&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;And sure it became apparent as I had the idea to try the previous solution in my earlier &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;amar-laksh.github.io&#x2F;CAPTCHAs-on-ceo-sites&#x2F;&quot;&gt;blog post&lt;&#x2F;a&gt; to this one.&lt;&#x2F;p&gt;
+&lt;p&gt;From the old blog post we know how to extract the digits. We just capture all the multiple digits that is possible in this CAPTCHA and then with a little python help&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;time
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;pyautogui &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;do
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;lvalue&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;image&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;directory&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    leftValue = {}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;i &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span&gt;do.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;locateAllOnScreen&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;                directory
+&lt;&#x2F;span&gt;&lt;span&gt;                +&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;str&lt;&#x2F;span&gt;&lt;span&gt;(image)+&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;.png&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;):
+&lt;&#x2F;span&gt;&lt;span&gt;        leftValue.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;update&lt;&#x2F;span&gt;&lt;span&gt;([(i[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;],image)])
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;leftValue
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;getCaptcha&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;directory&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;images&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    captcha = {}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;image &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span&gt;images:
+&lt;&#x2F;span&gt;&lt;span&gt;        captcha.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;update&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lvalue&lt;&#x2F;span&gt;&lt;span&gt;(image, directory))
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;print &lt;&#x2F;span&gt;&lt;span&gt;captcha
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39; &amp;#39;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;join&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;map&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;                    str
+&lt;&#x2F;span&gt;&lt;span&gt;                    ,[captcha[key] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;key &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;sorted&lt;&#x2F;span&gt;&lt;span&gt;(captcha)]
+&lt;&#x2F;span&gt;&lt;span&gt;                    )
+&lt;&#x2F;span&gt;&lt;span&gt;                )
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;time.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sleep&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;images = [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;4&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;6&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;7&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;9&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;11&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;expr =  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;str&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;getCaptcha&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;.&#x2F;library&#x2F;pnr&#x2F;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, images)
+&lt;&#x2F;span&gt;&lt;span&gt;                .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;replace&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;                .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;replace&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;11&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;+&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;                .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;replace&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39; &amp;#39;, &amp;#39;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;        )
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;result = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;eval&lt;&#x2F;span&gt;&lt;span&gt;(expr)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;print &lt;&#x2F;span&gt;&lt;span&gt;expr, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; = &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,result
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;and here comes the demo:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;pnr-demo.gif&quot; alt=&quot;demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;and voila we have the right answer to the captcha question!&lt;&#x2F;p&gt;
+&lt;p&gt;However, sadly as these weak captchas are on the rise I have decided to put up my code on &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;amar-laksh&#x2F;capturerer&quot;&gt;github&lt;&#x2F;a&gt; for others to add to the database.&lt;&#x2F;p&gt;
+&lt;p&gt;Happy hacking!&lt;&#x2F;p&gt;
 </description>
         </item>
         <item>
@@ -739,7 +743,8 @@ The whole concept of Good and Evil is defined and argued on the basis of two def
             <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
             <link>https://amar-laksh.github.io/posts/how-usb-works-part-1/</link>
             <guid>https://amar-laksh.github.io/posts/how-usb-works-part-1/</guid>
-            <description>&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;usb20_symbol.jpg&quot; alt=&quot;The USB 2.0 Symbol&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+            <description>&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;usb20_symbol.jpg&quot; alt=&quot;The USB 2.0 Symbol&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The beloved Universal Serial Bus is a very complex yet an ingenious solution to an age-old problem: Connecting Devices!&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
@@ -759,6 +764,35 @@ The whole concept of Good and Evil is defined and argued on the basis of two def
 &lt;li&gt;A single USB port can support 127 devices, but How?&lt;&#x2F;li&gt;
 &lt;li&gt;How come USB HID Devices do not require multiple drivers?&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;but-first-let-s-talk-history&quot;&gt;BUT FIRST, LET&#x27;S TALK HISTORY!&lt;&#x2F;h2&gt;
+&lt;p&gt;The USB Specification broadly came in three waves:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;USB 1.0&lt;&#x2F;li&gt;
+&lt;li&gt;USB 2.0&lt;&#x2F;li&gt;
+&lt;li&gt;USB 3.0&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;The USB 1.x Era (1994-1998)&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This was the early 90s and people were used to:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;A PS&#x2F;2 Port for their PS&#x2F;2 Devices wiith the PS&#x2F;2 Connectors.&lt;&#x2F;li&gt;
+&lt;li&gt;A Serial Port for their Serial Devices with the RS-232 Connectors.&lt;&#x2F;li&gt;
+&lt;li&gt;A Game Port for their Gaming Devices with the DA-15 Connectors.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Yes, There were many ports and even more connectors in a giant tangled mess in every cupboard
+but people didn&#x27;t complain much, they simply did not have any alternate. The fate of the PC world
+was sealed into different pins numbers and sizes.&lt;&#x2F;p&gt;
+&lt;p&gt;On 11th November 1994, however, a young Intel architect by the name of Ajay Bhatt, along with the
+contributions from the USB-IF (USB Implementers Forum) published a specification for the USB 0.7.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;TYPE_A.jpg&quot; alt=&quot;Low Speed USB Type-A Close-Up Shot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;With the USB specification, the USB-IF had set out to pave the way for replacing an entire pile of different connectors with just one cable; the USB or more specifically the low-speed USB Type-A.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;After an year of incremental development, the USB-IF presented the USB 1.0 specification in the November of &#x27;95
+. This version had support for the pre-existing &lt;strong&gt;low-speed&lt;&#x2F;strong&gt; 1.5 Mbit&#x2F;s which was ideal for low data
+rate devices like Joysticks and finally for data rates upto 12Mbit&#x2F;s which was called &lt;strong&gt;full-speed&lt;&#x2F;strong&gt;.
+The 12Mbit&#x2F;s rate was intended mainly for the use in disks drives.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;USB 2.x Era (2000-2008)&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;By now, everyone had recognised the magic of the ubiqitous USB ports. In the April of 2000, the USB-IF came out with a still better version; The USB 2.0 which added the High Speed data rates of 480 Mbit&#x2F;s.&lt;&#x2F;p&gt;
 </description>
         </item>
     </channel>

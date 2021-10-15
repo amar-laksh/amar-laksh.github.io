@@ -16,7 +16,7 @@ Here's a list of writeups on the Beginners quest section of the Google CTF 2019.
 
 
 
-## <a name="spacetime"> **Enter Spacetime Coordinates  - Misc** </a>
+## Enter Spacetime Coordinates  - Misc
 ![Satellite](/images/ctf_images/google_2019/spacetime.png)
 
 You look at the challenge, download the attached document, unzip the downloaded file and find this:
@@ -103,7 +103,7 @@ And there we go folks, found our first flag!
 
 **Lesson learned:** [Keep it simple, stupid](https://en.wikipedia.org/wiki/KISS_principle)
 
-## <a name="satellite"> **Satellite - networking** </a>
+## Satellite - networking
 ![Satellite](/images/ctf_images/google_2019/satellite.png)
 
 Let's take a cue from our previous challenge and download, unzip and inspect the files in the attachment:
@@ -188,7 +188,7 @@ Submitting the second flag, we come to the first choice between two routes in th
 
 Let's take the `Home` route first!
 
-##  <a name="homecomputer"> Home Computer - Forensics </a>
+##  Home Computer - Forensics 
 ![home_computer.png](/images/ctf_images/google_2019/home_computer.png)
 
 Again downloading and unzipping the attachments we some files:
@@ -279,7 +279,7 @@ And there we go, got our Flag!
 
 **Lesson Learned:**  always remember to extract file signature when dealing with unknown files formats ([Here's a search tool](http://file-extension.net/seeker/))
 
-## <a name="government"> Government Agricultural Network - Web </a>
+## Government Agricultural Network - Web
 ![government.png](/images/ctf_images/google_2019/government.png)
 
 Alright we go to the given url to find a textbox with which we can apparently create a new post:
@@ -314,7 +314,7 @@ Well, looks like we got our Flag in some tasty cookies!
 
 **Lesson Learned:** Always consult [OWASP](https://www.owasp.org/).
 
-## <a name="stopgan"> Stop GAN - Pwn </a>
+## Stop GAN - Pwn
 ![stop_gan.png](/images/ctf_images/google_2019/stop_gan.png)
 
 Again downloading and unzipping we have:
@@ -442,4 +442,4 @@ quit
 >>
 ```
 
-Here we got the next flag! So doing this we finally come to the end of this route that we had taken. Let's go back to the other route now in the [next part](/2019/06/29/Google-CTF-Writeups-Part-2.html)!
+Here we got the next flag! So doing this we finally come to the end of this route that we had taken. Let's go back to the other route now in the [next part](/posts/google-ctf-writeups-part-2/)!

@@ -8,11 +8,11 @@ tags:
 - India
 - PNR
 ---
-
+<!-- more -->
 ![Old website](/images/old-pnr-status.png)
 
 This was the good old Indian Railways website to track information about a railway ticket by using the *PNR number*. As we will see this was not the best website design so the staff decided to update the U.I. and more importantly the CAPTCHA method used on the webpage.
-<!-- more -->
+
 
 The update resulted in this:
 
@@ -35,7 +35,7 @@ And sure it became apparent as I had the idea to try the previous solution in my
 
 From the old blog post we know how to extract the digits. We just capture all the multiple digits that is possible in this CAPTCHA and then with a little python help
 
-{% highlight python %}
+```python
 import time
 import pyautogui as do
 
@@ -72,8 +72,7 @@ expr =  str(
 
 result = eval(expr)
 print expr, ' = ',result
-
-{% endhighlight%}
+```
 
 
 and here comes the demo:
@@ -85,3 +84,5 @@ and voila we have the right answer to the captcha question!
 However, sadly as these weak captchas are on the rise I have decided to put up my code on [github](https://github.com/amar-laksh/capturerer) for others to add to the database.
 
 Happy hacking!
+
+

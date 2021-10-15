@@ -33,10 +33,9 @@ Let's have a look at how to make each one of them:
 
 ### Step - 2: Depending on the build format, create/extend CMakeLists.txt
 
-Here we have two different steps for the Qt5 app depending on the build system you chose, you'll get these directory structures:
-
+- Here we have two different steps for the Qt5 app depending on the build system you chose, you'll get these directory structures:
+```bash
 - CMake:
-	{% highlight bash %}
 .
 ├── CMakeLists.txt
 ├── CMakeLists.txt.user
@@ -60,10 +59,11 @@ Here we have two different steps for the Qt5 app depending on the build system y
 ├── qml.qrc
 └── qtquickcontrols2.conf
 0 directories, 8 files
-{% endhighlight%}
 
+```
 - Smply open the CMakeLists.txt to edit and in the case of a qmake build create `CMakeLists.txt`, make it look like this:
-{% highlight cmake %}
+
+```cmake
 cmake_minimum_required(VERSION 3.5)
 project(demo)
 
@@ -116,15 +116,14 @@ target_link_libraries(${PROJECT_NAME}
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 
 ament_package()
-
-{% endhighlight %}
+```
 
 ### Step - 3: Create a `package.xml` and add it to project
 - ROS2 needs a package.xml to find build and execution dependencies and to state metadata.
 
 
 - A simple package.xml looks like this:
-{% highlight xml %}
+```xml
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format2.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="2">
@@ -150,12 +149,12 @@ ament_package()
 		<build_type>ament_cmake</build_type>
 	</export>
 </package>
-{% endhighlight %}
+```
 
 ### Step - 4: Let's restructure the directory to clean everything.
 
 - First, create an `src` directory and move everything in it as a ROS2 package ( let's say `demo`) . Now, create an `src` directory and move all the `qml`, `cpp`, `qml.qrc` and `conf` files in that directory. Now your project folder should look something like this:
-{% highlight bash %}
+```bash
 .
 └── src
     └── demo
@@ -172,8 +171,7 @@ ament_package()
             └── qtquickcontrols2.conf
 
 3 directories, 10 files
-
-{% endhighlight %}
+```
 
 ### Step - 5: All set, time to build the package!
 
@@ -181,7 +179,7 @@ ament_package()
 
 Doing these steps, you should get a ROS2 Qt5 app package called `demo`.
 
-### Step -6: running the package in qtcreator!
+### Step - 6: running the package in qtcreator!
 
 - Note that you will be easily able to run the package using ros2 commandline options, however, It would make our lives
    incredibly easy to run and build our Qt5 app in the Qt Creator.
@@ -194,3 +192,4 @@ Doing these steps, you should get a ROS2 Qt5 app package called `demo`.
 	 You will now be able to develop Qt5 apps with ROS2 in the Qt Creator
 
 **TIP**: Here is the git-hosted [sample project](https://github.com/amar-laksh/ros2qt_demo).
+

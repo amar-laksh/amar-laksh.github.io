@@ -9,6 +9,7 @@ tags:
 fullview: false
 published: true
 ---
+<!-- more -->
 ![The USB 2.0 Symbol](/images/usb20_symbol.jpg)
 
 >The beloved Universal Serial Bus is a very complex yet an ingenious solution to an age-old problem: Connecting Devices!
@@ -35,7 +36,8 @@ So, by the end of this series I hope to answer at least the most common queries 
 * A single USB port can support 127 devices, but How?
 * How come USB HID Devices do not require multiple drivers?
 
-<!-- more -->
+
+
 ## BUT FIRST, LET'S TALK HISTORY!
 
 The USB Specification broadly came in three waves:
@@ -77,3 +79,4 @@ The 12Mbit/s rate was intended mainly for the use in disks drives.
 **USB 2.x Era (2000-2008)**
 
 By now, everyone had recognised the magic of the ubiqitous USB ports. In the April of 2000, the USB-IF came out with a still better version; The USB 2.0 which added the High Speed data rates of 480 Mbit/s.
+

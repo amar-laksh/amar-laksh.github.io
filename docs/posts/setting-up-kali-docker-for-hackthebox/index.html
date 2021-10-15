@@ -126,7 +126,7 @@ The Codeless Text | Setting up a Kali docker container for HackTheBox and other 
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>298 words</span>
+  <span>302 words</span>
 </span>
 
             </div>
@@ -142,31 +142,32 @@ The Codeless Text | Setting up a Kali docker container for HackTheBox and other 
 <p>Well, what about a Kali Linux docker container that you can use all your tools from and also run GUI apps if you're so inclined?!</p>
 <h2 id="step-1-download-run-the-kali-linux-docker-image">Step - 1: Download &amp; Run the Kali Linux Docker image</h2>
 <p>Here's the official link and honestly it covers almost everything: <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.kali.org/news/official-kali-linux-docker-images/">Kali Linux Docker</a></p>
-<h2 id="step-2-setup-your-kali-with-meta-packages">Step -2: Setup your Kali with meta-packages</h2>
+<h2 id="step-2-setup-your-kali-with-meta-packages">Step - 2: Setup your Kali with meta-packages</h2>
 <p>Another great official link: <a rel="noopener nofollow noreferrer" target="_blank" href="https://www.kali.org/news/kali-linux-metapackages/">Kali meta-packages</a></p>
-<h2 id="step-3-allow-vpn-connections">Step -3: Allow VPN connections!</h2>
+<h2 id="step-3-allow-vpn-connections">Step - 3: Allow VPN connections!</h2>
 <p>We all know how handy and important VPNs are.
 So adding the following command when running your docker container allows connections to pass through(also allowing ipv6):</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>--cap-add=NET_ADMIN --device /dev/net/tun  --sysctl net.ipv6.conf.all.disable_ipv6=0
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">--cap-add</span><span>=</span><span style="color:#a3be8c;">NET_ADMIN </span><span style="color:#bf616a;">--device</span><span> /dev/net/tun</span><span style="color:#bf616a;">  --sysctl</span><span> net.ipv6.conf.all.disable_ipv6=0
 </span></code></pre>
-<h2 id="step-4-allow-gui-apps-to-access-x-server">Step -4: Allow GUI apps to access X server!</h2>
+<h2 id="step-4-allow-gui-apps-to-access-x-server">Step - 4: Allow GUI apps to access X server!</h2>
 <p>Install <code>xhost</code> package from your distribution package manager (mostly it's just named <code>xorg-xhost</code>)
 and run the following command to allow remote hosts to connect to the X server before starting your docker container with:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>xhost+
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">xhost+
 </span></code></pre>
 <p>for the docker GUI X clients we need to add the following arguments to setup the X connection properly:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>-e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">-e</span><span> DISPLAY=:0</span><span style="color:#bf616a;"> -v</span><span> /tmp/.X11-unix:/tmp/.X11-unix
 </span></code></pre>
 <p>Tip: Remember to deny remote hosts after closing your docker container! ( just run <code>xhost -</code> for it)</p>
-<h2 id="step-5-profit">Step -5: Profit!</h2>
+<h2 id="step-5-profit">Step - 5: Profit!</h2>
 <p>Here's the complete command:</p>
-<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>xhost + &amp;&amp;\ 
-</span><span>docker run -ti --cap-add=NET_ADMIN --device /dev/net/tun \
-</span><span>--sysctl net.ipv6.conf.all.disable_ipv6=0 \
-</span><span>-e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix \
-</span><span>YOUR_DOCKER_IMAGE_NAME /bin/bash &amp;&amp; xhost -
+<pre data-lang="bash" style="background-color:#2b303b;color:#c0c5ce;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#bf616a;">xhost</span><span> + &amp;&amp;\
+</span><span style="color:#bf616a;">docker</span><span> run</span><span style="color:#bf616a;"> -ti --cap-add</span><span>=NET_ADMIN</span><span style="color:#bf616a;"> --device</span><span> /dev/net/tun \
+</span><span style="color:#bf616a;">--sysctl</span><span> net.ipv6.conf.all.disable_ipv6=0 \
+</span><span style="color:#bf616a;">-e</span><span> DISPLAY=:0</span><span style="color:#bf616a;"> -v</span><span> /tmp/.X11-unix:/tmp/.X11-unix \
+</span><span>YOUR_DOCKER_IMAGE_NAME /bin/bash &amp;&amp; </span><span style="color:#bf616a;">xhost</span><span> -
 </span></code></pre>
-<p>Here's a link for a nifty little script that packages everything (My docker image is named <code>kali_pt</code>): <a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/amar-laksh/kali_pt/blob/master/kali.sh">https://github.com/amar-laksh/kali_pt/blob/master/kali.sh</a></p>
+<p>Here's a link for a nifty little script that packages everything (My docker image is named <code>kali_pt</code>): </p>
+<p><a rel="noopener nofollow noreferrer" target="_blank" href="https://github.com/amar-laksh/kali_pt/blob/master/kali.sh">https://github.com/amar-laksh/kali_pt/blob/master/kali.sh</a></p>
 
           </div>
         </article>
@@ -207,15 +208,6 @@ and run the following command to allow remote hosts to connect to the X server b
     <div class="columns is-centered">
       <div class="column is-8">
         <nav class="level">
-          
-          <div class="level-item has-text-centered">
-            <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;amar-laksh.github.io&#x2F;posts&#x2F;your-friendly-neighbourhood-tools-factor&#x2F;">
-              <span class="icon mr-2">
-                <i class="fas fa-arrow-circle-left"></i>
-              </span>
-              Your friendly neighbourhood util: factor
-            </a>
-          </div>
            
           <div class="level-item has-text-centered">
             <a class="button is-black is-outlined" href="https:&#x2F;&#x2F;amar-laksh.github.io&#x2F;posts&#x2F;google-ctf-writeups-part-1&#x2F;">
@@ -245,14 +237,12 @@ and run the following command to allow remote hosts to connect to the X server b
           <span class="icon">
             <i class="fas fa-code"></i>
           </span>
-          <span>code</span>
         </span>
         and
         <span class="icon-text">
           <span class="icon">
             <i class="fas fa-heart"></i>
           </span>
-          <span>love</span>
         </span>
       </p>
       <p>

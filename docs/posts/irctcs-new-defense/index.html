@@ -126,7 +126,7 @@ The Codeless Text | Updating CAPTCHA for CAPCTHA&#x27;s sake? OR How you get to 
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>314 words</span>
+  <span>312 words</span>
 </span>
 
             </div>
@@ -138,9 +138,9 @@ The Codeless Text | Updating CAPTCHA for CAPCTHA&#x27;s sake? OR How you get to 
             </div>
           </div>
           <div class="content mt-2">
-            <p><img src="/images/old-pnr-status.png" alt="Old website" /></p>
+            <span id="continue-reading"></span>
+<p><img src="/images/old-pnr-status.png" alt="Old website" /></p>
 <p>This was the good old Indian Railways website to track information about a railway ticket by using the <em>PNR number</em>. As we will see this was not the best website design so the staff decided to update the U.I. and more importantly the CAPTCHA method used on the webpage.</p>
-<span id="continue-reading"></span>
 <p>The update resulted in this:</p>
 <p><img src="/images/new-pnr-status.png" alt="New website" /></p>
 <p>Now you may ask what's the catch here?</p>
@@ -154,38 +154,43 @@ The Codeless Text | Updating CAPTCHA for CAPCTHA&#x27;s sake? OR How you get to 
 </blockquote>
 <p>And sure it became apparent as I had the idea to try the previous solution in my earlier <a rel="noopener nofollow noreferrer" target="_blank" href="https://amar-laksh.github.io/CAPTCHAs-on-ceo-sites/">blog post</a> to this one.</p>
 <p>From the old blog post we know how to extract the digits. We just capture all the multiple digits that is possible in this CAPTCHA and then with a little python help</p>
-<p>{% highlight python %}
-import time
-import pyautogui as do</p>
-<p>def lvalue(image, directory):
-leftValue = {}
-for i in do.locateAllOnScreen(
-directory
-+str(image)+'.png'):
-leftValue.update([(i[0],image)])
-return leftValue</p>
-<p>def getCaptcha(directory, images):
-captcha = {}
-for image in images:
-captcha.update(lvalue(image, directory))
-print captcha
-return ' '.join(
-map(
-str
-,[captcha[key] for key in sorted(captcha)]
-)
-)</p>
-<p>time.sleep(2)
-images = [0,1,2,3,4,5,6,7,8,9,10,11]</p>
-<p>expr =  str(
-getCaptcha('./library/pnr/', images)
-.replace('10', '-')
-.replace('11', '+')
-.replace(' ', '')
-)</p>
-<p>result = eval(expr)
-print expr, ' = ',result</p>
-<p>{% endhighlight%}</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>time
+</span><span style="color:#b48ead;">import </span><span>pyautogui </span><span style="color:#b48ead;">as </span><span>do
+</span><span>
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">lvalue</span><span>(</span><span style="color:#bf616a;">image</span><span>, </span><span style="color:#bf616a;">directory</span><span>):
+</span><span>    leftValue = {}
+</span><span>    </span><span style="color:#b48ead;">for </span><span>i </span><span style="color:#b48ead;">in </span><span>do.</span><span style="color:#bf616a;">locateAllOnScreen</span><span>(
+</span><span>                directory
+</span><span>                +</span><span style="color:#bf616a;">str</span><span>(image)+&#39;</span><span style="color:#a3be8c;">.png</span><span>&#39;):
+</span><span>        leftValue.</span><span style="color:#bf616a;">update</span><span>([(i[</span><span style="color:#d08770;">0</span><span>],image)])
+</span><span>    </span><span style="color:#b48ead;">return </span><span>leftValue
+</span><span>
+</span><span>
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">getCaptcha</span><span>(</span><span style="color:#bf616a;">directory</span><span>, </span><span style="color:#bf616a;">images</span><span>):
+</span><span>    captcha = {}
+</span><span>    </span><span style="color:#b48ead;">for </span><span>image </span><span style="color:#b48ead;">in </span><span>images:
+</span><span>        captcha.</span><span style="color:#bf616a;">update</span><span>(</span><span style="color:#bf616a;">lvalue</span><span>(image, directory))
+</span><span>        </span><span style="color:#b48ead;">print </span><span>captcha
+</span><span>    </span><span style="color:#b48ead;">return </span><span>&#39; &#39;.</span><span style="color:#bf616a;">join</span><span>(
+</span><span>                </span><span style="color:#96b5b4;">map</span><span>(
+</span><span>                    str
+</span><span>                    ,[captcha[key] </span><span style="color:#b48ead;">for </span><span>key </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">sorted</span><span>(captcha)]
+</span><span>                    )
+</span><span>                )
+</span><span>
+</span><span>time.</span><span style="color:#bf616a;">sleep</span><span>(</span><span style="color:#d08770;">2</span><span>)
+</span><span>images = [</span><span style="color:#d08770;">0</span><span>,</span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">2</span><span>,</span><span style="color:#d08770;">3</span><span>,</span><span style="color:#d08770;">4</span><span>,</span><span style="color:#d08770;">5</span><span>,</span><span style="color:#d08770;">6</span><span>,</span><span style="color:#d08770;">7</span><span>,</span><span style="color:#d08770;">8</span><span>,</span><span style="color:#d08770;">9</span><span>,</span><span style="color:#d08770;">10</span><span>,</span><span style="color:#d08770;">11</span><span>]
+</span><span>
+</span><span>expr =  </span><span style="color:#bf616a;">str</span><span>(
+</span><span>            </span><span style="color:#bf616a;">getCaptcha</span><span>(&#39;</span><span style="color:#a3be8c;">./library/pnr/</span><span>&#39;, images)
+</span><span>                .</span><span style="color:#bf616a;">replace</span><span>(&#39;</span><span style="color:#a3be8c;">10</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">-</span><span>&#39;)
+</span><span>                .</span><span style="color:#bf616a;">replace</span><span>(&#39;</span><span style="color:#a3be8c;">11</span><span>&#39;, &#39;</span><span style="color:#a3be8c;">+</span><span>&#39;)
+</span><span>                .</span><span style="color:#bf616a;">replace</span><span>(&#39; &#39;, &#39;&#39;)
+</span><span>        )
+</span><span>
+</span><span>result = </span><span style="color:#96b5b4;">eval</span><span>(expr)
+</span><span style="color:#b48ead;">print </span><span>expr, &#39;</span><span style="color:#a3be8c;"> = </span><span>&#39;,result
+</span></code></pre>
 <p>and here comes the demo:</p>
 <p><img src="/images/pnr-demo.gif" alt="demo" /></p>
 <p>and voila we have the right answer to the captcha question!</p>
@@ -269,14 +274,12 @@ print expr, ' = ',result</p>
           <span class="icon">
             <i class="fas fa-code"></i>
           </span>
-          <span>code</span>
         </span>
         and
         <span class="icon-text">
           <span class="icon">
             <i class="fas fa-heart"></i>
           </span>
-          <span>love</span>
         </span>
       </p>
       <p>

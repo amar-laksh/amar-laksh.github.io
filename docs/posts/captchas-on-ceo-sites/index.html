@@ -126,7 +126,7 @@ The Codeless Text | How CAPTCHA is not important? but finding everyone is!
   <span class="icon">
     <i class="fas fa-pencil-alt"></i>
   </span>
-  <span>667 words</span>
+  <span>666 words</span>
 </span>
 
             </div>
@@ -159,31 +159,34 @@ The Codeless Text | How CAPTCHA is not important? but finding everyone is!
 function for our menial job. This means that we can store all the possible values and store them as seperate images and use them to identify the numbers on the screen?! Yes and no. Finding numbers are easy but categorizing a whole CAPTCHA sequence in its right form is not.</p>
 <p>For Example, the CAPTCHA might be: 1 4 4 6 2</p>
 <p>Now you'd surely find 1,4,6 and 2 but what about the order and accounting for repeating digits? Answer? Just looking at the function we are using more closely!</p>
-<p>locateOnScreen(image, grayscale=False) returns the coordinates of the image found!</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#bf616a;">locateOnScreen</span><span>(image, </span><span style="color:#bf616a;">grayscale</span><span>=</span><span style="color:#d08770;">False</span><span>) </span><span style="color:#65737e;">#returns the coordinates of the image found!
+</span></code></pre>
 <p>Taking those coordinates and simply by arranging them left-to-right we get all the CAPTCHA sequences in order.</p>
 <p>Here's the script:</p>
-<p>{% highlight python %}
-import pyautogui as do
-def getLeftValue(image):
-try:
-leftValue = [do.locateOnScreen(
-'./CAPTCHA/voterinfo/'
-+str(image)+'.png')][0][0]
-except:
-leftValue = 0
-return leftValue</p>
-<p>def getCaptcha():
-images = [1,2,3,4,5,6,7,8,9]
-captcha = {}
-for image in images:
-leftValue = getLeftValue(image)
-if leftValue != 0:
-l = [(leftValue, image)]
-captcha.update(l)
-return ''.join(map(str,[captcha[key] for key in sorted(captcha)]))</p>
-<p>captcha = getCaptcha()
-print &quot;The CAPTCHA IS: &quot;, captcha
-{% endhighlight %}</p>
+<pre data-lang="python" style="background-color:#2b303b;color:#c0c5ce;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">import </span><span>pyautogui </span><span style="color:#b48ead;">as </span><span>do
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">getLeftValue</span><span>(</span><span style="color:#bf616a;">image</span><span>):
+</span><span style="color:#b48ead;">try</span><span>:
+</span><span>leftValue = [do.</span><span style="color:#bf616a;">locateOnScreen</span><span>(
+</span><span>		&#39;</span><span style="color:#a3be8c;">./CAPTCHA/voterinfo/</span><span>&#39;
+</span><span>		+</span><span style="color:#bf616a;">str</span><span>(image)+&#39;</span><span style="color:#a3be8c;">.png</span><span>&#39;)][</span><span style="color:#d08770;">0</span><span>][</span><span style="color:#d08770;">0</span><span>]
+</span><span style="color:#b48ead;">except</span><span>:
+</span><span>leftValue = </span><span style="color:#d08770;">0
+</span><span style="color:#b48ead;">return </span><span>leftValue
+</span><span>
+</span><span>
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">getCaptcha</span><span>():
+</span><span>	images = [</span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">2</span><span>,</span><span style="color:#d08770;">3</span><span>,</span><span style="color:#d08770;">4</span><span>,</span><span style="color:#d08770;">5</span><span>,</span><span style="color:#d08770;">6</span><span>,</span><span style="color:#d08770;">7</span><span>,</span><span style="color:#d08770;">8</span><span>,</span><span style="color:#d08770;">9</span><span>]
+</span><span>	captcha = {}
+</span><span>	</span><span style="color:#b48ead;">for </span><span>image </span><span style="color:#b48ead;">in </span><span>images:
+</span><span>leftValue = </span><span style="color:#bf616a;">getLeftValue</span><span>(image)
+</span><span style="color:#b48ead;">if </span><span>leftValue != </span><span style="color:#d08770;">0</span><span>:
+</span><span>l = [(leftValue, image)]
+</span><span>captcha.</span><span style="color:#bf616a;">update</span><span>(l)
+</span><span style="color:#b48ead;">return </span><span>&#39;&#39;.</span><span style="color:#bf616a;">join</span><span>(</span><span style="color:#96b5b4;">map</span><span>(str,[captcha[key] </span><span style="color:#b48ead;">for </span><span>key </span><span style="color:#b48ead;">in </span><span style="color:#96b5b4;">sorted</span><span>(captcha)]))
+</span><span>
+</span><span>captcha = </span><span style="color:#bf616a;">getCaptcha</span><span>()
+</span><span style="color:#b48ead;">print </span><span>&quot;</span><span style="color:#a3be8c;">The CAPTCHA IS: </span><span>&quot;, captcha
+</span></code></pre>
 <p>And voila!</p>
 <p><img src="/images/captcha.gif" alt="CAPTCHA GIF" /></p>
 <p>Now you can rope in the benefits of programmatic spamming!</p>
@@ -321,14 +324,12 @@ print &quot;The CAPTCHA IS: &quot;, captcha
           <span class="icon">
             <i class="fas fa-code"></i>
           </span>
-          <span>code</span>
         </span>
         and
         <span class="icon-text">
           <span class="icon">
             <i class="fas fa-heart"></i>
           </span>
-          <span>love</span>
         </span>
       </p>
       <p>
