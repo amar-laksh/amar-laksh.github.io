@@ -14,6 +14,7 @@ So you want to run your Qt5 app as a ros2 node?, Here we go
 
 ### Step - 1: Build the Qt5 App
 
+
 The first thing you need to do is to convert your Qt5 app to a ros2 package so that you can build it using: `ament build`.
 
 Let's make an example Qt5 app to showcase this!
@@ -36,6 +37,8 @@ Let's have a look at how to make each one of them:
 
 
 
+
+
 - Here we have two different steps for the Qt5 app depending on the build system you chose, you'll get these directory structures:
 ```bash
 - CMake:
@@ -52,10 +55,7 @@ Let's have a look at how to make each one of them:
 ```
 
 ```bash
-- qmake
-```
-
-```bash
+- qmake:
 .
 ├── demo.pro
 ├── demo.pro.user
@@ -199,6 +199,8 @@ Doing these steps, you should get a ROS2 Qt5 app package called `demo`.
 	 You will now be able to develop Qt5 apps with ROS2 in the Qt Creator
 
 **TIP**: Here is the git-hosted [sample project](https://github.com/amar-laksh/ros2qt_demo).
+
+
 
 
 
