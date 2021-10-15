@@ -31,7 +31,7 @@ The new CAPTCHA system might seem a bit more sophistcated than the simple one us
 > *Simplicity is the ultimate sophistication.*
 -Leonardo Da Vinci
 
-And sure it became apparent as I had the idea to try the previous solution in my earlier [blog post](https://amar-laksh.github.io/CAPTCHAs-on-ceo-sites/) to this one.
+And sure it became apparent as I had the idea to try the previous solution in my earlier [blog post](https://amar-laksh.github.io/posts/captchas-on-ceo-sites/) to this one.
 
 From the old blog post we know how to extract the digits. We just capture all the multiple digits that is possible in this CAPTCHA and then with a little python help
 
@@ -84,5 +84,6 @@ and voila we have the right answer to the captcha question!
 However, sadly as these weak captchas are on the rise I have decided to put up my code on [github](https://github.com/amar-laksh/capturerer) for others to add to the database.
 
 Happy hacking!
+
 
 
