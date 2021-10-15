@@ -34,6 +34,8 @@ Let's have a look at how to make each one of them:
 ### Step - 2: Depending on the build format, create/extend CMakeLists.txt
 
 
+
+
 - Here we have two different steps for the Qt5 app depending on the build system you chose, you'll get these directory structures:
 ```bash
 - CMake:
@@ -48,9 +50,11 @@ Let's have a look at how to make each one of them:
 └── qtquickcontrols2.conf
 0 directories, 8 files
 ```
+
 ```bash
 - qmake
 ```
+
 ```bash
 .
 ├── demo.pro
@@ -195,5 +199,7 @@ Doing these steps, you should get a ROS2 Qt5 app package called `demo`.
 	 You will now be able to develop Qt5 apps with ROS2 in the Qt Creator
 
 **TIP**: Here is the git-hosted [sample project](https://github.com/amar-laksh/ros2qt_demo).
+
+
 
 
