@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://amar-laksh.github.io/sitemap.xml
