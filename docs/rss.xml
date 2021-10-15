@@ -501,9 +501,9 @@ $strings .&#x2F;init_sat  | grep  &quot;satellite.ctfcompetition.com&quot;
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; qml.qrc
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; qtquickcontrols2.conf
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt; directories, 8 files
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span&gt;% endhighlight%}
+&lt;&#x2F;span&gt;&lt;span&gt;```&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;bash
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; qmake
-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span&gt;% highlight bash %}
+&lt;&#x2F;span&gt;&lt;span&gt;```bash
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; demo.pro
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; demo.pro.user
@@ -679,7 +679,7 @@ The whole concept of Good and Evil is defined and argued on the basis of two def
 &lt;p&gt;&lt;em&gt;Simplicity is the ultimate sophistication.&lt;&#x2F;em&gt;
 -Leonardo Da Vinci&lt;&#x2F;p&gt;
 &lt;&#x2F;blockquote&gt;
-&lt;p&gt;And sure it became apparent as I had the idea to try the previous solution in my earlier &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;amar-laksh.github.io&#x2F;CAPTCHAs-on-ceo-sites&#x2F;&quot;&gt;blog post&lt;&#x2F;a&gt; to this one.&lt;&#x2F;p&gt;
+&lt;p&gt;And sure it became apparent as I had the idea to try the previous solution in my earlier &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;amar-laksh.github.io&#x2F;posts&#x2F;captchas-on-ceo-sites&#x2F;&quot;&gt;blog post&lt;&#x2F;a&gt; to this one.&lt;&#x2F;p&gt;
 &lt;p&gt;From the old blog post we know how to extract the digits. We just capture all the multiple digits that is possible in this CAPTCHA and then with a little python help&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;time
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;pyautogui &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;do

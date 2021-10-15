@@ -46,9 +46,9 @@ Let's have a look at how to make each one of them:
 ├── qml.qrc
 └── qtquickcontrols2.conf
 0 directories, 8 files
-{% endhighlight%}
+```bash
 - qmake
-{% highlight bash %}
+```bash
 .
 ├── demo.pro
 ├── demo.pro.user
