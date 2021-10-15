@@ -50,6 +50,7 @@ Let's have a look at how to make each one of them:
 ```
 ```bash
 - qmake
+```
 ```bash
 .
 ├── demo.pro
