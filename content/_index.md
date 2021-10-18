@@ -13,6 +13,7 @@ paginate_by = 5
 
 - This is a space of exponential curiosity mapped as blog posts in linear-time.
 
+***
 ## Books I've read in <script>document.write(new Date().getFullYear())</script>*
 
 <style>

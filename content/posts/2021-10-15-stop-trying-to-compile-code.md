@@ -8,4 +8,5 @@ Let me paint you a picture. (or borrow it)
 
 ![Compiling xkcd](https://imgs.xkcd.com/comics/compiling.png)
 
-Now, you know this picture but what you don't know is 
+Now, you know this picture but what I want you to consider is a deeper context of this picture.
+
