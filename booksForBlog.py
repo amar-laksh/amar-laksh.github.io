@@ -42,6 +42,7 @@ def makeBookRow(content):
 books = list(next(walk(booksPath), (None, None, []))[2])
 books.sort()
 latestBook = books[len(books)-1]
+print("Using " + latestBook + " to update book list")
 
 bookContent = json.load(open(booksPath+latestBook, 'r+'))
 
