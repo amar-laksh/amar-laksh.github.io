@@ -18,7 +18,7 @@ paginate_by = 5
 <style>
 .table-wrapper {
   overflow-y: scroll;
-  width: 80%;
+  width: 95%;
   height: 300px;
 }
 </style>
