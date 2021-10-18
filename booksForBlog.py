@@ -23,7 +23,7 @@ def make_markdown_table(array):
         markdown += to_add
     markdown += "\n"
     markdown += '|'
-    for i in range(len(array[0])):
+    for _ in range(len(array[0])):
         markdown += str("-------------- | ")
     markdown += "\n"
     for entry in array[1:]:
