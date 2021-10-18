@@ -20,20 +20,17 @@ paginate_by = 5
 .table-wrapper {
   overflow-y: scroll;
   width: 95%;
-  height: 300px;
+  height: 200px;
 }
 </style>
 <div class="table-wrapper" markdown="block">
 <books>
 
-|  Title | Authors | My Rating | Google Books Link |
-|-------------- | -------------- | -------------- | -------------- | 
-| A Tour of C++ | Bjarne Stroustrup | 5/5 | [![thumbnail of ](http://books.google.com/books/content?id=EXfcAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=EXfcAAAAQBAJ&source=gbs_api) | 
-| Fear and Loathing in Las Vegas (Harper Perennial Modern Classics) | Hunter S. Thompson | 4/5 | [![thumbnail of ](http://books.google.com/books/content?id=oqqFBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=oqqFBAAAQBAJ&source=gbs_api) | 
-| Just for Fun | Linus Torvalds, David Diamond | 4/5 | [![thumbnail of ](http://books.google.com/books/content?id=Q3aIPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api)](http://books.google.co.uk/books?id=Q3aIPwAACAAJ&dq=9781587991516&hl=&source=gbs_api) | 
-| On Anarchism | Noam Chomsky | 3/5 | [![thumbnail of ](http://books.google.com/books/content?id=sDomngEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api)](http://books.google.co.uk/books?id=sDomngEACAAJ&dq=9780241969601&hl=&source=gbs_api) | 
-| The Cathedral & the Bazaar | Eric Raymond | 3/5 | [![thumbnail of ](http://books.google.com/books/content?id=xkpMxwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api)](http://books.google.co.uk/books?id=xkpMxwEACAAJ&dq=9780596001087&hl=&source=gbs_api) | 
-
+[![thumbnail of A Tour of C++](http://books.google.com/books/content?id=EXfcAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=EXfcAAAAQBAJ&source=gbs_api)
+[![thumbnail of Fear and Loathing in Las Vegas (Harper Perennial Modern Classics)](http://books.google.com/books/content?id=oqqFBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=oqqFBAAAQBAJ&source=gbs_api)
+[![thumbnail of Just for Fun](http://books.google.com/books/content?id=Q3aIPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api)](http://books.google.co.uk/books?id=Q3aIPwAACAAJ&dq=9781587991516&hl=&source=gbs_api)
+[![thumbnail of On Anarchism](http://books.google.com/books/content?id=sDomngEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api)](http://books.google.co.uk/books?id=sDomngEACAAJ&dq=9780241969601&hl=&source=gbs_api)
+[![thumbnail of The Cathedral & the Bazaar](http://books.google.com/books/content?id=xkpMxwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api)](http://books.google.co.uk/books?id=xkpMxwEACAAJ&dq=9780596001087&hl=&source=gbs_api)
 
 </books>
 

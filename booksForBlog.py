@@ -17,25 +17,13 @@ def updateBooks(page, table):
     return updatedPage
 
 def make_markdown_table(array):
-    markdown = "\n" + str("| ")
-    for e in array[0]:
-        to_add = " " + str(e) + str(" |")
-        markdown += to_add
-    markdown += "\n"
-    markdown += '|'
-    for _ in range(len(array[0])):
-        markdown += str("-------------- | ")
-    markdown += "\n"
-    for entry in array[1:]:
-        markdown += str("| ")
-        for e in entry:
-            to_add = str(e) + str(" | ")
-            markdown += to_add
-        markdown += "\n"
-    return markdown + "\n"
+    markdown = "\n"
+    for el in array:
+        markdown += str(el) + "\n"
+    return markdown
 
 def makeBookRow(content):
-    row = [content["title"], content["author"], str(content["rating"]) + "/5", "[![thumbnail of ]("+content["thumbnailAddress"]+")](" + content["googleBooksLink"] + ")"]
+    row = "[![thumbnail of "+content["title"]+"]("+content["thumbnailAddress"]+")](" + content["googleBooksLink"] + ")"
     return row
 
 
@@ -52,14 +40,14 @@ del bookContent['records']
 
 page = open(booksWebPagePath,'r')
 oldPage = page.read()
-headers = ["Title", "Authors", "My Rating", "Google Books Link"]
+#  headers = ["Title", "Authors", "My Rating", "Google Books Link"]
 bookTableList = []
 for content in bookContent["books"]:
     if(content["state"] == "READ"):
         bookTableList += [makeBookRow(content)]
 
 bookTableList = sorted(bookTableList)
-bookTableList = [headers] + bookTableList
+#  bookTableList = [headers] + bookTableList
 bookTableMarkdown = make_markdown_table(bookTableList)
 newPage = updateBooks(oldPage, bookTableMarkdown)
 page.close()
