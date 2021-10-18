@@ -13,4 +13,11 @@ paginate_by = 5
 
 - This is a space of exponential curiosity mapped as blog posts in linear-time.
 
+## Books I've read*
+
+<books>
+
+</books>
+
+*It's updated when I finish a book
 
