@@ -36,5 +36,5 @@ paginate_by = 5
 
 </div>
 
-*It's updated when I finish a book
+*It's automatically updated when I finish a book
 

@@ -9,48 +9,43 @@ from os import walk
 import json
 import re
 
-booksPath = '../books/'
-booksWebPagePath = './content/_index.md'
-
-def updateBooks(page, table):
-    updatedPage = re.sub(r'(?s)<books>.*?</books>', '<books>\n'+str(table)+'\n</books>', page, flags = re.MULTILINE)
-    return updatedPage
-
-def make_markdown_table(array):
-    markdown = "\n"
-    for el in array:
-        markdown += str(el) + "\n"
-    return markdown
+def updatePage(page, el):
+    return re.sub(r'(?s)<books>.*?</books>'
+            , '<books>\n'+str(el)+'\n</books>'
+            , page, flags = re.MULTILINE)
 
 def makeBookRow(content):
-    row = "[![thumbnail of "+content["title"]+"]("+content["thumbnailAddress"]+")](" + content["googleBooksLink"] + ")"
+    row ="[![thumbnail of "+content["title"]+"]"
+    row += "("+content["thumbnailAddress"]+")]"
+    row += "(" + content["googleBooksLink"] + ")"
     return row
 
+def getLatestBookBackup(booksPath):
+    books = sorted(list(next(walk(booksPath), (None, None, []))[2]))
+    return books[len(books)-1]
 
-books = list(next(walk(booksPath), (None, None, []))[2])
-books.sort()
-latestBook = books[len(books)-1]
-print("Using " + latestBook + " to update book list")
+booksPath = '../books/'
+booksWebPagePath = './content/_index.md'
+booksList = []
+try:
+    latestBook = getLatestBookBackup(booksPath)
+    print("Using " + latestBook + " to update book list")
+    bookContent = json.load(open(booksPath+latestBook, 'r+'))
+    for content in bookContent["books"]:
+        if(content["state"] == "READ"):
+            booksList += [makeBookRow(content)]
 
-bookContent = json.load(open(booksPath+latestBook, 'r+'))
+except:
+    print("Cant find the book with valid content!")
+    exit(1)
 
 del bookContent['backupMetadata']
 del bookContent['records']
+newLines = "\n"+ '\n'.join(sorted(booksList)) + "\n"
 
-
-page = open(booksWebPagePath,'r')
-oldPage = page.read()
-#  headers = ["Title", "Authors", "My Rating", "Google Books Link"]
-bookTableList = []
-for content in bookContent["books"]:
-    if(content["state"] == "READ"):
-        bookTableList += [makeBookRow(content)]
-
-bookTableList = sorted(bookTableList)
-#  bookTableList = [headers] + bookTableList
-bookTableMarkdown = make_markdown_table(bookTableList)
-newPage = updateBooks(oldPage, bookTableMarkdown)
-page.close()
-open(booksWebPagePath, 'w').close()
-open(booksWebPagePath, 'w').write(newPage)
-
+with open(booksWebPagePath,'r+') as page:
+    oldPage = page.read()
+    newPage = updatePage(oldPage, newLines)
+    page.seek(0)
+    page.write(newPage)
+    page.truncate()
