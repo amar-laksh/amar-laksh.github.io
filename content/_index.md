@@ -27,6 +27,7 @@ paginate_by = 5
 <books>
 
 [![thumbnail of A Tour of C++](http://books.google.com/books/content?id=EXfcAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=EXfcAAAAQBAJ&source=gbs_api)
+[![thumbnail of Effective Modern C++](http://books.google.com/books/content?id=rjhIBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](http://books.google.co.uk/books?id=rjhIBQAAQBAJ&dq=9781491903995&hl=&source=gbs_api)
 [![thumbnail of Fear and Loathing in Las Vegas (Harper Perennial Modern Classics)](http://books.google.com/books/content?id=oqqFBAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=oqqFBAAAQBAJ&source=gbs_api)
 [![thumbnail of Just for Fun](http://books.google.com/books/content?id=Q3aIPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api)](http://books.google.co.uk/books?id=Q3aIPwAACAAJ&dq=9781587991516&hl=&source=gbs_api)
 [![thumbnail of On Anarchism](http://books.google.com/books/content?id=sDomngEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api)](http://books.google.co.uk/books?id=sDomngEACAAJ&dq=9780241969601&hl=&source=gbs_api)
