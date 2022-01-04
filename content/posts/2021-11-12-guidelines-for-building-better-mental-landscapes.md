@@ -14,6 +14,8 @@ Alright, so over the past year (2021), I've been [reading](https://amar-laksh.gi
 
 In the process of absorbing all this stuff, I've noticed things about the content of the stuff.
 
+## Form, Function and Context of stuff
+
 ## Observations
 
 ### 0. Meta Observation:
@@ -42,4 +44,26 @@ You nod at the (hopefully) detailed analysis of the origins.
 - At best: You've got a holistic understanding of the **current understanding** about the origins of *X*.
 - At worst: You've got a 
 
+Tip: Always try to deepen your origin graph
+Tip: There are no inventions only discoveries of the edges
+### 2. Terms for stuff.
 
+Is the term actually a act?
+
+### 3. Dialectics of stuff.
+
+### 4. Analogy type of stuff. (Functional or observational)
+
+### 5. Notice the outdated stuff.
+
+https://www.collaborativefund.com/blog/experts/
+
+## Observation (not stuff)
+
+### 1. Believe people in what they say.
+
+### 2. Notice the diff between speech and action
+
+### 3. Identity, Ethics/Morals, belonging
+
+### 4. Dialectics (in n-dimensions)

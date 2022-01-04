@@ -114,9 +114,20 @@ So a more nuanced question, in this case, becomes:
 > **What class** is this that I am naming?
 
 The answer, of course in this particular example, becomes:
-> This class is a class that 
+> This class is a class that encapsulates the idea of a Car.
 
+Therefore, we can see that the original program was indeed optimized for recalling the *form* of the Car class as a *concrete entity*.
 
+So what do we observe about this representation in relation to the abstract form?
+
+1. Recalling the abstract idea behind this program requires understanding that *Car* is a subset of *Vehicle*
+2. The operation of the program is dealing with the concrete entities and will require changes to deal with abstract entities.
+
+### Results
+Altogether, we can say a few things about both optimizations:
+
+- Concrete-form optimizations allows you to:
+    - Recall the 
 ## Optimizing for Function (Naming)
 
 ## Optimizing for Context (LetsThinkAboutNaming)
