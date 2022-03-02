@@ -25,8 +25,17 @@ $time factor 1232342819441289473259823473498421353435834573295241234325
 real    0m7.161s
 user    0m7.142s
 sys     0m0.000s
+
+$time factor 123234281944128947325982347349842135343583457329524123432
+123234281944128947325982347349842135343583457329524123432: 2 2 2 36473 27959756010443 2623923161772596273 5756858765046553207
+
+real    4m20.620s
+user    4m19.385s
+sys     0m0.438s
 ```
 So  how does it factor the number *1232342819441289473259823473498421353435834573295241234325*  and how does this happen so fast?
+
+Also, more interestingly why does the number *123234281944128947325982347349842135343583457329524123432* take so long to factor?
 
 ## Algorithm
 If you look at the [Official Documentation](https://www.gnu.org/software/coreutils/manual/html_node/factor-invocation.html#factor-invocation) it tells you that  **factor** uses the [Pollard's rho algorithm](https://en.wikipedia.org/wiki/Pollard%27s_rho_algorithm) to factor the numbers quickly. However, if you look into the [sourcecode](https://github.com/coreutils/coreutils/blob/master/src/factor.c) of *factor*, you will find a complex file that employes a variety of tricks to make the program as fast as it is now.
