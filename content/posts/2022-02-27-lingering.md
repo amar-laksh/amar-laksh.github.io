@@ -15,7 +15,7 @@ Is pumping iron in your chest. <br/>
 Your algorithms are burrowing into the gut, <br/>
 And you politely inquire about kosher salt. <br/>
 There’s a lingering sense of lingering in the time, <br/>
-And you pause and patiently wait for the end.
+And you pause and patiently linger at the end.
 
 
 
