@@ -26,6 +26,10 @@ paginate_by = 5
 </style>
 <div class="table-wrapper" markdown="block" id="2022">
 <books>
+
+
+[![thumbnail of The Dawn of Everything](http://books.google.com/books/content?id=X8gZEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=X8gZEAAAQBAJ&source=gbs_api)
+
 </books>
 
 </div>
