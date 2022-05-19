@@ -27,7 +27,7 @@ paginate_by = 5
 <div class="table-wrapper" markdown="block" id="2022">
 <books>
 
-
+[![thumbnail of 97 Things Every Programmer Should Know](http://books.google.com/books/content?id=qNvGwAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api)](http://books.google.co.uk/books?id=qNvGwAEACAAJ&dq=9780596809485&hl=&source=gbs_api)
 [![thumbnail of The Dawn of Everything](http://books.google.com/books/content?id=X8gZEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=X8gZEAAAQBAJ&source=gbs_api)
 
 </books>
