@@ -15,7 +15,7 @@ paginate_by = 5
 
 ***
 
-## Books I've read in <script>document.write(new Date().getFullYear())</script>
+<!-- ## Books I've read in <script>document.write(new Date().getFullYear())</script> -->
 
 <style>
 .table-wrapper {
@@ -24,11 +24,16 @@ paginate_by = 5
   height: 200px;
 }
 </style>
+## Books I've read in 2022
+
 <div class="table-wrapper" markdown="block" id="2022">
 <books>
 
+
 [![thumbnail of 97 Things Every Programmer Should Know](http://books.google.com/books/content?id=qNvGwAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api)](http://books.google.co.uk/books?id=qNvGwAEACAAJ&dq=9780596809485&hl=&source=gbs_api)
+[![thumbnail of Stories of Your Life and Others](http://books.google.com/books/content?id=aj3XAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=aj3XAwAAQBAJ&source=gbs_api)
 [![thumbnail of The Dawn of Everything](http://books.google.com/books/content?id=X8gZEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=X8gZEAAAQBAJ&source=gbs_api)
+[![thumbnail of The God of Small Things](http://books.google.com/books/content?id=IUf0AgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](http://books.google.co.uk/books?id=IUf0AgAAQBAJ&dq=god%2Bof%2Bsmall%2Bthings&hl=&source=gbs_api)
 
 </books>
 
@@ -36,13 +41,6 @@ paginate_by = 5
 
 ## Books I've read in 2021
 
-<style>
-.table-wrapper {
-  overflow-y: scroll;
-  width: 95%;
-  height: 200px;
-}
-</style>
 <div class="table-wrapper" markdown="block" id="2021">
 <books>
 

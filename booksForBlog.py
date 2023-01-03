@@ -35,7 +35,7 @@ def getLatestBookBackup(booksPath):
 
 booksPath = '../books/'
 booksWebPagePath = './content/_index.md'
-booksList = []
+booksList = ['']
 try:
     latestBook = getLatestBookBackup(booksPath)
     print("Using " + latestBook + " to update book list")
