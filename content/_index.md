@@ -29,8 +29,8 @@ Talk to me about anything from *C++, Rust, Python* to  *Category Theory, Number 
 <div class="table-wrapper" markdown="block" id="2023">
 <books>
 
-[![thumbnail of The Origin of Consciousness in the Breakdown of the Bicameral Mind](http://books.google.com/books/content?id=CLDqDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](http://books.google.co.uk/books?id=CLDqDwAAQBAJ&dq=the%2Borigin%2Bof%2Bconsciousness%2Band%2Bthe%2Bbreakdown%2Bof&hl=&source=gbs_api)
 [![thumbnail of TAXTOPIA](http://books.google.com/books/content?id=ITpyEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=ITpyEAAAQBAJ&source=gbs_api)
+[![thumbnail of The Origin of Consciousness in the Breakdown of the Bicameral Mind](http://books.google.com/books/content?id=CLDqDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](http://books.google.co.uk/books?id=CLDqDwAAQBAJ&dq=the%2Borigin%2Bof%2Bconsciousness%2Band%2Bthe%2Bbreakdown%2Bof&hl=&source=gbs_api)
 
 </books>
 </div>
