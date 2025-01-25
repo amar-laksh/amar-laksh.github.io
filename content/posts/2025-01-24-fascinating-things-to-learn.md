@@ -1,5 +1,5 @@
 ---
-title: "Fascinating things I learned in 2024"
+title: "Fascinating new things I learned in 2024"
 draft: false
 ---
 
@@ -34,6 +34,25 @@ Further Links:
 
 ### The actions of central banks during the 2007-08 crisis
 
-Context: A lot of commentary is based around the causes of the crises, from a crazy housing market originally freed by the Clinton Administration
+Context: A lot of commentary is based around the causes of the crises. Most of it focuses on it originating as an American problem that spread everywhere. However, the story is a bit more complicated than that.
 
-Honestly the best resource is [Crashed](https://www.goodreads.com/book/show/36950522-crashed) by Adam Tooze. He goes into great detail about how the central banks and those in charge used existing and created entirely new ways of holding up a global financial system facing a terminal heart attack as he put it. The sheer amount of technocratic prowess is impressive no matter which way you sway politically. 
+Honestly the best resource is [Crashed](https://www.goodreads.com/book/show/36950522-crashed) by Adam Tooze. 
+
+
+He goes into great detail about how the central banks and those in charge used existing and newly created ways of holding up a global financial system facing a terminal heart attack as he put it. The sheer amount of technocratic prowess is impressive no matter which way you sway politically. Also he investigated how it wasn't just a US-UK caused problem but a result of the entire global market getting into the originally American housing bubble. Definitely worth a read.
+
+
+A good summary of the book can be found in the talk by the Author here:
+
+[Crashed : How a Decade of Financial Crises Changed the World - Adam Tooze (1/3)](https://www.youtube.com/watch?v=Xj2dlsmhQnc)
+
+If you have any other good links please feel free to email/contact me! (through the homepage links)
+
+Further Links:
+- [Central bank liquidity swap](https://en.wikipedia.org/wiki/Central_bank_liquidity_swap) has been a key instrument of stabilizing the economies countries around the world during and after the crises.
+- [Central Bank Currency Swaps Tracker](https://www.cfr.org/tracker/central-bank-currency-swaps-tracker) pretty handy tracker to see the swaps in action.
+- [List of Systematically important banks](https://en.wikipedia.org/wiki/List_of_systemically_important_banks) if you have money/connections in/to these banks, I am pretty sure you're gonna be okay until the end of the world.
+
+# World War 2
+
+
