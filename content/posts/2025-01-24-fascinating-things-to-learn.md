@@ -1,6 +1,6 @@
 ---
 title: "Fascinating new things I learned in 2024"
-draft: false
+draft: true
 ---
 
 # Financial systems
@@ -29,7 +29,7 @@ Further Links:
 - I found the financial accounting manual for the Fedral Reserve of America. It provides a lot of detail into how things are structured inside the Fed. Seems like a pretty interesting place to start if you want to understand the Fed a bit more. [Fed Financial Statements](https://www.federalreserve.gov/aboutthefed/financial-accounting-manual-for-federal-reserve-banks.htm)
 - For a lot of Anglo-derived government systems, [The Consolidated Fund](https://en.wikipedia.org/wiki/Consolidated_Fund) is the main government bank account.
 
-- The Fed also works with other major central banks in issuing a special international reserve asset called [Special Drawing Rights (IMF)](https://www.imf.org/en/About/Factsheets/Sheets/2023/special-drawing-rights-sdr) (another useful link is the Wikipedia one on [SDR](https://en.wikipedia.org/wiki/Special_drawing_rights)) which is mainly issued to countries in order to help with climate change these days among other things.
+- The Fed also works with other major central banks in issuing a special international reserve asset called [Special Drawing Rights (IMF)](https://www.imf.org/en/About/Factsheets/Sheets/2023/special-drawing-rights-sdr) (another useful link on SDR is the [Wikipedia one](https://en.wikipedia.org/wiki/Special_drawing_rights)) which is mainly issued to countries in order to help with climate change these days among other things.
 
 
 ### The actions of central banks during the 2007-08 crisis
