@@ -22,14 +22,14 @@ A really nice summary of the paper can also be found in the academic talk:
 
 My take on it:
 - There definitely needs to be more open research into the nature of these accounting systems of the central banks of various countries.
-- Seems like the UK exchequer accounting could benefit from more parliamentary enquiry and access to 
-- Also apparently, if the model is correct, government policies have much lesser impact on the0 country than the nexus between the Treasury and the Bank of England which has been pretty apparent in the financial circles already. A tangentially related curious story can be found in this article from [Financial Times](https://www.ft.com/content/5209be99-3f6b-4ba3-b3f3-49b544f71c28).
+- Seems like the UK exchequer accounting could benefit from more parliamentary enquiry and public access. 
+- Also apparently, if the model is correct, government policies have much lesser impact on the country than the nexus between the Treasury and the Bank of England which has been pretty apparent in the financial circles already. A tangentially related curious story can be found in this article from [Financial Times](https://www.ft.com/content/5209be99-3f6b-4ba3-b3f3-49b544f71c28).
 
 Further Links:
 - I found the financial accounting manual for the Fedral Reserve of America. It provides a lot of detail into how things are structured inside the Fed. Seems like a pretty interesting place to start if you want to understand the Fed a bit more. [Fed Financial Statements](https://www.federalreserve.gov/aboutthefed/financial-accounting-manual-for-federal-reserve-banks.htm)
 - For a lot of Anglo-derived government systems, [The Consolidated Fund](https://en.wikipedia.org/wiki/Consolidated_Fund) is the main government bank account.
 
-- The Fed also works with other major central banks in issuing a special international reserve asset called [Special Drawing Rights (IMF)](https://www.imf.org/en/About/Factsheets/Sheets/2023/special-drawing-rights-sdr) (another useful link on SDR is the [Wikipedia one](https://en.wikipedia.org/wiki/Special_drawing_rights)) which is mainly issued to countries in order to help with climate change these days among other things.
+- The Fed also works with other major central banks in issuing a special international reserve asset called [Special Drawing Rights (IMF)](https://www.imf.org/en/About/Factsheets/Sheets/2023/special-drawing-rights-sdr) (another useful link on SDR is the [Wikipedia one](https://en.wikipedia.org/wiki/Special_drawing_rights)) which is mainly issued to countries in order to help with climate change among other things these days.
 
 
 ### The actions of central banks during the 2007-08 crisis

@@ -22,15 +22,41 @@ Talk to me about anything from *C++, Rust, Python* to  *Category Theory, Number 
   overflow-y: scroll;
   width: 95%;
   height: 200px;
+    p {
+        img{
+            width: 10%;
+            height: 10%;
+        }
+    }
 }
+
 </style>
+
+## Books I've read in 2025
+<div class="table-wrapper" markdown="block" id="2025">
+<books>
+
+[![thumbnail of We Have Always Lived in the Castle](images/books/23.jpg)](https://isbnsearch.org/isbn/9781441734297)
+
+</books>
+</div>
+
+
+## Books I've read in 2024
+<div class="table-wrapper" markdown="block" id="2024">
+<books>
+
+[![thumbnail of The World For Sale](images/books/2.jpg)](https://isbnsearch.org/isbn/None)
+
+</books>
+</div>
 
 ## Books I've read in 2023
 <div class="table-wrapper" markdown="block" id="2023">
 <books>
 
-[![thumbnail of TAXTOPIA](http://books.google.com/books/content?id=ITpyEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](https://play.google.com/store/books/details?id=ITpyEAAAQBAJ&source=gbs_api)
-[![thumbnail of The Origin of Consciousness in the Breakdown of the Bicameral Mind](http://books.google.com/books/content?id=CLDqDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)](http://books.google.co.uk/books?id=CLDqDwAAQBAJ&dq=the%2Borigin%2Bof%2Bconsciousness%2Band%2Bthe%2Bbreakdown%2Bof&hl=&source=gbs_api)
+[![thumbnail of Taxtopia](images/books/3.jpg)](https://isbnsearch.org/isbn/1800960891)
+[![thumbnail of The origin of consciousness in the breakdown of the bicameral mind](images/books/11.jpg)](https://isbnsearch.org/isbn/9780713912548)
 
 </books>
 </div>

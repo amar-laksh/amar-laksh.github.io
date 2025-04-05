@@ -5,61 +5,52 @@
 # Date              : 17.10.2021
 # Last Modified Date: 17.10.2021
 # Last Modified By  : Amar Lakshya <amar.lakshya@protonmail.com>
-from os import walk
 import json
+import os
 import re
+import shutil
 from datetime import date
-import sys
+
 
 def updatePage(page, el):
-    return re.sub(r'(?s)<books>.*?</books>'
-            , '<books>\n'+str(el)+'\n</books>'
-            , page, count=1, flags = re.MULTILINE)
-
-def makeBookRow(content):
-    row ="[![thumbnail of "+content["title"]+"]"
-    row += "("+content["thumbnailAddress"]+")]"
-    row += "(" + content["googleBooksLink"] + ")"
-    return row
-
-def getLatestBookBackup(booksPath):
-    books = sorted(list(next(walk(booksPath), (None, None, []))[2]))
-    book = books[len(books)-1]
-    epoch = book.split(".")[0].split("-")[2]
-    booksYear = date.fromtimestamp(int(epoch)/1000).year
-    if(booksYear == date.today().year):
-        return books[len(books)-1]
-    else:
-        print("Nothing to update")
-        sys.exit(0)
-
-booksPath = '../books/'
-booksWebPagePath = './content/_index.md'
-booksList = ['']
-try:
-    latestBook = getLatestBookBackup(booksPath)
-    print("Using " + latestBook + " to update book list")
-    bookContent = json.load(open(booksPath+latestBook, 'r+'))
-    for content in bookContent["books"]:
-        if(content["state"] == "READ"):
-            booksList += [makeBookRow(content)]
-
-    del bookContent['backupMetadata']
-    del bookContent['records']
-    newLines = "\n"+ '\n'.join(sorted(booksList)) + "\n"
-
-    with open(booksWebPagePath,'r+') as page:
-        oldPage = page.read()
-        newPage = updatePage(oldPage, newLines)
-        page.seek(0)
-        page.write(newPage)
-        page.truncate()
-
-except SystemExit:
-    print("Bye")
-
-except:
-    print("Cant find the book with valid content!")
-    sys.exit(1)
+    return re.sub(
+        r"(?s)<books>.*?</books>",
+        "<books>\n" + str(el) + "\n</books>",
+        page,
+        count=1,
+        flags=re.MULTILINE,
+    )
 
 
+booksList = []
+latestBackupDirectory = max(
+    [
+        f.path
+        for f in os.scandir("/home/amar/Downloads/")
+        if f.is_dir() and "Openreads-" in f.path
+    ],
+    key=os.path.getmtime,
+)
+for f in os.scandir(latestBackupDirectory):
+    # We copy the book images to be shown on the website
+    if "jpg" in f.path:
+        shutil.copy(f.path, "./static/images/books/")
+    if "books.backup" in f.path:
+        invalidJson = open(f.path, "r+")
+        books = json.loads(f"[{invalidJson.read().replace('@@@@@', ',')}]")
+        for book in books:
+            # if the book is completed and its in the current year we append it to the book list
+            if book["status"] == 0 and str(date.today().year) in book["tags"]:
+                booksList += [
+                    f"[![thumbnail of {book['title']}](images/books/{book['id']}.jpg)](https://isbnsearch.org/isbn/{book['isbn']})"
+                ]
+
+booksWebPagePath = "./content/_index.md"
+booksListWithNewLines = "\n" + "\n".join(sorted(booksList)) + "\n"
+
+with open(booksWebPagePath, "r+") as page:
+    oldPage = page.read()
+    newPage = updatePage(oldPage, booksListWithNewLines)
+    page.seek(0)
+    page.write(newPage)
+    page.truncate()
