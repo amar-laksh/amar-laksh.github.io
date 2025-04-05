@@ -9,6 +9,8 @@ import json
 import os
 import re
 import shutil
+import tempfile
+import zipfile
 from datetime import date
 
 
@@ -27,11 +29,17 @@ latestBackupDirectory = max(
     [
         f.path
         for f in os.scandir("/home/amar/Downloads/")
-        if f.is_dir() and "Openreads-" in f.path
+        if f.is_file() and "Openreads-" in f.path
     ],
     key=os.path.getmtime,
 )
-for f in os.scandir(latestBackupDirectory):
+
+# we create a temporary directory and unzip the books backup.
+temp_dir = tempfile.TemporaryDirectory()
+with zipfile.ZipFile(latestBackupDirectory, "r") as zip_ref:
+    zip_ref.extractall(temp_dir.name)
+
+for f in os.scandir(temp_dir.name):
     path = f.path
     # We copy the book images to be shown on the website
     if "jpg" in path:
@@ -54,3 +62,5 @@ with open(booksWebPagePath, "r+") as page:
     page.seek(0)
     page.write(newPage)
     page.truncate()
+
+temp_dir.cleanup()
