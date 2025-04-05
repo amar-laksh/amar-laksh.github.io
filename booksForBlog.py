@@ -32,14 +32,15 @@ latestBackupDirectory = max(
     key=os.path.getmtime,
 )
 for f in os.scandir(latestBackupDirectory):
+    path = f.path
     # We copy the book images to be shown on the website
-    if "jpg" in f.path:
-        shutil.copy(f.path, "./static/images/books/")
-    if "books.backup" in f.path:
-        invalidJson = open(f.path, "r+")
+    if "jpg" in path:
+        shutil.copy(path, "./static/images/books/")
+    if "books.backup" in path:
+        invalidJson = open(path, "r+")
         books = json.loads(f"[{invalidJson.read().replace('@@@@@', ',')}]")
         for book in books:
-            # if the book is completed and its in the current year we append it to the book list
+            # if the book is completed and its in the current year we append to the book list
             if book["status"] == 0 and str(date.today().year) in book["tags"]:
                 booksList += [
                     f"[![thumbnail of {book['title']}](images/books/{book['id']}.jpg)](https://isbnsearch.org/isbn/{book['isbn']})"
@@ -49,8 +50,7 @@ booksWebPagePath = "./content/_index.md"
 booksListWithNewLines = "\n" + "\n".join(sorted(booksList)) + "\n"
 
 with open(booksWebPagePath, "r+") as page:
-    oldPage = page.read()
-    newPage = updatePage(oldPage, booksListWithNewLines)
+    newPage = updatePage(page.read(), booksListWithNewLines)
     page.seek(0)
     page.write(newPage)
     page.truncate()
