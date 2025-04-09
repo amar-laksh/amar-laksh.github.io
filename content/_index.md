@@ -32,6 +32,27 @@ Talk to me about anything from *C++, Rust, Python* to  *Category Theory, Number 
 
 </style>
 
+## Books I've been reading
+<div class="table-wrapper" markdown="block">
+<reading-books>
+
+[![thumbnail of Book of Proof](images/books/9.jpg)](https://isbnsearch.org/isbn/9780989472128)
+[![thumbnail of Category Theory for Programmers](images/books/7.jpg)](https://isbnsearch.org/isbn/9780464825081)
+[![thumbnail of Crashed](images/books/1.jpg)](https://isbnsearch.org/isbn/670024937)
+[![thumbnail of Giovanni's Room](images/books/24.jpg)](https://isbnsearch.org/isbn/9781721307852)
+[![thumbnail of Point And Line To Plane](images/books/21.jpg)](https://isbnsearch.org/isbn/9781614275466)
+[![thumbnail of Programming in Haskell](images/books/10.jpg)](https://isbnsearch.org/isbn/1316626229)
+[![thumbnail of The Anatomy of Fascism (Allen Lane History)](images/books/6.jpg)](https://isbnsearch.org/isbn/141014326)
+[![thumbnail of The Pragmatic Programmer](images/books/22.jpg)](https://isbnsearch.org/isbn/9780135957059)
+[![thumbnail of The Way of Z](images/books/4.jpg)](https://isbnsearch.org/isbn/9780521550413)
+[![thumbnail of This Way for the Gas, Ladies and Gentlemen](images/books/8.jpg)](https://isbnsearch.org/isbn/140041141)
+
+</reading-books>
+</div>
+
+
+
+
 ## Books I've read in 2025
 <div class="table-wrapper" markdown="block" id="2025">
 <books>

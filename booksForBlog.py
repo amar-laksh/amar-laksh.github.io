@@ -14,6 +14,21 @@ import zipfile
 from datetime import date
 
 
+class Status:
+    READ = 0
+    READING = 1
+
+
+def updateReadingPage(page, el):
+    return re.sub(
+        r"(?s)<reading-books>.*?</reading-books>",
+        "<reading-books>\n" + str(el) + "\n</reading-books>",
+        page,
+        count=1,
+        flags=re.MULTILINE,
+    )
+
+
 def updatePage(page, el):
     return re.sub(
         r"(?s)<books>.*?</books>",
@@ -25,6 +40,7 @@ def updatePage(page, el):
 
 
 booksList = []
+readingBooksList = []
 latestBackupDirectory = max(
     [
         f.path
@@ -48,17 +64,25 @@ for f in os.scandir(temp_dir.name):
         invalidJson = open(path, "r+")
         books = json.loads(f"[{invalidJson.read().replace('@@@@@', ',')}]")
         for book in books:
+            # if the book is being read
+            if book["status"] == Status.READING:
+                readingBooksList += [
+                    f"[![thumbnail of {book['title']}](images/books/{book['id']}.jpg)](https://isbnsearch.org/isbn/{book['isbn']})"
+                ]
+
             # if the book is completed and its in the current year we append to the book list
-            if book["status"] == 0 and str(date.today().year) in book["tags"]:
+            if book["status"] == Status.READ and str(date.today().year) in book["tags"]:
                 booksList += [
                     f"[![thumbnail of {book['title']}](images/books/{book['id']}.jpg)](https://isbnsearch.org/isbn/{book['isbn']})"
                 ]
 
 booksWebPagePath = "./content/_index.md"
-booksListWithNewLines = "\n" + "\n".join(sorted(booksList)) + "\n"
 
 with open(booksWebPagePath, "r+") as page:
-    newPage = updatePage(page.read(), booksListWithNewLines)
+    newPage = updatePage(page.read(), "\n" + "\n".join(sorted(booksList)) + "\n")
+    newPage += updateReadingPage(
+        page.read(), "\n" + "\n".join(sorted(readingBooksList)) + "\n"
+    )
     page.seek(0)
     page.write(newPage)
     page.truncate()
