@@ -32,6 +32,18 @@ Talk to me about anything from *C++, Rust, Python* to  *Category Theory, Number 
 
 </style>
 
+## My juggling journey
+<div class="table-wrapper" markdown="block">
+<juggling>
+
+[![thumbnail of siteswap pattern: 3](images/juggling/3.gif)](https://jugglinglab.org/anim?3)
+[![thumbnail of siteswap pattern: 40](images/juggling/40.gif)](https://jugglinglab.org/anim?40)
+[![thumbnail of siteswap pattern: (2x,2x)*](images/juggling/(2x,2x)*.gif)](https://jugglinglab.org/anim?(2x,2x)*)
+
+</juggling>
+</div>
+
+
 ## Books I've been reading
 <div class="table-wrapper" markdown="block">
 <reading-books>
@@ -49,9 +61,6 @@ Talk to me about anything from *C++, Rust, Python* to  *Category Theory, Number 
 
 </reading-books>
 </div>
-
-
-
 
 ## Books I've read in 2025
 <div class="table-wrapper" markdown="block" id="2025">

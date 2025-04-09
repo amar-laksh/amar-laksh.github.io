@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# File              : booksForBlogs.py
-# Author            : Amar Lakshya <amar.lakshya@protonmail.com>
-# Date              : 17.10.2021
-# Last Modified Date: 17.10.2021
-# Last Modified By  : Amar Lakshya <amar.lakshya@protonmail.com>
 import json
 import os
 import re
