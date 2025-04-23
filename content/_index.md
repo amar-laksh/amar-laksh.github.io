@@ -51,7 +51,6 @@ Talk to me about anything from *C++, Rust, Python* to  *Category Theory, Number 
 [![thumbnail of Book of Proof](images/books/9.jpg)](https://isbnsearch.org/isbn/9780989472128)
 [![thumbnail of Category Theory for Programmers](images/books/7.jpg)](https://isbnsearch.org/isbn/9780464825081)
 [![thumbnail of Crashed](images/books/1.jpg)](https://isbnsearch.org/isbn/670024937)
-[![thumbnail of Giovanni's Room](images/books/24.jpg)](https://isbnsearch.org/isbn/9781721307852)
 [![thumbnail of Point And Line To Plane](images/books/21.jpg)](https://isbnsearch.org/isbn/9781614275466)
 [![thumbnail of Programming in Haskell](images/books/10.jpg)](https://isbnsearch.org/isbn/1316626229)
 [![thumbnail of The Anatomy of Fascism (Allen Lane History)](images/books/6.jpg)](https://isbnsearch.org/isbn/141014326)
@@ -66,6 +65,8 @@ Talk to me about anything from *C++, Rust, Python* to  *Category Theory, Number 
 <div class="table-wrapper" markdown="block" id="2025">
 <books>
 
+[![thumbnail of Giovanni's Room](images/books/24.jpg)](https://isbnsearch.org/isbn/9781721307852)
+[![thumbnail of The Infernal Desire Machines of Doctor Hoffman](images/books/25.jpg)](https://isbnsearch.org/isbn/0586038493)
 [![thumbnail of We Have Always Lived in the Castle](images/books/23.jpg)](https://isbnsearch.org/isbn/9781441734297)
 
 </books>

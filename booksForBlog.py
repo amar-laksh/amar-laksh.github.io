@@ -67,6 +67,7 @@ for f in os.scandir(temp_dir.name):
 
             # if the book is completed and its in the current year we append to the book list
             if book["status"] == Status.READ and str(date.today().year) in book["tags"]:
+                print(f"adding new book: {book['title']}")
                 booksList += [
                     f"[![thumbnail of {book['title']}](images/books/{book['id']}.jpg)](https://isbnsearch.org/isbn/{book['isbn']})"
                 ]
