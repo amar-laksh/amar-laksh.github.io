@@ -66,6 +66,7 @@ Talk to me about anything from *C++, Rust, Python* to  *Category Theory, Number 
 <books>
 
 [![thumbnail of Giovanni's Room](images/books/24.jpg)](https://isbnsearch.org/isbn/9781721307852)
+[![thumbnail of The Catcher in the Rye](images/books/26.jpg)](https://isbnsearch.org/isbn/9780140012484)
 [![thumbnail of The Infernal Desire Machines of Doctor Hoffman](images/books/25.jpg)](https://isbnsearch.org/isbn/0586038493)
 [![thumbnail of We Have Always Lived in the Castle](images/books/23.jpg)](https://isbnsearch.org/isbn/9781441734297)
 
