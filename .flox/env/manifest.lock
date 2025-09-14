@@ -1,0 +1,138 @@
+{
+  "lockfile-version": 1,
+  "manifest": {
+    "version": 1,
+    "install": {
+      "zola": {
+        "pkg-path": "zola"
+      }
+    },
+    "hook": {
+      "on-activate": "  # -> Set variables, create files and directories\n  # -> Perform initialization steps, e.g. create a python venv\n  # -> Useful environment variables:\n  #      - FLOX_ENV_PROJECT=/home/user/example\n  #      - FLOX_ENV=/home/user/example/.flox/run\n  #      - FLOX_ENV_CACHE=/home/user/example/.flox/cache\n  python ./booksForBlog.py\n  #python ./podsForBlog.py\n  zola build --minify\n  zola serve\n"
+    },
+    "profile": {},
+    "options": {}
+  },
+  "packages": [
+    {
+      "attr_path": "zola",
+      "broken": false,
+      "derivation": "/nix/store/rvb52nmafsndhrqmpa52il7lpyhz77fl-zola-0.21.0.drv",
+      "description": "Fast static site generator with everything built-in",
+      "install_id": "zola",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "zola-0.21.0",
+      "pname": "zola",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T02:08:53.480509Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.21.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/jx19wa8ky6nvr1abfqc8mnylp38b2ycn-zola-0.21.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "zola",
+      "broken": false,
+      "derivation": "/nix/store/y5hy9bdfnaxvikxyxp4d0ss856y1824n-zola-0.21.0.drv",
+      "description": "Fast static site generator with everything built-in",
+      "install_id": "zola",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "zola-0.21.0",
+      "pname": "zola",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T02:44:29.851987Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.21.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/flrda71s9q4vj5ksfa04y5pizhnxf7f3-zola-0.21.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "zola",
+      "broken": false,
+      "derivation": "/nix/store/xsvkpwxgk7rhzgf96hbqgil2pdvmif7h-zola-0.21.0.drv",
+      "description": "Fast static site generator with everything built-in",
+      "install_id": "zola",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "zola-0.21.0",
+      "pname": "zola",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T03:15:44.097232Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.21.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/j3j5d5nclz59xrkgmc548gz9ccjlg2y5-zola-0.21.0"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "zola",
+      "broken": false,
+      "derivation": "/nix/store/dgippfdiq2nmh7yac40qcmnzpi51vyh7-zola-0.21.0.drv",
+      "description": "Fast static site generator with everything built-in",
+      "install_id": "zola",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "name": "zola-0.21.0",
+      "pname": "zola",
+      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "rev_count": 859555,
+      "rev_date": "2025-09-10T06:58:08Z",
+      "scrape_date": "2025-09-12T03:53:19.687940Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.21.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/vr5vk0j1h17r90ycw2hk2jnv3d4hcx3l-zola-0.21.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    }
+  ]
+}
