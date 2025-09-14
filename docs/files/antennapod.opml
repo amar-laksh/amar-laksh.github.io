@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
+<opml version="2.0">
+  <head>
+    <title>AntennaPod Subscriptions</title>
+    <dateCreated>14 Sep 25 16:03:54 +0100</dateCreated>
+  </head>
+  <body>
+    <outline text="1Dime Radio" title="1Dime Radio" type="rss" xmlUrl="https://anchor.fm/s/5cd318bc/podcast/rss" htmlUrl="https://podcasters.spotify.com/pod/show/1dime" />
+    <outline text="A World to Win with Grace Blakeley" title="A World to Win with Grace Blakeley" type="rss" xmlUrl="https://feeds.blubrry.com/feeds/aworldtowin.xml" htmlUrl="https://tribunemag.co.uk/a-world-to-win" />
+    <outline text="ADSP: Algorithms + Data Structures = Programs" title="ADSP: Algorithms + Data Structures = Programs" type="rss" xmlUrl="https://feeds.buzzsprout.com/1501960.rss" htmlUrl="https://adspthepodcast.com/" />
+    <outline text="Bad Hasbara - The World's Most Moral Podcast" title="Bad Hasbara - The World's Most Moral Podcast" type="rss" xmlUrl="https://feeds.redcircle.com/456de9ed-9382-4c5d-ad65-05f30aa96e07" htmlUrl="https://redcircle.com/shows/bad-hasbara" />
+    <outline text="Behind the Bastards" title="Behind the Bastards" type="rss" xmlUrl="https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/e5f91208-cc7e-4726-a312-ae280140ad11/d64f756d-6d5e-4fae-b24f-ae280140ad36/podcast.rss" htmlUrl="https://www.iheart.com/podcast/105-behind-the-bastards-29236323/" />
+    <outline text="Blowback" title="Blowback" type="rss" xmlUrl="https://feeds.redcircle.com/e30b9f10-8c86-432e-9fa0-ba287fb94e7f" htmlUrl="https://redcircle.com/shows/blowback" />
+    <outline text="Call Jonathan Pie" title="Call Jonathan Pie" type="rss" xmlUrl="https://podcasts.files.bbci.co.uk/p0frw494.rss" htmlUrl="http://www.bbc.co.uk/programmes/p0frw494" />
+    <outline text="Chapo Trap House" title="Chapo Trap House" type="rss" xmlUrl="https://feeds.soundcloud.com/users/soundcloud:users:211911700/sounds.rss" htmlUrl="https://www.patreon.com/chapotraphouse" />
+    <outline text="CoRecursive: Coding Stories" title="CoRecursive: Coding Stories" type="rss" xmlUrl="https://corecursive.libsyn.com/feed" htmlUrl="http://corecursive.com" />
+    <outline text="cpp.chat" title="cpp.chat" type="rss" xmlUrl="https://cpp.chat/rss/" htmlUrl="https://cpp.chat" />
+    <outline text="CppCast" title="CppCast" type="rss" xmlUrl="https://cppcast.com/feed.rss" htmlUrl="https://cppcast.com" />
+    <outline text="Cum Town Premium" title="Cum Town Premium" type="rss" xmlUrl="http://rss.castbox.fm/everest/79b9b9699c674e0d974e74e2cbeeca19.xml" htmlUrl="https://castbox.fm/ch/5344240" />
+    <outline text="Gladio Free Europe" title="Gladio Free Europe" type="rss" xmlUrl="https://anchor.fm/s/4d855a8c/podcast/rss" htmlUrl="https://gladiofreeeurope.github.io/" />
+    <outline text="Horseshoe Theory" title="Horseshoe Theory" type="rss" xmlUrl="https://feeds.acast.com/public/shows/6688bc949bf81dc06ad8d82f" htmlUrl="https://podcasters.spotify.com/pod/show/horseshoe-theory" />
+    <outline text="Ideas of India" title="Ideas of India" type="rss" xmlUrl="https://ideasofindia.libsyn.com/rss" htmlUrl="https://ideasofindia.libsyn.com" />
+    <outline text="Inside Trump's Head" title="Inside Trump's Head" type="rss" xmlUrl="https://feeds.acast.com/public/shows/66ce412a773c5e2de53dcc67" htmlUrl="https://shows.acast.com/the-daily-beast-podcast" />
+    <outline text="Kill James Bond!" title="Kill James Bond!" type="rss" xmlUrl="https://feed.podbean.com/killjamesbondpod/feed.xml" htmlUrl="https://killjamesbondpod.podbean.com" />
+    <outline text="Mark and Carrie" title="Mark and Carrie" type="rss" xmlUrl="https://feeds.captivate.fm/mark-and-carrie/" htmlUrl="https://soundcloud.com/markandcarrie" />
+    <outline text="Never Post" title="Never Post" type="rss" xmlUrl="https://feed.neverpo.st" htmlUrl="https://neverpo.st" />
+    <outline text="Odd Lots" title="Odd Lots" type="rss" xmlUrl="https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/8a94442e-5a74-4fa2-8b8d-ae27003a8d6b/982f5071-765c-403d-969d-ae27003a8d83/podcast.rss" htmlUrl="https://bloomberg.com/podcasts/odd_lots" />
+    <outline text="Ologies with Alie Ward" title="Ologies with Alie Ward" type="rss" xmlUrl="https://feeds.simplecast.com/FO6kxYGj" htmlUrl="https://www.siriusxm.com" />
+    <outline text="Ones and Tooze" title="Ones and Tooze" type="rss" xmlUrl="https://feeds.megaphone.fm/FGP6717686883" htmlUrl="https://foreignpolicy.com/podcasts/ones-and-tooze/" />
+    <outline text="Open Source with Christopher Lydon" title="Open Source with Christopher Lydon" type="rss" xmlUrl="https://radioopensource.org/feed/" htmlUrl="https://radioopensource.org/" />
+    <outline text="REKHTA PODCAST" title="REKHTA PODCAST" type="rss" xmlUrl="https://anchor.fm/s/ec95805c/podcast/rss" htmlUrl="https://hubhopper.com/podcast/rekhta-podcast/395129" />
+    <outline text="Self-Directed Research" title="Self-Directed Research" type="rss" xmlUrl="https://sdr-podcast.com/podcast-feed-m4a.xml" htmlUrl="https://sdr-podcast.com/" />
+    <outline text="The Always Sunny Podcast" title="The Always Sunny Podcast" type="rss" xmlUrl="https://feeds.megaphone.fm/TPC3838283892" htmlUrl="https://the-always-sunny-pod.com" />
+    <outline text="The Array Cast" title="The Array Cast" type="rss" xmlUrl="https://www.arraycast.com/episodes?format=rss" htmlUrl="https://www.arraycast.com/episodes/" />
+    <outline text="The Blindboy Podcast" title="The Blindboy Podcast" type="rss" xmlUrl="https://feeds.acast.com/public/shows/9d5c107b-68d6-4c1b-8c80-45ee6a84c947" htmlUrl="https://twitter.com/Rubberbandits" />
+    <outline text="The Deprogram" title="The Deprogram" type="rss" xmlUrl="https://feeds.buzzsprout.com/1890340.rss" htmlUrl="https://art19.com/shows/the-deprogram" />
+    <outline text="The Dig" title="The Dig" type="rss" xmlUrl="https://thedig.blubrry.net/feed/podcast/" htmlUrl="https://www.thedigradio.com/" />
+    <outline text="The Ezra Klein Show" title="The Ezra Klein Show" type="rss" xmlUrl="https://feeds.simplecast.com/kEKXbjuJ" htmlUrl="https://www.nytimes.com/ezra-klein-podcast" />
+    <outline text="The Hamilton Morris Podcast" title="The Hamilton Morris Podcast" type="rss" xmlUrl="https://feeds.buzzsprout.com/1870388.rss" htmlUrl="https://hamiltonmorris.buzzsprout.com" />
+    <outline text="The Integral Principles of the Structural Dynamics of Flow" title="The Integral Principles of the Structural Dynamics of Flow" type="rss" xmlUrl="https://lgclaret.libsyn.com/rss" htmlUrl="https://www.lgclaret.com/" />
+    <outline text="The Rhodes Center Podcast with Mark Blyth" title="The Rhodes Center Podcast with Mark Blyth" type="rss" xmlUrl="https://feeds.captivate.fm/rhodes-center-podcast/" htmlUrl="http://watson.brown.edu/rhodes" />
+    <outline text="TRASHFUTURE" title="TRASHFUTURE" type="rss" xmlUrl="https://feed.podbean.com/trashfuturepodcast/feed.xml" htmlUrl="https://trashfuture.co.uk" />
+    <outline text="Trending Globally: Politics and Policy" title="Trending Globally: Politics and Policy" type="rss" xmlUrl="https://feeds.captivate.fm/trending-globally/" htmlUrl="https://trending-globally.captivate.fm" />
+    <outline text="TrueAnon" title="TrueAnon" type="rss" xmlUrl="https://feeds.soundcloud.com/users/soundcloud:users:672423809/sounds.rss" htmlUrl="https://soundcloud.com/trueanonpod" />
+    <outline text="Two's Complement" title="Two's Complement" type="rss" xmlUrl="https://www.twoscomplement.org/podcast/feed.xml" htmlUrl="https://www.twoscomplement.org" />
+  </body>
+</opml>

