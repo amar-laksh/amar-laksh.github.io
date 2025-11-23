@@ -3,17 +3,140 @@
   "manifest": {
     "version": 1,
     "install": {
+      "uiua": {
+        "pkg-path": "uiua"
+      },
       "zola": {
         "pkg-path": "zola"
       }
     },
     "hook": {
-      "on-activate": "  # -> Set variables, create files and directories\n  # -> Perform initialization steps, e.g. create a python venv\n  # -> Useful environment variables:\n  #      - FLOX_ENV_PROJECT=/home/user/example\n  #      - FLOX_ENV=/home/user/example/.flox/run\n  #      - FLOX_ENV_CACHE=/home/user/example/.flox/cache\n  python ./booksForBlog.py\n  #python ./podsForBlog.py\n  zola build --minify\n  zola serve\n"
+      "on-activate": "    echo \"~~~ Running scripts ~~~\"\n    for script in ./scripts/*.py\n    do\n        echo \"Running $script\"\n        #python scripts/\"$script\"\n    done  \n    echo \"~~~ Building blog ~~~\"\n    zola build --minify\n    zola serve\n"
     },
     "profile": {},
     "options": {}
   },
   "packages": [
+    {
+      "attr_path": "uiua",
+      "broken": false,
+      "derivation": "/nix/store/2jjbmcvymlz2f3cc8scy09ii6r4pbwb3-uiua-0.16.2.drv",
+      "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
+      "install_id": "uiua",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "uiua-0.16.2",
+      "pname": "uiua",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T01:18:59.163603Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.16.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/f750x8g0xpxgxz0xyyizgbffsk1ir393-uiua-0.16.2"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "uiua",
+      "broken": false,
+      "derivation": "/nix/store/7vmwqgliyazk04mkiwbmdg5h3s2a380h-uiua-0.16.2.drv",
+      "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
+      "install_id": "uiua",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "uiua-0.16.2",
+      "pname": "uiua",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T01:52:39.011262Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.16.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/n0ygqhn9zck38a6w5zdghyayxncgxyrk-uiua-0.16.2"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "uiua",
+      "broken": false,
+      "derivation": "/nix/store/3hgb2bgi8kgk925g78ihcwsr4a21dgh6-uiua-0.16.2.drv",
+      "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
+      "install_id": "uiua",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "uiua-0.16.2",
+      "pname": "uiua",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T02:04:20.671860Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.16.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/38s6y3r0wb97591fnn1b8n1wmf76ax5n-uiua-0.16.2"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "uiua",
+      "broken": false,
+      "derivation": "/nix/store/ggnynzcy9h6yq55rzhdk1fssklprnspr-uiua-0.16.2.drv",
+      "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
+      "install_id": "uiua",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "uiua-0.16.2",
+      "pname": "uiua",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T02:36:46.095476Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.16.2",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/j7sxdah9nkkrg5g8hkyy62x8wr32bahk-uiua-0.16.2"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
     {
       "attr_path": "zola",
       "broken": false,
@@ -21,13 +144,13 @@
       "description": "Fast static site generator with everything built-in",
       "install_id": "zola",
       "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "name": "zola-0.21.0",
       "pname": "zola",
-      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
-      "rev_count": 859555,
-      "rev_date": "2025-09-10T06:58:08Z",
-      "scrape_date": "2025-09-12T02:08:53.480509Z",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T01:19:15.213739Z",
       "stabilities": [
         "staging",
         "unstable"
@@ -51,13 +174,13 @@
       "description": "Fast static site generator with everything built-in",
       "install_id": "zola",
       "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "name": "zola-0.21.0",
       "pname": "zola",
-      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
-      "rev_count": 859555,
-      "rev_date": "2025-09-10T06:58:08Z",
-      "scrape_date": "2025-09-12T02:44:29.851987Z",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T01:53:01.072279Z",
       "stabilities": [
         "staging",
         "unstable"
@@ -81,13 +204,13 @@
       "description": "Fast static site generator with everything built-in",
       "install_id": "zola",
       "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "name": "zola-0.21.0",
       "pname": "zola",
-      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
-      "rev_count": 859555,
-      "rev_date": "2025-09-10T06:58:08Z",
-      "scrape_date": "2025-09-12T03:15:44.097232Z",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T02:04:37.569861Z",
       "stabilities": [
         "staging",
         "unstable"
@@ -111,13 +234,13 @@
       "description": "Fast static site generator with everything built-in",
       "install_id": "zola",
       "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "name": "zola-0.21.0",
       "pname": "zola",
-      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
-      "rev_count": 859555,
-      "rev_date": "2025-09-10T06:58:08Z",
-      "scrape_date": "2025-09-12T03:53:19.687940Z",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T02:37:08.309876Z",
       "stabilities": [
         "staging",
         "unstable"
