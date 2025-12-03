@@ -16,7 +16,7 @@ version = 1
 ## -------------------------------------------------------------------
 [install]
 zola.pkg-path = "zola"
-uiua.pkg-path = "uiua"
+uiua-unstable.pkg-path = "uiua-unstable"
 # gum.pkg-path = "gum"
 # gum.version = "^0.14.5"
 

@@ -3,8 +3,8 @@
   "manifest": {
     "version": 1,
     "install": {
-      "uiua": {
-        "pkg-path": "uiua"
+      "uiua-unstable": {
+        "pkg-path": "uiua-unstable"
       },
       "zola": {
         "pkg-path": "zola"
@@ -18,120 +18,120 @@
   },
   "packages": [
     {
-      "attr_path": "uiua",
+      "attr_path": "uiua-unstable",
       "broken": false,
-      "derivation": "/nix/store/2jjbmcvymlz2f3cc8scy09ii6r4pbwb3-uiua-0.16.2.drv",
+      "derivation": "/nix/store/zrcfpfx6pd4xpzvmnwgk2d9436hzjwwp-uiua-0.17.0-rc.1.drv",
       "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
-      "install_id": "uiua",
+      "install_id": "uiua-unstable",
       "license": "MIT",
       "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
-      "name": "uiua-0.16.2",
-      "pname": "uiua",
+      "name": "uiua-0.17.0-rc.1",
+      "pname": "uiua-unstable",
       "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "rev_count": 862643,
       "rev_date": "2025-09-16T15:19:26Z",
-      "scrape_date": "2025-09-19T01:18:59.163603Z",
+      "scrape_date": "2025-09-19T01:18:59.167107Z",
       "stabilities": [
         "staging",
         "unstable"
       ],
       "unfree": false,
-      "version": "0.16.2",
+      "version": "0.17.0-rc.1",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/f750x8g0xpxgxz0xyyizgbffsk1ir393-uiua-0.16.2"
+        "out": "/nix/store/rlf7sfnbaz76b0vss5cjpjmp59hnzvav-uiua-0.17.0-rc.1"
       },
       "system": "aarch64-darwin",
       "group": "toplevel",
       "priority": 5
     },
     {
-      "attr_path": "uiua",
+      "attr_path": "uiua-unstable",
       "broken": false,
-      "derivation": "/nix/store/7vmwqgliyazk04mkiwbmdg5h3s2a380h-uiua-0.16.2.drv",
+      "derivation": "/nix/store/6j696m68n8kgqjcfck328kjb0vda3b14-uiua-0.17.0-rc.1.drv",
       "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
-      "install_id": "uiua",
+      "install_id": "uiua-unstable",
       "license": "MIT",
       "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
-      "name": "uiua-0.16.2",
-      "pname": "uiua",
+      "name": "uiua-0.17.0-rc.1",
+      "pname": "uiua-unstable",
       "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "rev_count": 862643,
       "rev_date": "2025-09-16T15:19:26Z",
-      "scrape_date": "2025-09-19T01:52:39.011262Z",
+      "scrape_date": "2025-09-19T01:52:39.015290Z",
       "stabilities": [
         "staging",
         "unstable"
       ],
       "unfree": false,
-      "version": "0.16.2",
+      "version": "0.17.0-rc.1",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/n0ygqhn9zck38a6w5zdghyayxncgxyrk-uiua-0.16.2"
+        "out": "/nix/store/m8iayc7lzcx5pxfs0fb6dgp9hr7v1iph-uiua-0.17.0-rc.1"
       },
       "system": "aarch64-linux",
       "group": "toplevel",
       "priority": 5
     },
     {
-      "attr_path": "uiua",
+      "attr_path": "uiua-unstable",
       "broken": false,
-      "derivation": "/nix/store/3hgb2bgi8kgk925g78ihcwsr4a21dgh6-uiua-0.16.2.drv",
+      "derivation": "/nix/store/a4sqg1vj8cymwxk0ipq2r532g0q9lyla-uiua-0.17.0-rc.1.drv",
       "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
-      "install_id": "uiua",
+      "install_id": "uiua-unstable",
       "license": "MIT",
       "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
-      "name": "uiua-0.16.2",
-      "pname": "uiua",
+      "name": "uiua-0.17.0-rc.1",
+      "pname": "uiua-unstable",
       "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "rev_count": 862643,
       "rev_date": "2025-09-16T15:19:26Z",
-      "scrape_date": "2025-09-19T02:04:20.671860Z",
+      "scrape_date": "2025-09-19T02:04:20.675606Z",
       "stabilities": [
         "staging",
         "unstable"
       ],
       "unfree": false,
-      "version": "0.16.2",
+      "version": "0.17.0-rc.1",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/38s6y3r0wb97591fnn1b8n1wmf76ax5n-uiua-0.16.2"
+        "out": "/nix/store/sbis12fp7p84hshvgy3bv42b4f128ydf-uiua-0.17.0-rc.1"
       },
       "system": "x86_64-darwin",
       "group": "toplevel",
       "priority": 5
     },
     {
-      "attr_path": "uiua",
+      "attr_path": "uiua-unstable",
       "broken": false,
-      "derivation": "/nix/store/ggnynzcy9h6yq55rzhdk1fssklprnspr-uiua-0.16.2.drv",
+      "derivation": "/nix/store/djc0mjawfkp605f375aavmyfmcssz5nj-uiua-0.17.0-rc.1.drv",
       "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
-      "install_id": "uiua",
+      "install_id": "uiua-unstable",
       "license": "MIT",
       "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
-      "name": "uiua-0.16.2",
-      "pname": "uiua",
+      "name": "uiua-0.17.0-rc.1",
+      "pname": "uiua-unstable",
       "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "rev_count": 862643,
       "rev_date": "2025-09-16T15:19:26Z",
-      "scrape_date": "2025-09-19T02:36:46.095476Z",
+      "scrape_date": "2025-09-19T02:36:46.099362Z",
       "stabilities": [
         "staging",
         "unstable"
       ],
       "unfree": false,
-      "version": "0.16.2",
+      "version": "0.17.0-rc.1",
       "outputs_to_install": [
         "out"
       ],
       "outputs": {
-        "out": "/nix/store/j7sxdah9nkkrg5g8hkyy62x8wr32bahk-uiua-0.16.2"
+        "out": "/nix/store/my1yl943biw48irk5cclg18x5r5afrcg-uiua-0.17.0-rc.1"
       },
       "system": "x86_64-linux",
       "group": "toplevel",
