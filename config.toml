@@ -167,3 +167,6 @@ name = "Amar Lakshya"
 github = "amar-laksh"
 linkedin = "amar-lakshya"
 
+[extra.scripts]
+feeds_directory = "/home/$USER/Downloads"
+known_site_swaps = ["3", "40", "(2x,2x)*"]

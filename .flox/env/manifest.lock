@@ -3,17 +3,263 @@
   "manifest": {
     "version": 1,
     "install": {
+      "uiua-unstable": {
+        "pkg-path": "uiua-unstable"
+      },
+      "unzip": {
+        "pkg-path": "unzip"
+      },
       "zola": {
         "pkg-path": "zola"
       }
     },
     "hook": {
-      "on-activate": "  # -> Set variables, create files and directories\n  # -> Perform initialization steps, e.g. create a python venv\n  # -> Useful environment variables:\n  #      - FLOX_ENV_PROJECT=/home/user/example\n  #      - FLOX_ENV=/home/user/example/.flox/run\n  #      - FLOX_ENV_CACHE=/home/user/example/.flox/cache\n  python ./booksForBlog.py\n  #python ./podsForBlog.py\n  zola build --minify\n  zola serve\n"
+      "on-activate": "    echo \"~~~ Running scripts ~~~\"\n    for script in ./scripts/*.py\n    do\n        echo \"Running $script\"\n        #python scripts/\"$script\"\n    done  \n    echo \"~~~ Building blog ~~~\"\n    zola build --minify\n    zola serve\n"
     },
     "profile": {},
     "options": {}
   },
   "packages": [
+    {
+      "attr_path": "uiua-unstable",
+      "broken": false,
+      "derivation": "/nix/store/zrcfpfx6pd4xpzvmnwgk2d9436hzjwwp-uiua-0.17.0-rc.1.drv",
+      "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
+      "install_id": "uiua-unstable",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "uiua-0.17.0-rc.1",
+      "pname": "uiua-unstable",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T01:18:59.167107Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.17.0-rc.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/rlf7sfnbaz76b0vss5cjpjmp59hnzvav-uiua-0.17.0-rc.1"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "uiua-unstable",
+      "broken": false,
+      "derivation": "/nix/store/6j696m68n8kgqjcfck328kjb0vda3b14-uiua-0.17.0-rc.1.drv",
+      "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
+      "install_id": "uiua-unstable",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "uiua-0.17.0-rc.1",
+      "pname": "uiua-unstable",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T01:52:39.015290Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.17.0-rc.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/m8iayc7lzcx5pxfs0fb6dgp9hr7v1iph-uiua-0.17.0-rc.1"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "uiua-unstable",
+      "broken": false,
+      "derivation": "/nix/store/a4sqg1vj8cymwxk0ipq2r532g0q9lyla-uiua-0.17.0-rc.1.drv",
+      "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
+      "install_id": "uiua-unstable",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "uiua-0.17.0-rc.1",
+      "pname": "uiua-unstable",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T02:04:20.675606Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.17.0-rc.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/sbis12fp7p84hshvgy3bv42b4f128ydf-uiua-0.17.0-rc.1"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "uiua-unstable",
+      "broken": false,
+      "derivation": "/nix/store/djc0mjawfkp605f375aavmyfmcssz5nj-uiua-0.17.0-rc.1.drv",
+      "description": "Stack-oriented array programming language with a focus on simplicity, beauty, and tacit code",
+      "install_id": "uiua-unstable",
+      "license": "MIT",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "uiua-0.17.0-rc.1",
+      "pname": "uiua-unstable",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T02:36:46.099362Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "0.17.0-rc.1",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/my1yl943biw48irk5cclg18x5r5afrcg-uiua-0.17.0-rc.1"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "unzip",
+      "broken": false,
+      "derivation": "/nix/store/6g10gfkrw2m17qcg2i4bccasvfg0blb5-unzip-6.0.drv",
+      "description": "Extraction utility for archives compressed in .zip format",
+      "install_id": "unzip",
+      "license": "Info-ZIP",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "unzip-6.0",
+      "pname": "unzip",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T01:18:59.636546Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "6.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/v64g11q6sq4vyvx6gcyri9bkvchvbxbf-unzip-6.0"
+      },
+      "system": "aarch64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "unzip",
+      "broken": false,
+      "derivation": "/nix/store/k5wsb6rfslpdy4sxm7npf46faz0l9knh-unzip-6.0.drv",
+      "description": "Extraction utility for archives compressed in .zip format",
+      "install_id": "unzip",
+      "license": "Info-ZIP",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "unzip-6.0",
+      "pname": "unzip",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T01:52:39.699932Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "6.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/7968gzj73i7h4sxgn40gwlv7yflgch32-unzip-6.0"
+      },
+      "system": "aarch64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "unzip",
+      "broken": false,
+      "derivation": "/nix/store/wjvp5wv7vvzkwg7xbdl55nsqxnbbyb53-unzip-6.0.drv",
+      "description": "Extraction utility for archives compressed in .zip format",
+      "install_id": "unzip",
+      "license": "Info-ZIP",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "unzip-6.0",
+      "pname": "unzip",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T02:04:21.192796Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "6.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/w5fiwgh95gz394p512zl1j5imf3xaf6k-unzip-6.0"
+      },
+      "system": "x86_64-darwin",
+      "group": "toplevel",
+      "priority": 5
+    },
+    {
+      "attr_path": "unzip",
+      "broken": false,
+      "derivation": "/nix/store/ngq8wd5yvlw4pppkwmrgkpsrfydh12x4-unzip-6.0.drv",
+      "description": "Extraction utility for archives compressed in .zip format",
+      "install_id": "unzip",
+      "license": "Info-ZIP",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "name": "unzip-6.0",
+      "pname": "unzip",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T02:36:46.811192Z",
+      "stabilities": [
+        "staging",
+        "unstable"
+      ],
+      "unfree": false,
+      "version": "6.0",
+      "outputs_to_install": [
+        "out"
+      ],
+      "outputs": {
+        "out": "/nix/store/gdd760r35ab0jm43y5yf0i5rfpa8lwh2-unzip-6.0"
+      },
+      "system": "x86_64-linux",
+      "group": "toplevel",
+      "priority": 5
+    },
     {
       "attr_path": "zola",
       "broken": false,
@@ -21,13 +267,13 @@
       "description": "Fast static site generator with everything built-in",
       "install_id": "zola",
       "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "name": "zola-0.21.0",
       "pname": "zola",
-      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
-      "rev_count": 859555,
-      "rev_date": "2025-09-10T06:58:08Z",
-      "scrape_date": "2025-09-12T02:08:53.480509Z",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T01:19:15.213739Z",
       "stabilities": [
         "staging",
         "unstable"
@@ -51,13 +297,13 @@
       "description": "Fast static site generator with everything built-in",
       "install_id": "zola",
       "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "name": "zola-0.21.0",
       "pname": "zola",
-      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
-      "rev_count": 859555,
-      "rev_date": "2025-09-10T06:58:08Z",
-      "scrape_date": "2025-09-12T02:44:29.851987Z",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T01:53:01.072279Z",
       "stabilities": [
         "staging",
         "unstable"
@@ -81,13 +327,13 @@
       "description": "Fast static site generator with everything built-in",
       "install_id": "zola",
       "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "name": "zola-0.21.0",
       "pname": "zola",
-      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
-      "rev_count": 859555,
-      "rev_date": "2025-09-10T06:58:08Z",
-      "scrape_date": "2025-09-12T03:15:44.097232Z",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T02:04:37.569861Z",
       "stabilities": [
         "staging",
         "unstable"
@@ -111,13 +357,13 @@
       "description": "Fast static site generator with everything built-in",
       "install_id": "zola",
       "license": "MIT",
-      "locked_url": "https://github.com/flox/nixpkgs?rev=ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
+      "locked_url": "https://github.com/flox/nixpkgs?rev=8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
       "name": "zola-0.21.0",
       "pname": "zola",
-      "rev": "ab0f3607a6c7486ea22229b92ed2d355f1482ee0",
-      "rev_count": 859555,
-      "rev_date": "2025-09-10T06:58:08Z",
-      "scrape_date": "2025-09-12T03:53:19.687940Z",
+      "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+      "rev_count": 862643,
+      "rev_date": "2025-09-16T15:19:26Z",
+      "scrape_date": "2025-09-19T02:37:08.309876Z",
       "stabilities": [
         "staging",
         "unstable"
