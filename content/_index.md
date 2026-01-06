@@ -61,6 +61,15 @@ Talk to me about anything from *C++, Rust, Python* to  *Category Theory, Number 
 </reading-books>
 </div>
 
+## Books I've read in 2026
+<div class="table-wrapper" markdown="block" id="2026">
+<books>
+
+</books>
+</div>
+
+
+
 ## Books I've read in 2025
 <div class="table-wrapper" markdown="block" id="2025">
 <books>

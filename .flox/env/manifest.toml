@@ -36,10 +36,10 @@ unzip.pkg-path = "unzip"
 [hook]
 on-activate = '''
     echo "~~~ Running scripts ~~~"
-    for script in ./scripts/*.py
+    for script in ./scripts/*.ua
     do
         echo "Running $script"
-        #python scripts/"$script"
+        uiua "$script"
     done  
     echo "~~~ Building blog ~~~"
     zola build --minify

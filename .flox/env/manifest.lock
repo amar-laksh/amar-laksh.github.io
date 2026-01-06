@@ -14,7 +14,7 @@
       }
     },
     "hook": {
-      "on-activate": "    echo \"~~~ Running scripts ~~~\"\n    for script in ./scripts/*.py\n    do\n        echo \"Running $script\"\n        #python scripts/\"$script\"\n    done  \n    echo \"~~~ Building blog ~~~\"\n    zola build --minify\n    zola serve\n"
+      "on-activate": "    echo \"~~~ Running scripts ~~~\"\n    for script in ./scripts/*.ua\n    do\n        echo \"Running $script\"\n        uiua \"$script\"\n    done  \n    echo \"~~~ Building blog ~~~\"\n    zola build --minify\n    zola serve\n"
     },
     "profile": {},
     "options": {}
